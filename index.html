@@ -1,124 +1,523 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>⚠️ EDUCATIONAL DEMO - How Phishing Works ⚠️</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>India's United Banking | Partner Institutions</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            padding: 20px;
+            background: linear-gradient(145deg, #eef2f7 0%, #dce5ed 100%);
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
         }
-        .warning {
-            background: red;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-        .container {
-            max-width: 500px;
-            margin: auto;
+
+        /* main elegant container – no warning borders, clean design */
+        .bank-portal {
+            max-width: 1400px;
+            margin: 0 auto;
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border: 5px solid red;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: all 0.2s;
         }
-        .demo-badge {
-            background: #ff6600;
-            color: white;
-            padding: 10px;
+
+        /* header – patriotic & professional */
+        .hero-section {
+            background: linear-gradient(112deg, #0a2f44 0%, #0f3b4f 100%);
+            padding: 2rem 2rem 1.5rem 2rem;
             text-align: center;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #3778cd;
             color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
         }
-        .error {
-            color: red;
+
+        .hero-section h1 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-tagline {
             margin-top: 10px;
+            font-size: 1rem;
+            opacity: 0.9;
         }
-        .educational-note {
-            background: #ffffcc;
-            padding: 15px;
-            margin-top: 20px;
-            border-left: 5px solid #ff6600;
-            font-size: 14px;
+
+        .badge-india {
+            background: #ff9933;
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-top: 12px;
+            letter-spacing: 0.6px;
+        }
+
+        /* banks grid section */
+        .banks-grid {
+            padding: 2rem 2rem 1.8rem 2rem;
+            background: #ffffff;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            border-left: 6px solid #1f7b4d;
+            padding-left: 18px;
+            margin-bottom: 2rem;
+        }
+
+        .logo-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem 1.5rem;
+            align-items: center;
+            justify-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .bank-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1rem 0.8rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+            border: 1px solid #eef2f8;
+        }
+
+        .bank-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde9;
+        }
+
+        .bank-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 12px;
+        }
+
+        .bank-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1f3b4c;
+            text-align: center;
+            background: #f8fafc;
+            padding: 4px 10px;
+            border-radius: 40px;
+            width: 100%;
+        }
+
+        /* CENTER ACCOUNT INPUT BOX – placed prominently in middle of logos */
+        .center-card-section {
+            max-width: 580px;
+            margin: 1.2rem auto 2rem auto;
+            background: #fbfef9;
+            border-radius: 48px;
+            padding: 1.6rem 2rem;
+            box-shadow: 0 8px 24px rgba(0, 30, 20, 0.08);
+            border: 1px solid #e0edf5;
+            transition: all 0.2s;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .input-label {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #1d5a3e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .input-label i {
+            font-size: 1.4rem;
+        }
+
+        .account-input-field {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #cbdbe0;
+            border-radius: 60px;
+            background: white;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .account-input-field:focus {
+            outline: none;
+            border-color: #1f7b4d;
+            box-shadow: 0 0 0 3px rgba(31, 123, 77, 0.2);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background: #1f7b4d;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background: #0f5e3a;
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: #eef2f7;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 40px;
+            color: #2c3e50;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .info-message {
+            margin-top: 16px;
+            background: #eef6fc;
+            padding: 12px 16px;
+            border-radius: 60px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #1e5f7a;
+            border-left: 4px solid #1f7b4d;
+        }
+
+        .demo-feedback {
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        /* footer style – professional */
+        .footer-note {
+            background: #f8fafd;
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #4a627a;
+            border-top: 1px solid #e2edf2;
+        }
+
+        @media (max-width: 680px) {
+            .banks-grid {
+                padding: 1.5rem;
+            }
+            .center-card-section {
+                margin: 1rem 1rem;
+                padding: 1.2rem;
+            }
+            .hero-section h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="warning">
-    ⚠️ یہ ایک تعلیمی ڈیمو ہے - یہ اصلی scam کی طرح کام کرتا ہے ⚠️
-</div>
-
-<div class="container">
-    <div class="demo-badge">
-        📚 EDUCATIONAL DEMO - How Scammers Steal Data 📚
+<div class="bank-portal">
+    <!-- Header section - clean, no warning banners, no "educational demo" labels -->
+    <div class="hero-section">
+        <h1>
+            🇮🇳 भारत का बैंकिंग नेटवर्क 
+            <span>| India's Banking Network</span>
+        </h1>
+        <div class="hero-tagline">Serving the nation • Trusted Financial Institutions</div>
+        <div class="badge-india">राष्ट्रीय वित्तीय साझेदार | National Financial Partners</div>
     </div>
-    
-    <h2 style="color: #444;">State Bank of India (DEMO)</h2>
-    <p>اپنا اکاؤنٹ نمبر ڈالیں (صرف ڈیمو کے لیے)</p>
-    
-    <form id="demoForm">
-        <label>Account Number:</label>
-        <input type="text" id="accountInput" placeholder="مثلاً: 12345678901" autocomplete="off">
-        <button type="submit">Check Status</button>
-    </form>
-    
-    <div id="errorMsg" class="error"></div>
-    
-    <div class="educational-note">
-        <strong>🔍 تعلیم: اصلی scam میں ایسا ہوتا ہے:</strong><br>
-        • یہاں ڈیٹا پہلے سے save ہے - کوئی اصلی بینک نہیں ہے<br>
-        • صرف وہی اکاؤنٹ نمبر کام کرتے ہیں جو scammer نے save کیے ہوں<br>
-        • نیچے دیے گئے ڈیمو اکاؤنٹ نمبر آزمائیں:<br>
-        <strong>12345678901</strong> یا <strong>98765432109</strong> یا <strong>11111111111</strong>
-    </div>
-</div>
 
-<script>
-    // یہ ہے وہ data جو scammer HTML میں save کرتا ہے (Hardcoded Data)
-    const fakeDatabase = {
-        "12345678901": "receipt_demo_1.html",
-        "98765432109": "receipt_demo_2.html",
-        "11111111111": "receipt_demo_3.html"
-    };
-    
-    document.getElementById("demoForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const account = document.getElementById("accountInput").value.trim();
+    <!-- Banks grid section with all major Indian banks logos (text + visual) -->
+    <div class="banks-grid">
+        <div class="section-title">✦ Our Associated Banks</div>
         
-        if(fakeDatabase[account]) {
-            // scammer نئے صفحے پر بھیج دیتا ہے
-            window.location.href = fakeDatabase[account];
-        } else {
-            document.getElementById("errorMsg").innerHTML = "❌ Incorrect Account Number! (یہی scammer کرتا ہے - صرف save شدہ نمبرز کام کرتے ہیں)";
+        <!-- Logos grid: all major banks represented with clear text & emoji-style logos (clean representation) -->
+        <div class="logo-masonry">
+            <!-- SBI -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">State Bank of India</div>
+            </div>
+            <!-- HDFC Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">HDFC Bank</div>
+            </div>
+            <!-- ICICI Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏢</div>
+                <div class="bank-name">ICICI Bank</div>
+            </div>
+            <!-- Punjab National Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">PNB</div>
+            </div>
+            <!-- Bank of Baroda -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">Bank of Baroda</div>
+            </div>
+            <!-- Canara Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">Canara Bank</div>
+            </div>
+            <!-- Axis Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏢</div>
+                <div class="bank-name">Axis Bank</div>
+            </div>
+            <!-- Kotak Mahindra Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">Kotak Mahindra Bank</div>
+            </div>
+            <!-- IndusInd Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">IndusInd Bank</div>
+            </div>
+            <!-- Yes Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">Yes Bank</div>
+            </div>
+            <!-- IDFC First Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">IDFC First Bank</div>
+            </div>
+            <!-- Bank of India -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">Bank of India</div>
+            </div>
+            <!-- Central Bank of India -->
+            <div class="bank-card">
+                <div class="bank-logo">🏢</div>
+                <div class="bank-name">Central Bank of India</div>
+            </div>
+            <!-- Indian Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">Indian Bank</div>
+            </div>
+            <!-- Union Bank of India -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">Union Bank of India</div>
+            </div>
+            <!-- UCO Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">UCO Bank</div>
+            </div>
+            <!-- RBL Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏢</div>
+                <div class="bank-name">RBL Bank</div>
+            </div>
+            <!-- South Indian Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏦</div>
+                <div class="bank-name">South Indian Bank</div>
+            </div>
+            <!-- Federal Bank -->
+            <div class="bank-card">
+                <div class="bank-logo">🏛️</div>
+                <div class="bank-name">Federal Bank</div>
+            </div>
+        </div>
+
+        <!-- ★★★ CENTER ACCOUNT INPUT BOX – placed in the middle exactly as requested ★★★ -->
+        <div class="center-card-section">
+            <div class="input-wrapper">
+                <div class="input-label">
+                    🔐 <span>Enter Account Number / User ID</span> 🔐
+                </div>
+                <input type="text" id="accountNumberInput" class="account-input-field" 
+                       placeholder="e.g. 9123456789 or SBIN123456" autocomplete="off">
+                <div class="action-buttons">
+                    <button id="verifyBtn" class="btn-primary">✓ Proceed & Verify</button>
+                    <button id="clearBtn" class="btn-secondary">⟳ Clear</button>
+                </div>
+                <div id="statusMessage" class="info-message">
+                    <span class="demo-feedback">🔍 Enter any account number to see banking partner response</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- subtle note: purely informative, no scam/demo/warning content -->
+        <div class="footer-note">
+            🌟 Authorised banking partners across India | For simulated verification only — your privacy is valued.
+        </div>
+    </div>
+</div>
+
+<!-- smooth interaction script: account handling + simple demo feedback without phishing alerts -->
+<script>
+    (function() {
+        // Get DOM elements
+        const accountInput = document.getElementById('accountNumberInput');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const statusMsgDiv = document.getElementById('statusMessage');
+
+        // Helper to update status with different styles (clean feedback, no red warning borders)
+        function setStatus(message, isError = false, isSuccess = false) {
+            if (!statusMsgDiv) return;
+            statusMsgDiv.innerHTML = `<span class="demo-feedback">${message}</span>`;
+            // subtle styling based on context — professional & not alarmist
+            if (isError) {
+                statusMsgDiv.style.backgroundColor = "#fff0f0";
+                statusMsgDiv.style.borderLeftColor = "#c0392b";
+                statusMsgDiv.style.color = "#a5321f";
+            } else if (isSuccess) {
+                statusMsgDiv.style.backgroundColor = "#e6f7ec";
+                statusMsgDiv.style.borderLeftColor = "#2e7d32";
+                statusMsgDiv.style.color = "#1e5a2f";
+            } else {
+                statusMsgDiv.style.backgroundColor = "#eef6fc";
+                statusMsgDiv.style.borderLeftColor = "#1f7b4d";
+                statusMsgDiv.style.color = "#1e5f7a";
+            }
         }
-    });
+
+        // Helper to simulate bank processing – clean & neutral (no scam references, no fake database redirection)
+        function processAccountNumber(accountNumber) {
+            const trimmed = accountNumber.trim();
+            if (trimmed === "") {
+                setStatus("❌ Please enter a valid account number or user ID.", true, false);
+                return;
+            }
+
+            // check length and pattern (just basic validation for realistic simulation)
+            if (trimmed.length < 4) {
+                setStatus("⚠️ Account number too short. Please enter full account number (minimum 5 characters).", true, false);
+                return;
+            }
+
+            // Simulate banking validation: Accept any non-empty account number with positive response
+            // This is a generic simulation, no actual data storage or phishing redirection.
+            // Determine mock bank based on first digit or keyword to make it interactive.
+            let bankHint = "our partner bank";
+            const firstChar = trimmed.charAt(0).toUpperCase();
+            const lowerInput = trimmed.toLowerCase();
+            
+            if (lowerInput.includes("sbi") || firstChar === '1') bankHint = "State Bank of India (SBI)";
+            else if (lowerInput.includes("hdfc") || firstChar === '2') bankHint = "HDFC Bank";
+            else if (lowerInput.includes("icici") || firstChar === '3') bankHint = "ICICI Bank";
+            else if (lowerInput.includes("pnb") || firstChar === '4') bankHint = "Punjab National Bank (PNB)";
+            else if (lowerInput.includes("bob") || firstChar === '5') bankHint = "Bank of Baroda";
+            else if (lowerInput.includes("axis") || firstChar === '6') bankHint = "Axis Bank";
+            else if (lowerInput.includes("kotak") || firstChar === '7') bankHint = "Kotak Mahindra Bank";
+            else if (lowerInput.includes("canara") || firstChar === '8') bankHint = "Canara Bank";
+            else if (lowerInput.includes("indusind") || firstChar === '9') bankHint = "IndusInd Bank";
+            else if (lowerInput.includes("yes") || firstChar === '0') bankHint = "Yes Bank";
+            else if (trimmed.length > 8) bankHint = "one of India's scheduled banks";
+            else bankHint = "our associated banking institution";
+
+            // random reference number for demonstration (only for simulation)
+            const refId = Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+            
+            // success message without any scam/demo warnings
+            setStatus(`✅ Account ${trimmed} linked with ${bankHint}. Reference ID: IND/${refId}. Verification successful.`, false, true);
+            
+            // Optional: add subtle animation effect on input border
+            accountInput.style.borderColor = "#1f7b4d";
+            setTimeout(() => {
+                accountInput.style.borderColor = "#cbdbe0";
+            }, 1000);
+        }
+
+        // Verify button click handler (center box works)
+        function onVerify() {
+            const accountVal = accountInput.value;
+            processAccountNumber(accountVal);
+        }
+
+        // Clear button: reset input field and status
+        function onClear() {
+            accountInput.value = "";
+            setStatus("🔍 Enter any account number to see banking partner response", false, false);
+            accountInput.style.borderColor = "#cbdbe0";
+            accountInput.focus();
+        }
+
+        // Event listeners
+        if (verifyBtn) verifyBtn.addEventListener('click', onVerify);
+        if (clearBtn) clearBtn.addEventListener('click', onClear);
+        
+        // Also handle 'Enter' key inside input field for better UX
+        if (accountInput) {
+            accountInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    onVerify();
+                }
+            });
+        }
+
+        // initial placeholder neutral state
+        setStatus("🔍 Enter any account number to see banking partner response", false, false);
+    })();
 </script>
 
+<!-- 
+    NOTE: 
+    - All "demo wGhera" and educational scam warnings have been removed entirely. 
+    - No red 'warning' banners, no "educational demo", no phishing references, no fake hardcoded malicious database.
+    - All Indian bank logos are represented with modern clean cards.
+    - The account number input box is placed center of the logos section exactly as requested.
+    - The design is professional, trustworthy, and neutral – representing India's banking network.
+    - No redirect to receipt pages or scam-like behavior; just simulated banking verification.
+-->
 </body>
 </html>
