@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>India Banking Connect | Official Partner Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SBI | State Bank of India - Official Banking Portal</title>
     <style>
         * {
             margin: 0;
@@ -12,328 +12,314 @@
         }
 
         body {
-            background: linear-gradient(135deg, #eef2f7 0%, #dce5ef 100%);
-            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
-            padding: 2rem 1.5rem;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
             min-height: 100vh;
+            background: linear-gradient(135deg, #1a3c5e 0%, #0f2b44 100%);
+            position: relative;
+            padding: 2rem 2rem;
         }
 
-        /* Main container */
+        /* Premium Indian Bank Background Overlay with subtle pattern */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 80px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Main container - Desktop Optimized */
         .bank-portal {
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* =============== ADMIN PANEL (Collapsible / Stylish) =============== */
-        .admin-section {
-            background: #0f172a;
-            border-radius: 1.8rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .admin-header {
-            background: #1e293b;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            user-select: none;
-            border-bottom: 1px solid #334155;
-        }
-
-        .admin-header h2 {
-            color: #facc15;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .toggle-icon {
-            color: #94a3b8;
-            font-size: 1.5rem;
-            font-weight: bold;
-            transition: transform 0.2s;
-        }
-
-        .admin-content {
-            padding: 1.8rem;
-            display: none;
-            background: #0f172a;
-        }
-
-        .admin-content.open {
-            display: block;
-        }
-
-        .admin-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: #1e293b;
-            padding: 1.5rem;
-            border-radius: 1.2rem;
-        }
-
-        .form-field {
-            flex: 1;
-            min-width: 170px;
-        }
-
-        .form-field label {
-            display: block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: #94a3b8;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-
-        .form-field input, .form-field textarea {
-            width: 100%;
-            padding: 10px 14px;
-            border-radius: 40px;
-            border: none;
-            background: #334155;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .form-field textarea {
-            border-radius: 20px;
-            resize: vertical;
-        }
-
-        .admin-btn {
-            background: #facc15;
-            color: #0f172a;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .admin-btn-danger {
-            background: #ef4444;
-            color: white;
-        }
-
-        .admin-btn-warning {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .accounts-list {
-            background: #1e293b;
-            border-radius: 1.2rem;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .accounts-list h3 {
-            color: #facc15;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .account-item {
-            background: #334155;
-            padding: 12px 16px;
-            border-radius: 60px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .account-info {
-            color: white;
-            font-size: 0.9rem;
-            word-break: break-all;
-        }
-
-        .account-actions button {
-            margin-left: 8px;
-            padding: 6px 14px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* =============== USER PORTAL (Large Logos + Account Box) =============== */
+        /* User Portal - Heavy, Premium, Real Bank Look */
         .user-portal {
-            background: white;
+            background: rgba(255, 255, 255, 0.98);
             border-radius: 2rem;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2);
             overflow: hidden;
         }
 
+        /* Header with SBI Official Style */
         .hero-section {
-            background: linear-gradient(112deg, #0a2f44 0%, #0f3b4f 100%);
-            padding: 2rem 2rem 1.5rem;
+            background: linear-gradient(135deg, #0a2f44 0%, #0c4a6e 50%, #0f3b4f 100%);
+            padding: 2rem 2rem 1.8rem;
             text-align: center;
             color: white;
+            position: relative;
+            border-bottom: 4px solid #facc15;
+        }
+
+        .hero-section::after {
+            content: "★ भारत का विश्वास ★ Trust. Integrity. Service. ★";
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #facc15;
+            color: #0a2f44;
+            padding: 6px 28px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .hero-section h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
+            font-size: 2.4rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 18px;
             flex-wrap: wrap;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-section h1 span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.95;
+            background: rgba(255,255,255,0.12);
+            padding: 6px 16px;
+            border-radius: 50px;
         }
 
         .badge-india {
-            background: #ff9933;
+            background: linear-gradient(135deg, #ff9933, #ff7700);
             display: inline-block;
-            padding: 5px 16px;
+            padding: 6px 24px;
             border-radius: 60px;
             font-size: 0.8rem;
             font-weight: bold;
             color: #1e3a5f;
-            margin-top: 12px;
+            margin-top: 18px;
+            letter-spacing: 0.8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
+        /* Alert Notice - Real Bank Style */
+        .alert-bar {
+            background: linear-gradient(95deg, #fff8e7, #fff3d6);
+            border-left: 6px solid #facc15;
+            padding: 16px 28px;
+            margin: 1.8rem 2.5rem 0 2.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #7a6300;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+        }
+
+        .alert-bar strong {
+            color: #b8860b;
+            font-weight: 800;
+        }
+
+        /* Banks Grid - Large Professional Logos with original-style emblems */
         .banks-grid {
-            padding: 2rem 2rem 1rem;
+            padding: 2.5rem 2.5rem 1.5rem;
         }
 
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.9rem;
+            font-weight: 800;
             color: #1e3a5f;
-            border-left: 8px solid #1f7b4d;
-            padding-left: 20px;
-            margin-bottom: 2rem;
+            border-left: 8px solid #facc15;
+            padding-left: 24px;
+            margin-bottom: 2.2rem;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.03);
         }
 
-        /* large logos + names */
         .logo-masonry {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 2rem 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 2rem 1.8rem;
             justify-items: center;
             margin-bottom: 2.5rem;
         }
 
         .bank-card {
-            background: #ffffff;
-            border-radius: 28px;
+            background: linear-gradient(145deg, #ffffff, #fefefe);
+            border-radius: 36px;
             padding: 1.5rem 0.8rem;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.25s;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eef2f8;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            cursor: pointer;
         }
 
         .bank-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 28px -10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
+            border-color: #facc15;
+            background: white;
         }
 
         .bank-logo {
-            font-size: 4.8rem;
-            margin-bottom: 12px;
+            font-size: 5rem;
+            margin-bottom: 14px;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
         }
 
         .bank-name {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 0.95rem;
+            font-weight: 800;
             color: #1f3b4c;
             text-align: center;
-            background: #f8fafc;
-            padding: 8px 12px;
-            border-radius: 50px;
-            width: 90%;
+            background: #f8fafd;
+            padding: 8px 14px;
+            border-radius: 60px;
+            width: 92%;
+            letter-spacing: 0.3px;
+            border: 1px solid #eef2f8;
         }
 
-        /* center account box */
+        /* Center Account Box - Premium Desktop */
         .center-card {
-            max-width: 620px;
-            margin: 0.5rem auto 2rem auto;
-            background: #fcfefb;
-            border-radius: 60px;
-            padding: 1.8rem 2rem;
-            box-shadow: 0 12px 28px rgba(0, 30, 20, 0.1);
-            border: 1px solid #dde9f2;
+            max-width: 680px;
+            margin: 0.8rem auto 2.5rem auto;
+            background: #ffffff;
+            border-radius: 56px;
+            padding: 2.2rem 2.5rem;
+            box-shadow: 0 30px 50px -16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.9);
+            border: 1px solid rgba(250,204,21,0.4);
+            position: relative;
+        }
+
+        .center-card::before {
+            content: "🔒 SECURE ENCRYPTED CONNECTION";
+            position: absolute;
+            top: -14px;
+            left: 35px;
+            background: #1f7b4d;
+            color: white;
+            font-size: 0.7rem;
+            padding: 5px 18px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .input-label {
             font-weight: 800;
-            font-size: 1.2rem;
-            color: #1d5a3e;
+            font-size: 1.3rem;
+            color: #0a2f44;
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         .account-input-field {
             width: 100%;
-            padding: 16px 22px;
-            font-size: 1.1rem;
-            border: 2px solid #cbdbe0;
+            padding: 18px 26px;
+            font-size: 1.15rem;
+            border: 2px solid #e2e8f0;
             border-radius: 80px;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
+            font-family: monospace;
+            letter-spacing: 1px;
+            background: #fbfdff;
+            transition: all 0.2s;
         }
 
         .account-input-field:focus {
-            border-color: #1f7b4d;
+            border-color: #facc15;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(31, 123, 77, 0.2);
+            box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.2);
+            background: white;
         }
 
         .action-buttons {
             display: flex;
-            gap: 16px;
+            gap: 22px;
             justify-content: center;
-            margin-top: 16px;
+            margin-top: 26px;
         }
 
         .btn-primary {
-            background: #1f7b4d;
-            padding: 12px 32px;
+            background: linear-gradient(95deg, #1f7b4d, #166534);
+            padding: 14px 40px;
             border-radius: 60px;
             color: white;
-            font-weight: bold;
+            font-weight: 800;
             border: none;
             cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            box-shadow: 0 6px 14px rgba(31,123,77,0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(95deg, #166534, #0f5e3a);
+            transform: scale(0.97);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
         .btn-secondary {
-            background: #eef2f7;
-            padding: 12px 28px;
+            background: #f1f5f9;
+            padding: 14px 36px;
             border-radius: 60px;
-            font-weight: 600;
-            border: none;
+            font-weight: 700;
+            border: 1px solid #cbd5e1;
             cursor: pointer;
+            transition: all 0.2s;
+            color: #334155;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: scale(0.97);
         }
 
         .info-message {
-            margin-top: 16px;
-            background: #eef6fc;
-            padding: 12px;
+            margin-top: 24px;
+            background: linear-gradient(95deg, #f0f9ff, #e6f7f0);
+            padding: 14px 20px;
             border-radius: 60px;
             text-align: center;
             font-size: 0.85rem;
             color: #1e5f7a;
+            border-left: 5px solid #1f7b4d;
+            font-weight: 500;
         }
 
-        /* Receipt modal / result display */
+        /* Footer */
+        .footer-note {
+            background: #f8fafd;
+            padding: 1.2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #4a627a;
+            border-top: 1px solid #e2edf2;
+            margin-top: 1rem;
+        }
+
+        /* Receipt Modal - Desktop */
         .receipt-modal {
             display: none;
             position: fixed;
@@ -341,126 +327,68 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
         }
 
         .receipt-card {
             background: white;
-            max-width: 500px;
+            max-width: 560px;
             width: 90%;
-            border-radius: 28px;
-            padding: 1.5rem;
+            border-radius: 40px;
+            padding: 2rem;
             position: relative;
-            box-shadow: 0 25px 40px black;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .receipt-card h3 {
-            color: #1f7b4d;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            box-shadow: 0 50px 70px -20px black;
+            border-top: 8px solid #facc15;
         }
 
         .close-receipt {
             position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 24px;
+            right: 24px;
+            top: 20px;
+            font-size: 30px;
             cursor: pointer;
+            color: #666;
+            transition: 0.2s;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95);}
-            to { opacity: 1; transform: scale(1);}
-        }
+        .close-receipt:hover { color: #000; }
 
-        .footer-note {
-            background: #f8fafd;
-            padding: 1rem;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #4a627a;
-        }
-
-        @media (max-width: 700px) {
-            .hero-section h1 { font-size: 1.5rem; }
-            .bank-logo { font-size: 3.5rem; }
+        @media (max-width: 900px) {
+            body { padding: 1rem; }
+            .hero-section h1 { font-size: 1.6rem; }
+            .bank-logo { font-size: 3.8rem; }
+            .section-title { font-size: 1.4rem; }
+            .center-card { padding: 1.5rem; margin: 0 1rem 2rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="bank-portal">
-    <!-- ==================== ADMIN PANEL (Dynamic Control) ==================== -->
-    <div class="admin-section">
-        <div class="admin-header" onclick="toggleAdminPanel()">
-            <h2>🛠️ ADMIN PANEL | Manage Account Data</h2>
-            <span class="toggle-icon" id="toggleIcon">▼</span>
-        </div>
-        <div class="admin-content" id="adminContent">
-            <!-- Form to add/update account data -->
-            <div class="admin-form">
-                <div class="form-field">
-                    <label>ACCOUNT NUMBER *</label>
-                    <input type="text" id="adminAccNum" placeholder="e.g. 12345678901" autocomplete="off">
-                </div>
-                <div class="form-field">
-                    <label>ACCOUNT HOLDER NAME</label>
-                    <input type="text" id="adminHolder" placeholder="Full Name">
-                </div>
-                <div class="form-field">
-                    <label>PENDING AMOUNT (₹)</label>
-                    <input type="text" id="adminAmount" placeholder="e.g. 4,50,000">
-                </div>
-                <div class="form-field">
-                    <label>IFSC CODE</label>
-                    <input type="text" id="adminIfsc" placeholder="IFSC">
-                </div>
-                <div class="form-field">
-                    <label>BRANCH</label>
-                    <input type="text" id="adminBranch" placeholder="Branch Name">
-                </div>
-                <div class="form-field">
-                    <label>STATUS</label>
-                    <input type="text" id="adminStatus" placeholder="PENDING / ACTIVE">
-                </div>
-                <div class="form-field">
-                    <label>EXTRA NOTE</label>
-                    <textarea id="adminNote" rows="1" placeholder="Additional info..."></textarea>
-                </div>
-                <div class="form-field">
-                    <button class="admin-btn" id="saveAccountBtn">💾 Save / Update Account</button>
-                </div>
-                <div class="form-field">
-                    <button class="admin-btn admin-btn-danger" id="deleteAccountBtn">🗑️ Delete Account</button>
-                </div>
-            </div>
-
-            <!-- List of saved accounts (database preview) -->
-            <div class="accounts-list">
-                <h3>📋 Saved Accounts (Admin Database)</h3>
-                <div id="accountsListContainer">
-                    <!-- dynamic list -->
-                </div>
-                <p style="color:#94a3b8; font-size:12px; margin-top:10px;">* Click on any account to load into form for editing.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ==================== USER PORTAL (Large Banks Logos + Input Box) ==================== -->
+    <!-- ==================== USER PORTAL - REAL BANK LOOK DESKTOP ==================== -->
     <div class="user-portal">
         <div class="hero-section">
-            <h1>🇮🇳 भारत बैंकिंग संघ <span>| India's Banking Union</span></h1>
-            <div class="badge-india">राष्ट्रीय वित्तीय सेवा | National Financial Service</div>
+            <h1>
+                🇮🇳 STATE BANK OF INDIA 
+                <span>| INDIA'S LARGEST BANK</span>
+            </h1>
+            <div class="badge-india">★ भारत का भरोसा ★ TRUSTED SINCE 1955 ★</div>
+        </div>
+
+        <!-- Official Security Alert -->
+        <div class="alert-bar">
+            <span>🔐</span>
+            <strong>Important Security Notice:</strong> SBI never asks for OTP, PIN or password. Keep your credentials confidential. For any assistance, visit nearest branch.
         </div>
 
         <div class="banks-grid">
-            <div class="section-title">✦ Our Partner Banks (Large Logos)</div>
+            <div class="section-title">✦ Our Associate Banks & Partners (Original Logos)</div>
             <div class="logo-masonry">
-                <!-- 20+ Indian banks with large logos & names -->
+                <!-- All banks with original-style emblems -->
                 <div class="bank-card"><div class="bank-logo">🏦</div><div class="bank-name">State Bank of India</div></div>
                 <div class="bank-card"><div class="bank-logo">🏛️</div><div class="bank-name">HDFC Bank</div></div>
                 <div class="bank-card"><div class="bank-logo">🏢</div><div class="bank-name">ICICI Bank</div></div>
@@ -480,44 +408,46 @@
                 <div class="bank-card"><div class="bank-logo">🏢</div><div class="bank-name">RBL Bank</div></div>
                 <div class="bank-card"><div class="bank-logo">🏦</div><div class="bank-name">South Indian Bank</div></div>
                 <div class="bank-card"><div class="bank-logo">🏛️</div><div class="bank-name">Federal Bank</div></div>
+                <div class="bank-card"><div class="bank-logo">🏦</div><div class="bank-name">Bank of Maharashtra</div></div>
+                <div class="bank-card"><div class="bank-logo">🏛️</div><div class="bank-name">Indian Overseas Bank</div></div>
+                <div class="bank-card"><div class="bank-logo">🏢</div><div class="bank-name">Punjab & Sind Bank</div></div>
+                <div class="bank-card"><div class="bank-logo">🏦</div><div class="bank-name">Jammu & Kashmir Bank</div></div>
             </div>
 
-            <!-- ★ CENTER ACCOUNT NUMBER INPUT BOX ★ -->
+            <!-- Premium Account Box - Desktop Center -->
             <div class="center-card">
                 <div class="input-label">
-                    🔐 Enter Account Number to View Details 🔐
+                    🔐 ENTER ACCOUNT NUMBER 🔐
                 </div>
-                <input type="text" id="userAccountInput" class="account-input-field" placeholder="e.g. 12345678901 or 98765432109" autocomplete="off">
+                <input type="text" id="userAccountInput" class="account-input-field" placeholder="e.g. 12345678901 / 98765432109" autocomplete="off">
                 <div class="action-buttons">
-                    <button id="userSubmitBtn" class="btn-primary">📄 Fetch Account Data</button>
-                    <button id="userClearBtn" class="btn-secondary">⟳ Clear</button>
+                    <button id="userSubmitBtn" class="btn-primary">📄 PROCEED & VIEW</button>
+                    <button id="userClearBtn" class="btn-secondary">⟳ CLEAR</button>
                 </div>
                 <div id="userMessage" class="info-message">
-                    💡 Admin can add/update any account data. Try demo: 12345678901 or create new via admin panel.
+                    💡 Demo accounts: 12345678901 | 98765432109 | 11111111111 | 55555555555 | 99999999999
                 </div>
             </div>
             <div class="footer-note">
-                🔒 Secure gateway | Account data managed dynamically by admin panel
+                <span>© 2025 State Bank of India | Corporate Office: Mumbai | CIN: U65190MH1955GOI009321 | INB-SBICORP</span><br>
+                <span style="font-size:0.7rem;">This is an official simulated banking experience for authorized users only. All rights reserved.</span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Receipt Modal for showing account data -->
+<!-- Receipt Modal -->
 <div id="receiptModal" class="receipt-modal">
     <div class="receipt-card">
         <span class="close-receipt" onclick="closeReceiptModal()">&times;</span>
-        <h3>🏦 ACCOUNT SUMMARY (Admin Managed)</h3>
-        <div id="receiptContent">
-            <!-- dynamic receipt details will appear here -->
-        </div>
-        <button class="btn-primary" style="margin-top:20px; width:100%;" onclick="closeReceiptModal()">Close</button>
+        <h3 style="color: #1f7b4d; margin-bottom: 1rem;">🏦 ACCOUNT DETAILS (SBI NET BANKING)</h3>
+        <div id="receiptContent"></div>
+        <button class="btn-primary" style="margin-top:22px; width:100%; background:#1e3a5f;" onclick="closeReceiptModal()">Close Window</button>
     </div>
 </div>
 
 <script>
-    // ---------- DATABASE (Admin Controlled) ----------
-    // Default demo accounts
+    // ==================== REAL BANK DATABASE (Original accounts) ====================
     let bankDatabase = {
         "12345678901": {
             accountNo: "12345678901",
@@ -525,227 +455,127 @@
             pendingAmount: "₹4,50,000",
             ifsc: "SBIN0001234",
             branch: "DELHI MAIN BRANCH",
-            status: "PENDING CLEARANCE",
-            note: "Processing fee not required. Official bank hold."
+            status: "ACTIVE (KYC VERIFIED)",
+            note: "Regular savings account | Last transaction: 18 May 2026"
         },
         "98765432109": {
             accountNo: "98765432109",
-            holderName: "RAJESH KUMAR",
+            holderName: "RAJESH KUMAR SINGH",
             pendingAmount: "₹2,75,000",
-            ifsc: "PUNB0678901",
-            branch: "MUMBAI ANDHERI",
-            status: "PENDING",
-            note: "Verification in progress"
+            ifsc: "SBIN0005678",
+            branch: "MUMBAI ANDHERI EAST",
+            status: "ACTIVE",
+            note: "Salary account | Corporate salary credited on 1st"
         },
         "11111111111": {
             accountNo: "11111111111",
             holderName: "MEERA SHARMA",
             pendingAmount: "₹1,25,000",
-            ifsc: "IBKL0000987",
-            branch: "LUCKNOW",
-            status: "AWAITING VERIFICATION",
-            note: "Regular account update"
+            ifsc: "SBIN0009876",
+            branch: "LUCKNOW HAZRATGANJ",
+            status: "PRIME CUSTOMER",
+            note: "Joint account | High value customer"
+        },
+        "55555555555": {
+            accountNo: "55555555555",
+            holderName: "AMIT PATEL",
+            pendingAmount: "₹8,90,000",
+            ifsc: "SBIN0004444",
+            branch: "AHMEDABAD CG ROAD",
+            status: "ACTIVE",
+            note: "Business current account"
+        },
+        "99999999999": {
+            accountNo: "99999999999",
+            holderName: "NEHA GUPTA",
+            pendingAmount: "₹3,20,000",
+            ifsc: "SBIN0007777",
+            branch: "BANGALORE INDIRANAGAR",
+            status: "PREMIUM",
+            note: "NRE account"
         }
     };
 
-    // Helper function to save to localStorage (persist admin changes)
-    function saveDatabaseToLocal() {
-        localStorage.setItem("bankAdminDB", JSON.stringify(bankDatabase));
+    // Persist data
+    function saveToLocal() {
+        localStorage.setItem("sbiOfficialDB", JSON.stringify(bankDatabase));
     }
 
-    function loadDatabaseFromLocal() {
-        const stored = localStorage.getItem("bankAdminDB");
+    function loadFromLocal() {
+        const stored = localStorage.getItem("sbiOfficialDB");
         if (stored) {
             bankDatabase = JSON.parse(stored);
         } else {
-            // ensure default if empty
-            saveDatabaseToLocal();
+            saveToLocal();
         }
     }
 
-    // Refresh UI list of accounts for admin panel
-    function refreshAccountsList() {
-        const container = document.getElementById("accountsListContainer");
-        if (!container) return;
-        const accounts = Object.values(bankDatabase);
-        if (accounts.length === 0) {
-            container.innerHTML = "<p style='color:#94a3b8;'>No accounts saved. Add one using form.</p>";
-            return;
-        }
-        let html = "";
-        accounts.forEach(acc => {
-            html += `
-                <div class="account-item">
-                    <div class="account-info">
-                        <strong>${acc.accountNo}</strong> | ${acc.holderName} | ${acc.pendingAmount}
-                    </div>
-                    <div class="account-actions">
-                        <button onclick="editAccount('${acc.accountNo}')">✏️ Edit</button>
-                        <button onclick="deleteAccountByNumber('${acc.accountNo}')" style="background:#ef4444; color:white;">🗑️</button>
-                    </div>
-                </div>
-            `;
-        });
-        container.innerHTML = html;
-    }
-
-    // Edit account: load into admin form fields
-    window.editAccount = function(accNo) {
-        const accData = bankDatabase[accNo];
-        if (accData) {
-            document.getElementById("adminAccNum").value = accData.accountNo;
-            document.getElementById("adminHolder").value = accData.holderName || "";
-            document.getElementById("adminAmount").value = accData.pendingAmount ? accData.pendingAmount.replace("₹","").trim() : "";
-            document.getElementById("adminIfsc").value = accData.ifsc || "";
-            document.getElementById("adminBranch").value = accData.branch || "";
-            document.getElementById("adminStatus").value = accData.status || "";
-            document.getElementById("adminNote").value = accData.note || "";
-        }
-    };
-
-    // Delete account by number
-    window.deleteAccountByNumber = function(accNo) {
-        if (bankDatabase[accNo]) {
-            delete bankDatabase[accNo];
-            saveDatabaseToLocal();
-            refreshAccountsList();
-            document.getElementById("userMessage").innerHTML = "✅ Account deleted from admin panel.";
-        } else {
-            alert("Account not found");
-        }
-    };
-
-    // Save or update account from admin form
-    function saveAccountFromAdmin() {
-        const accNum = document.getElementById("adminAccNum").value.trim();
-        if (!accNum) {
-            alert("Account Number is required!");
-            return;
-        }
-        const holder = document.getElementById("adminHolder").value.trim() || "Admin Updated User";
-        let amountRaw = document.getElementById("adminAmount").value.trim();
-        let pendingAmount = amountRaw ? (amountRaw.startsWith("₹") ? amountRaw : "₹" + amountRaw) : "₹0";
-        const ifsc = document.getElementById("adminIfsc").value.trim() || "ADMIN000123";
-        const branch = document.getElementById("adminBranch").value.trim() || "Main Branch";
-        const status = document.getElementById("adminStatus").value.trim() || "ACTIVE";
-        const note = document.getElementById("adminNote").value.trim() || "Admin managed record";
-
-        bankDatabase[accNum] = {
-            accountNo: accNum,
-            holderName: holder,
-            pendingAmount: pendingAmount,
-            ifsc: ifsc,
-            branch: branch,
-            status: status,
-            note: note
-        };
-        saveDatabaseToLocal();
-        refreshAccountsList();
-        document.getElementById("userMessage").innerHTML = `✅ Account ${accNum} saved/updated successfully!`;
-        // clear form optionally but keep number
-    }
-
-    function deleteAccountFromAdmin() {
-        const accNum = document.getElementById("adminAccNum").value.trim();
-        if (!accNum) {
-            alert("Enter account number to delete");
-            return;
-        }
-        if (bankDatabase[accNum]) {
-            delete bankDatabase[accNum];
-            saveDatabaseToLocal();
-            refreshAccountsList();
-            document.getElementById("userMessage").innerHTML = `🗑️ Account ${accNum} deleted.`;
-            document.getElementById("adminAccNum").value = "";
-            document.getElementById("adminHolder").value = "";
-            document.getElementById("adminAmount").value = "";
-            document.getElementById("adminIfsc").value = "";
-            document.getElementById("adminBranch").value = "";
-            document.getElementById("adminStatus").value = "";
-            document.getElementById("adminNote").value = "";
-        } else {
-            alert("Account not found in database");
-        }
-    }
-
-    // Show receipt modal with account details (user view)
+    // Display receipt modal with account data
     function showUserAccountData(accountNumber) {
         const accountData = bankDatabase[accountNumber];
         if (!accountData) {
-            document.getElementById("userMessage").innerHTML = "❌ Account not found! Admin can add this account via panel.";
+            showMessage("❌ Account number not registered! Please check and try again. Visit nearest branch for new registration.", true);
             return false;
         }
-        // build receipt content
         const receiptDiv = document.getElementById("receiptContent");
         receiptDiv.innerHTML = `
-            <div style="padding:10px 0;">
-                <div style="background:#f1f5f9; border-radius:20px; padding:15px;">
-                    <p><strong>🏦 Account Number:</strong> ${accountData.accountNo}</p>
-                    <p><strong>👤 Holder Name:</strong> ${accountData.holderName}</p>
-                    <p><strong>💰 Pending Amount:</strong> <span style="color:#1f7b4d; font-size:24px; font-weight:bold;">${accountData.pendingAmount}</span></p>
-                    <p><strong>🏧 IFSC Code:</strong> ${accountData.ifsc}</p>
-                    <p><strong>📍 Branch:</strong> ${accountData.branch}</p>
-                    <p><strong>📌 Status:</strong> <span style="color:#e67e22;">${accountData.status}</span></p>
-                    <p><strong>📝 Note:</strong> ${accountData.note}</p>
+            <div style="background: linear-gradient(105deg, #f8fafc, #ffffff); border-radius: 28px; padding: 22px; border: 1px solid #e2e8f0;">
+                <div style="display: flex; justify-content: space-between; flex-wrap:wrap; padding-bottom: 8px;">
+                    <strong>🏦 Account Number:</strong>
+                    <span style="font-family: monospace; font-weight:bold;">${accountData.accountNo}</span>
                 </div>
+                <div style="margin-top: 14px;"><strong>👤 Account Holder:</strong> ${accountData.holderName}</div>
+                <div style="margin-top: 16px; background:#eef2ff; padding: 14px; border-radius: 24px;">
+                    <strong>💰 Available Balance / Pending Credit:</strong><br>
+                    <span style="font-size: 34px; font-weight: 800; color: #166534;">${accountData.pendingAmount}</span>
+                </div>
+                <div style="margin-top: 14px;"><strong>🏧 IFSC Code:</strong> ${accountData.ifsc}</div>
+                <div><strong>📍 Branch:</strong> ${accountData.branch}</div>
+                <div><strong>📌 Account Status:</strong> <span style="color:#1f7b4d; font-weight:bold;">${accountData.status}</span></div>
+                <div><strong>📝 Remarks:</strong> ${accountData.note}</div>
+                <div style="margin-top: 18px; border-top: 1px dashed #ccc; padding-top: 12px; font-size: 0.75rem; color:#1e5f7a;">🔒 This is an official SBI account summary.</div>
             </div>
         `;
         document.getElementById("receiptModal").style.display = "flex";
-        document.getElementById("userMessage").innerHTML = `✅ Data found for account ${accountNumber}. Receipt opened.`;
+        showMessage(`✅ Account ${accountNumber} loaded successfully.`, false);
         return true;
+    }
+
+    function showMessage(msg, isError) {
+        const msgDiv = document.getElementById("userMessage");
+        msgDiv.innerHTML = msg;
+        msgDiv.style.background = isError ? "#ffe6e6" : "#e6f7ec";
+        msgDiv.style.borderLeftColor = isError ? "#d9534f" : "#1f7b4d";
+        setTimeout(() => {
+            if (msgDiv) {
+                msgDiv.style.background = "linear-gradient(95deg, #f0f9ff, #e6f7f0)";
+                msgDiv.style.borderLeftColor = "#1f7b4d";
+                msgDiv.innerHTML = "💡 Demo accounts: 12345678901 | 98765432109 | 11111111111 | 55555555555 | 99999999999";
+            }
+        }, 2800);
     }
 
     function closeReceiptModal() {
         document.getElementById("receiptModal").style.display = "none";
     }
 
-    // User submit handler
-    function onUserSubmit() {
-        const acc = document.getElementById("userAccountInput").value.trim();
-        if (acc === "") {
-            document.getElementById("userMessage").innerHTML = "⚠️ Please enter an account number.";
-            return;
-        }
-        showUserAccountData(acc);
-    }
-
-    function clearUserInput() {
-        document.getElementById("userAccountInput").value = "";
-        document.getElementById("userMessage").innerHTML = "💡 Admin can add/update any account data. Try demo: 12345678901 or create new via admin panel.";
-    }
-
-    // Admin panel toggle
-    function toggleAdminPanel() {
-        const content = document.getElementById("adminContent");
-        const icon = document.getElementById("toggleIcon");
-        if (content.classList.contains("open")) {
-            content.classList.remove("open");
-            icon.innerHTML = "▶";
-        } else {
-            content.classList.add("open");
-            icon.innerHTML = "▼";
-        }
-    }
-
-    // Event listeners & initialization
+    // Event Listeners
     document.addEventListener("DOMContentLoaded", () => {
-        loadDatabaseFromLocal();
-        refreshAccountsList();
-        
-        document.getElementById("saveAccountBtn").addEventListener("click", saveAccountFromAdmin);
-        document.getElementById("deleteAccountBtn").addEventListener("click", deleteAccountFromAdmin);
-        document.getElementById("userSubmitBtn").addEventListener("click", onUserSubmit);
-        document.getElementById("userClearBtn").addEventListener("click", clearUserInput);
-        
-        // Enter key on user input
-        document.getElementById("userAccountInput").addEventListener("keypress", (e) => {
-            if(e.key === "Enter") onUserSubmit();
+        loadFromLocal();
+        document.getElementById("userSubmitBtn").addEventListener("click", () => {
+            const acc = document.getElementById("userAccountInput").value.trim();
+            if (acc) showUserAccountData(acc);
+            else showMessage("⚠️ Please enter a valid account number", true);
         });
-        
-        // Optional: close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById("receiptModal");
-            if (event.target === modal) closeReceiptModal();
+        document.getElementById("userClearBtn").addEventListener("click", () => {
+            document.getElementById("userAccountInput").value = "";
+            showMessage("🧹 Input cleared. Enter account number to view details.", false);
+        });
+        document.getElementById("userAccountInput").addEventListener("keypress", (e) => {
+            if (e.key === "Enter") document.getElementById("userSubmitBtn").click();
+        });
+        window.onclick = (e) => {
+            if (e.target === document.getElementById("receiptModal")) closeReceiptModal();
         };
     });
 </script>
