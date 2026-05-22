@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>SBI | Unified Banking Receipt Portal - Horizontal Banks</title>
+    <title>Bank of India | Unified Banking Receipt Portal - Full Screen</title>
     <style>
         * {
             margin: 0;
@@ -16,10 +16,9 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #0a2f44 0%, #0c3b4f 100%);
             position: relative;
-            padding: 2rem;
         }
 
-        /* Premium Indian Banks Themed Background */
+        /* Premium Indian Banks Themed Background - Subtle Pattern */
         body::before {
             content: "";
             position: fixed;
@@ -27,59 +26,61 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.04"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15h-3v-2h3v2zm0-4h-3V7h3v6z"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.03"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15h-3v-2h3v2zm0-4h-3V7h3v6z"/></svg>');
             background-repeat: repeat, repeat;
             background-size: 80px, 40px;
             pointer-events: none;
             z-index: 0;
         }
 
-        .bank-portal {
-            max-width: 1300px;
-            margin: 0 auto;
+        /* Full Screen Container - No Background Box */
+        .fullscreen-portal {
+            min-height: 100vh;
+            width: 100%;
             position: relative;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header */
         .hero-section {
             background: linear-gradient(135deg, rgba(10,47,68,0.95) 0%, rgba(12,74,110,0.95) 100%);
             backdrop-filter: blur(2px);
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             text-align: center;
             color: white;
-            border-radius: 2rem 2rem 0 0;
-            border-bottom: 4px solid #facc15;
+            border-bottom: 3px solid #facc15;
         }
 
         .hero-section h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .badge-india {
             background: linear-gradient(135deg, #ff9933, #ff7700);
             display: inline-block;
-            padding: 5px 20px;
+            padding: 4px 18px;
             border-radius: 60px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             color: #1e3a5f;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .alert-bar {
             background: linear-gradient(95deg, #fff8e7, #fff3d6);
-            border-left: 6px solid #facc15;
-            padding: 10px 20px;
-            margin: 1rem 2rem 0 2rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border-left: 5px solid #facc15;
+            padding: 8px 20px;
+            margin: 0.8rem 2rem;
+            border-radius: 16px;
+            font-size: 0.75rem;
             color: #7a6300;
             display: flex;
             align-items: center;
@@ -87,71 +88,96 @@
             flex-wrap: wrap;
         }
 
-        /* Main Content */
-        .main-container {
-            background: rgba(255, 255, 255, 0.96);
-            border-radius: 0 0 2rem 2rem;
-            padding: 2rem;
+        /* Horizontal Banks Scroll - 5 banks visible in one line */
+        .banks-scroll-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            padding: 1rem 0;
+            margin: 0.5rem 0;
+            border-radius: 0;
         }
 
-        /* Horizontal Banks Row - 4 banks per row */
-        .banks-horizontal {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-            padding: 0.5rem;
+        .banks-horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 1rem;
+            padding: 0.5rem 2rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+        }
+
+        .banks-horizontal-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        .banks-horizontal-scroll::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+        .banks-horizontal-scroll::-webkit-scrollbar-thumb {
+            background: #facc15;
+            border-radius: 10px;
         }
 
         .bank-card {
+            flex: 0 0 auto;
+            width: 140px;
             background: white;
-            border-radius: 1.5rem;
-            padding: 1.2rem 0.5rem;
+            border-radius: 1.2rem;
+            padding: 0.8rem 0.3rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
             border: 2px solid transparent;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .bank-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .bank-card.selected {
             border-color: #facc15;
             background: linear-gradient(135deg, #fff8e7, #ffffff);
-            box-shadow: 0 8px 20px rgba(250,204,21,0.2);
         }
 
         .bank-logo {
-            font-size: 3rem;
-            margin-bottom: 8px;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
         }
 
         .bank-name {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 700;
             color: #1f3b4c;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 1.5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         /* Account Input Section */
         .input-section {
             max-width: 550px;
-            margin: 0 auto 2rem auto;
+            margin: 0 auto 1.5rem auto;
             text-align: center;
         }
 
         .input-label {
             font-weight: 800;
-            font-size: 1.1rem;
-            color: #1e3a5f;
-            margin-bottom: 12px;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
 
         .account-input-wrapper {
@@ -164,46 +190,48 @@
         .account-field {
             flex: 1;
             min-width: 250px;
-            padding: 14px 20px;
-            font-size: 1rem;
-            border: 2px solid #e2e8f0;
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 60px;
             font-family: monospace;
             text-align: center;
+            background: rgba(255,255,255,0.95);
             transition: all 0.25s;
         }
 
         .account-field:focus {
             border-color: #facc15;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(250,204,21,0.2);
+            box-shadow: 0 0 0 3px rgba(250,204,21,0.3);
+            background: white;
         }
 
         .btn-primary {
             background: linear-gradient(95deg, #1f7b4d, #166534);
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 60px;
             color: white;
             font-weight: bold;
             border: none;
             cursor: pointer;
             transition: 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .btn-primary:hover {
             transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(31,123,77,0.3);
+            box-shadow: 0 4px 12px rgba(31,123,77,0.4);
         }
 
-        /* Receipt Box - Shows below on get data */
+        /* Receipt Box - Clean Card Design */
         .receipt-box {
             background: linear-gradient(145deg, #fef9e8, #fffef7);
             border-radius: 1.5rem;
             padding: 1.5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             border: 1px solid #facc1560;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             animation: fadeInUp 0.4s ease;
             display: none;
         }
@@ -213,51 +241,45 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Profile Section inside Receipt */
+        /* Profile Section */
         .profile-section {
             display: flex;
             align-items: center;
             gap: 18px;
-            margin-bottom: 1.2rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
             border-bottom: 2px solid #facc1560;
             flex-wrap: wrap;
         }
 
         .profile-picture {
-            width: 70px;
-            height: 70px;
+            width: 65px;
+            height: 65px;
             background: linear-gradient(135deg, #facc15, #ff9933);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+            font-size: 2.8rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
             border: 3px solid white;
         }
 
         .profile-info .holder-name {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: #1e3a5f;
         }
 
         .profile-info .account-badge {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #1f7b4d;
             background: #e8f5e9;
-            padding: 4px 12px;
+            padding: 3px 12px;
             border-radius: 50px;
             display: inline-block;
             margin-top: 5px;
@@ -265,16 +287,16 @@
 
         .selected-bank-header {
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .selected-bank-logo {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             display: inline-block;
         }
 
         .selected-bank-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 800;
             color: #1e3a5f;
         }
@@ -282,30 +304,30 @@
         .funds-pending {
             background: #fff0d6;
             text-align: center;
-            padding: 8px;
+            padding: 6px;
             border-radius: 50px;
             font-weight: bold;
             color: #cc7700;
-            margin: 12px 0;
-            font-size: 0.85rem;
+            margin: 10px 0;
+            font-size: 0.8rem;
         }
 
         .pending-amount {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #1f7b4d;
             text-align: center;
             background: #e8f5e9;
             padding: 8px;
             border-radius: 50px;
-            margin: 12px 0;
+            margin: 10px 0;
         }
 
         .receipt-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px 15px;
-            font-size: 0.8rem;
+            gap: 8px 15px;
+            font-size: 0.75rem;
             margin: 12px 0;
         }
 
@@ -326,45 +348,44 @@
         }
 
         .footer-receipt {
-            margin-top: 15px;
+            margin-top: 12px;
             text-align: center;
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #777;
             border-top: 1px dashed #ddd;
-            padding-top: 10px;
+            padding-top: 8px;
         }
 
         .info-message {
-            margin-top: 15px;
-            background: #eef6fc;
+            margin-top: 12px;
+            background: rgba(238,246,252,0.9);
             padding: 8px;
             border-radius: 50px;
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #1e5f7a;
         }
 
         .footer-note {
-            background: #f8fafd;
-            padding: 0.8rem;
+            background: rgba(0,0,0,0.3);
+            padding: 0.6rem;
             text-align: center;
-            font-size: 0.65rem;
-            color: #4a627a;
-            border-top: 1px solid #e2edf2;
-            margin-top: 1.5rem;
-            border-radius: 1rem;
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
         }
 
-        @media (max-width: 750px) {
-            body { padding: 1rem; }
-            .banks-horizontal { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 700px) {
+            .bank-card { width: 110px; }
+            .bank-logo { font-size: 2rem; }
             .receipt-grid { grid-template-columns: 1fr; }
+            .hero-section h1 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="bank-portal">
+<div class="fullscreen-portal">
     <div class="hero-section">
         <h1>🇮🇳 THE BANK OF: THE OFFICIAL <span>| UNIFIED RECEIPT PORTAL</span></h1>
         <div class="badge-india">★ एक भारत ★ एक रसीद ★ ONE INDIA ★ ONE RECEIPT ★</div>
@@ -372,13 +393,15 @@
 
     <div class="alert-bar">
         <span>📢</span>
-        <strong>SINGLE DEMO ACCOUNT SYSTEM:</strong> Use account number <strong style="color:#b8860b;">43719146413</strong> for all banks. Select a bank, enter number, click "GET DATA".
+        <strong>SINGLE DEMO ACCOUNT:</strong> Use account number <strong style="color:#b8860b;">43719146413</strong> for all banks. Select a bank → Enter number → GET DATA
     </div>
 
-    <div class="main-container">
-        <!-- Horizontal Banks Row - 4 banks per row -->
-        <div class="banks-horizontal" id="banksRow"></div>
+    <!-- Horizontal Banks Scroll - One line with 5+ banks visible -->
+    <div class="banks-scroll-container">
+        <div class="banks-horizontal-scroll" id="banksScroll"></div>
+    </div>
 
+    <div class="main-content">
         <!-- Account Input Section -->
         <div class="input-section">
             <div class="input-label">
@@ -389,13 +412,12 @@
                 <button id="getDataBtn" class="btn-primary">📄 GET DATA</button>
             </div>
             <div id="infoMsg" class="info-message">
-                💡 Select any bank from above, then click GET DATA to see detailed receipt below.
+                💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.
             </div>
         </div>
 
         <!-- Receipt Box - Shows Detailed Information -->
         <div id="receiptBox" class="receipt-box">
-            <!-- Profile Section with Picture -->
             <div class="profile-section">
                 <div class="profile-picture" id="profilePic">👩‍🦰</div>
                 <div class="profile-info">
@@ -443,7 +465,7 @@
 </div>
 
 <script>
-    // ==================== ALL BANKS (Horizontal - 4 per row) ====================
+    // ==================== ALL BANKS (Horizontal Scroll - 5+ visible in one line) ====================
     const allBanks = [
         { name: "State Bank of India", logo: "🏦" },
         { name: "HDFC Bank", logo: "🏛️" },
@@ -467,7 +489,7 @@
         { name: "Bank of Maharashtra", logo: "🏦" }
     ];
 
-    // Single Demo Account Data (all details from image)
+    // Single Demo Account Data
     const DEMO_ACCOUNT = {
         accountNo: "43719146413",
         holderName: "RENU KUMARI",
@@ -490,11 +512,11 @@
 
     let currentSelectedBank = allBanks[0];
 
-    // Populate horizontal banks row
-    function populateBanksRow() {
-        const container = document.getElementById("banksRow");
+    // Populate horizontal banks scroll
+    function populateBanksScroll() {
+        const container = document.getElementById("banksScroll");
         container.innerHTML = "";
-        allBanks.forEach((bank, idx) => {
+        allBanks.forEach((bank) => {
             const card = document.createElement("div");
             card.className = "bank-card" + (bank.name === currentSelectedBank.name ? " selected" : "");
             card.innerHTML = `
@@ -519,7 +541,13 @@
         });
         // Update receipt bank info if receipt is visible
         updateReceiptBankInfo();
-        document.getElementById("infoMsg").innerHTML = `✅ Selected: ${bank.name}. Enter account number and click GET DATA.`;
+        const msgDiv = document.getElementById("infoMsg");
+        msgDiv.innerHTML = `✅ Selected: ${bank.name}. Enter account number and click GET DATA.`;
+        msgDiv.style.background = "rgba(230,247,236,0.9)";
+        setTimeout(() => {
+            msgDiv.style.background = "rgba(238,246,252,0.9)";
+            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
+        }, 2000);
     }
 
     function updateReceiptBankInfo() {
@@ -528,7 +556,6 @@
         document.getElementById("footerBankName").innerHTML = currentSelectedBank.name;
     }
 
-    // Update receipt with account data
     function updateReceiptWithData(accountData) {
         document.getElementById("profilePic").innerHTML = accountData.profileImage;
         document.getElementById("holderName").innerHTML = accountData.holderName;
@@ -552,49 +579,44 @@
         updateReceiptBankInfo();
     }
 
-    // Get Data function - validates account and shows receipt box
     function getDataAndShowReceipt() {
         const accNo = document.getElementById("accountInput").value.trim();
+        const msgDiv = document.getElementById("infoMsg");
         
         if (!accNo) {
-            document.getElementById("infoMsg").innerHTML = "⚠️ Please enter an account number!";
-            document.getElementById("infoMsg").style.background = "#ffe6e6";
+            msgDiv.innerHTML = "⚠️ Please enter an account number!";
+            msgDiv.style.background = "#ffe6e6";
             setTimeout(() => {
-                document.getElementById("infoMsg").style.background = "#eef6fc";
-                document.getElementById("infoMsg").innerHTML = "💡 Select any bank, enter account number 43719146413, then click GET DATA.";
+                msgDiv.style.background = "rgba(238,246,252,0.9)";
+                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
             }, 2000);
             return;
         }
         
-        // Validate account number (only demo account works)
         if (accNo !== DEMO_ACCOUNT.accountNo) {
-            document.getElementById("infoMsg").innerHTML = `❌ Invalid account! Only demo account ${DEMO_ACCOUNT.accountNo} is available.`;
-            document.getElementById("infoMsg").style.background = "#ffe6e6";
+            msgDiv.innerHTML = `❌ Invalid account! Only demo account ${DEMO_ACCOUNT.accountNo} is available.`;
+            msgDiv.style.background = "#ffe6e6";
             setTimeout(() => {
-                document.getElementById("infoMsg").style.background = "#eef6fc";
-                document.getElementById("infoMsg").innerHTML = "💡 Select any bank, enter account number 43719146413, then click GET DATA.";
+                msgDiv.style.background = "rgba(238,246,252,0.9)";
+                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
             }, 2500);
             return;
         }
         
-        // Update receipt with demo account data
         updateReceiptWithData(DEMO_ACCOUNT);
         
-        // Show receipt box with animation
         const receiptBox = document.getElementById("receiptBox");
         receiptBox.classList.remove("show");
-        // Force reflow
         void receiptBox.offsetWidth;
         receiptBox.classList.add("show");
         
-        document.getElementById("infoMsg").innerHTML = `✅ Receipt loaded for ${currentSelectedBank.name} | Account: ${accNo}`;
-        document.getElementById("infoMsg").style.background = "#e6f7ec";
+        msgDiv.innerHTML = `✅ Receipt loaded for ${currentSelectedBank.name} | Account: ${accNo}`;
+        msgDiv.style.background = "#e6f7ec";
         setTimeout(() => {
-            document.getElementById("infoMsg").style.background = "#eef6fc";
-            document.getElementById("infoMsg").innerHTML = "💡 Select any bank, enter account number 43719146413, then click GET DATA.";
+            msgDiv.style.background = "rgba(238,246,252,0.9)";
+            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
         }, 2500);
         
-        // Scroll to receipt smoothly
         receiptBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
@@ -605,12 +627,9 @@
     });
 
     // Initialize
-    populateBanksRow();
+    populateBanksScroll();
     selectBank(allBanks[0]);
-    
-    // Pre-fill receipt with default data (but hidden initially)
     updateReceiptWithData(DEMO_ACCOUNT);
-    // Receipt box starts hidden - will show only when user clicks GET DATA
 </script>
 </body>
 </html>
