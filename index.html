@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>SBI | State Bank of India - Select Bank & View Details</title>
+    <title>Bank of India | Official Banking Portal - Multi Page System</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
             padding: 2rem;
         }
 
-        /* Premium Indian Banks Themed Background with Coins, Rupee, and Bank Elements */
+        /* Premium Indian Banks Themed Background */
         body::before {
             content: "";
             position: fixed;
@@ -27,26 +27,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.04"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15h-3v-2h3v2zm0-4h-3V7h3v6z"/></svg>'),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.03"><path d="M11.5 1L2 6v2l9.5 5 9.5-5V6l-9.5-5zm0 11.5L6 12v5l5.5 3 5.5-3v-5l-5.5.5z"/></svg>');
-            background-repeat: repeat, repeat, repeat;
-            background-size: 80px, 40px, 50px;
-            background-position: 0 0, 20px 30px, 10px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Additional gradient overlay for depth */
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 40%, rgba(255,215,0,0.08) 0%, rgba(0,0,0,0) 70%);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.04"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15h-3v-2h3v2zm0-4h-3V7h3v6z"/></svg>');
+            background-repeat: repeat, repeat;
+            background-size: 80px, 40px;
             pointer-events: none;
             z-index: 0;
         }
@@ -60,9 +43,9 @@
 
         /* Header */
         .hero-section {
-            background: linear-gradient(135deg, rgba(10,47,68,0.95) 0%, rgba(12,74,110,0.95) 50%, rgba(15,59,79,0.95) 100%);
+            background: linear-gradient(135deg, rgba(10,47,68,0.95) 0%, rgba(12,74,110,0.95) 100%);
             backdrop-filter: blur(2px);
-            padding: 1.8rem 2rem;
+            padding: 1.5rem 2rem;
             text-align: center;
             color: white;
             border-radius: 2rem 2rem 0 0;
@@ -90,7 +73,6 @@
             margin-top: 10px;
         }
 
-        /* Alert Bar */
         .alert-bar {
             background: linear-gradient(95deg, #fff8e7, #fff3d6);
             border-left: 6px solid #facc15;
@@ -104,22 +86,20 @@
             gap: 12px;
         }
 
-        /* Main Content - Desktop Grid */
+        /* Main Desktop Grid */
         .main-desktop {
             background: rgba(255, 255, 255, 0.96);
             border-radius: 0 0 2rem 2rem;
             padding: 2rem;
-            backdrop-filter: blur(0px);
         }
 
-        /* Two Column Layout */
-        .banks-column {
+        .two-columns {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.3fr;
             gap: 2rem;
         }
 
-        /* Left Side - Bank Selection */
+        /* Left Panel - Bank Selection */
         .banks-selector {
             background: #f8fafc;
             border-radius: 1.5rem;
@@ -140,22 +120,14 @@
             max-height: 550px;
             overflow-y: auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
             gap: 1rem;
             padding-right: 5px;
         }
 
-        .banks-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
-        .banks-scroll::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-        .banks-scroll::-webkit-scrollbar-thumb {
-            background: #facc15;
-            border-radius: 10px;
-        }
+        .banks-scroll::-webkit-scrollbar { width: 6px; }
+        .banks-scroll::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+        .banks-scroll::-webkit-scrollbar-thumb { background: #facc15; border-radius: 10px; }
 
         .bank-select-card {
             background: white;
@@ -163,7 +135,7 @@
             padding: 1rem 0.5rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
             border: 2px solid transparent;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
@@ -176,22 +148,13 @@
         .bank-select-card.selected {
             border-color: #facc15;
             background: linear-gradient(135deg, #fff8e7, #ffffff);
-            box-shadow: 0 4px 14px rgba(250,204,21,0.25);
         }
 
-        .bank-select-logo {
-            font-size: 3rem;
-            margin-bottom: 6px;
-        }
+        .bank-select-logo { font-size: 3rem; margin-bottom: 6px; }
+        .bank-select-name { font-size: 0.75rem; font-weight: 700; color: #1f3b4c; }
 
-        .bank-select-name {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #1f3b4c;
-        }
-
-        /* Right Side - Account Details with Zoom Effect */
-        .details-panel {
+        /* Right Panel - Input Area */
+        .input-panel {
             background: white;
             border-radius: 1.5rem;
             padding: 1.5rem;
@@ -202,45 +165,27 @@
             text-align: center;
             padding-bottom: 1rem;
             border-bottom: 2px dashed #e2e8f0;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
-        .selected-bank-logo {
-            font-size: 5rem;
-            filter: drop-shadow(2px 4px 12px rgba(0,0,0,0.15));
-            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-            display: inline-block;
-        }
+        .selected-bank-logo { font-size: 4rem; display: inline-block; transition: transform 0.3s; }
+        .selected-bank-logo:hover { transform: scale(1.05); }
+        .selected-bank-name { font-size: 1.3rem; font-weight: 800; color: #1e3a5f; margin-top: 5px; }
 
-        .selected-bank-logo:hover {
-            transform: scale(1.08) rotate(2deg);
-        }
-
-        .selected-bank-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #1e3a5f;
-            margin-top: 8px;
-        }
-
-        /* Account Input Box - Zoom Focus */
         .account-input-area {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .input-label {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #1f7b4d;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 6px;
         }
 
         .account-field {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px 16px;
             font-size: 1rem;
             border: 2px solid #e2e8f0;
             border-radius: 50px;
@@ -251,57 +196,12 @@
         .account-field:focus {
             border-color: #facc15;
             outline: none;
-            box-shadow: 0 0 0 4px rgba(250,204,21,0.2);
-            transform: scale(1.01);
-        }
-
-        /* Zoomable Details Card */
-        .details-card {
-            background: linear-gradient(135deg, #f8fafc, #ffffff);
-            border-radius: 1.2rem;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            transition: all 0.3s ease;
-            border: 1px solid #eef2f8;
-        }
-
-        .details-card.zoomed {
-            transform: scale(1.02);
-            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
-            border-color: #facc15;
-            background: white;
-        }
-
-        .detail-row {
-            display: flex;
-            padding: 10px 0;
-            border-bottom: 1px solid #eef2f8;
-            font-size: 0.9rem;
-        }
-
-        .detail-label {
-            font-weight: 800;
-            width: 130px;
-            color: #1e3a5f;
-        }
-
-        .detail-value {
-            flex: 1;
-            color: #334155;
-            font-weight: 500;
-        }
-
-        .pending-amount {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #1f7b4d;
-            text-align: center;
-            margin: 12px 0;
+            box-shadow: 0 0 0 3px rgba(250,204,21,0.2);
         }
 
         .action-buttons {
             display: flex;
-            gap: 16px;
+            gap: 15px;
             justify-content: center;
             margin: 1rem 0;
         }
@@ -315,13 +215,10 @@
             border: none;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 1rem;
         }
 
-        .btn-primary:hover {
-            transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(31,123,77,0.3);
-        }
-
+        .btn-primary:hover { transform: scale(0.98); box-shadow: 0 4px 12px rgba(31,123,77,0.3); }
         .btn-secondary {
             background: #f1f5f9;
             padding: 12px 28px;
@@ -350,38 +247,41 @@
             margin-top: 1.5rem;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             body { padding: 1rem; }
-            .banks-column { grid-template-columns: 1fr; }
+            .two-columns { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <div class="bank-portal">
-    <!-- Header -->
     <div class="hero-section">
-        <h1>🇮🇳 STATE BANK OF INDIA <span>| INDIA'S LARGEST BANK</span></h1>
-        <div class="badge-india">★ भारत का भरोसा ★ TRUSTED SINCE 1955 ★</div>
+        <h1>🇮🇳 THE BANK OF: THE OFFICIAL <span>| FUNDS TRANSFER RECEIPT PORTAL</span></h1>
+        <div class="badge-india">★ भारत का भरोसा ★ TRUSTED BANKING NETWORK ★</div>
     </div>
 
     <div class="alert-bar">
-        <span>🔐</span>
-        <strong>Security Notice:</strong> SBI never asks for OTP/PIN. Select your bank, enter account number, and view zoomed details.
+        <span>📢</span>
+        <strong>MONEY TRANSFER RECEIPT SYSTEM:</strong> Enter account number to view complete transaction receipt on a new page.
     </div>
 
     <div class="main-desktop">
-        <div class="banks-column">
-            <!-- LEFT: Bank Selection with Large Logos -->
+        <div class="two-columns">
+            <!-- LEFT: Bank Selection -->
             <div class="banks-selector">
                 <div class="selector-title">🏦 SELECT YOUR BANK</div>
-                <div class="banks-scroll" id="banksScrollList">
-                    <!-- Banks will be populated via JS -->
+                <div class="banks-scroll" id="banksScrollList"></div>
+                <div style="margin-top: 15px; padding: 10px; background: #eef2ff; border-radius: 15px;">
+                    <p style="font-size: 0.7rem; color: #1e3a5f;"><strong>📋 Demo Accounts:</strong><br>
+                    SBI: 43719146413 | 12345678901<br>
+                    PNB: 55555555555 | 66666666666<br>
+                    HDFC: 11111111111 | ICICI: 33333333333</p>
                 </div>
             </div>
 
-            <!-- RIGHT: Account Details with Zoom -->
-            <div class="details-panel">
+            <!-- RIGHT: Input Panel -->
+            <div class="input-panel">
                 <div class="selected-bank-header">
                     <div class="selected-bank-logo" id="selectedBankLogo">🏦</div>
                     <div class="selected-bank-name" id="selectedBankName">State Bank of India</div>
@@ -389,98 +289,408 @@
 
                 <div class="account-input-area">
                     <div class="input-label">🔢 ENTER ACCOUNT NUMBER</div>
-                    <input type="text" id="accountNumberInput" class="account-field" placeholder="e.g. 12345678901" autocomplete="off">
+                    <input type="text" id="accountNumberInput" class="account-field" placeholder="e.g. 43719146413" autocomplete="off">
                     <div class="action-buttons">
-                        <button id="fetchDetailsBtn" class="btn-primary">📄 FETCH & ZOOM DETAILS</button>
+                        <button id="fetchDetailsBtn" class="btn-primary">📄 GET RECEIPT (NEW PAGE)</button>
                         <button id="clearBtn" class="btn-secondary">⟳ CLEAR</button>
                     </div>
                 </div>
 
-                <!-- Zoomable Details Card -->
-                <div id="detailsCard" class="details-card">
-                    <div class="pending-amount" id="pendingAmountDisplay">—</div>
-                    <div class="detail-row"><div class="detail-label">🏧 Account Number:</div><div class="detail-value" id="dispAccNo">—</div></div>
-                    <div class="detail-row"><div class="detail-label">👤 Holder Name:</div><div class="detail-value" id="dispHolder">—</div></div>
-                    <div class="detail-row"><div class="detail-label">🏛️ IFSC Code:</div><div class="detail-value" id="dispIfsc">—</div></div>
-                    <div class="detail-row"><div class="detail-label">📍 Branch:</div><div class="detail-value" id="dispBranch">—</div></div>
-                    <div class="detail-row"><div class="detail-label">📌 Status:</div><div class="detail-value" id="dispStatus">—</div></div>
-                    <div class="detail-row"><div class="detail-label">📝 Note:</div><div class="detail-value" id="dispNote">—</div></div>
+                <div id="infoMessage" class="info-message">
+                    💡 Select a bank, enter account number, then click "GET RECEIPT" to open detailed receipt on a new page.
                 </div>
-
-                <div id="infoMessage" class="info-message">💡 Select a bank, then enter account number to view zoomable details.</div>
             </div>
         </div>
-        <div class="footer-note">© 2025 State Bank of India | Official Banking Portal | Indian Banks Themed Interface</div>
+        <div class="footer-note">
+            <span>© 2025 National Banking Portal | 24/7 Online Transactions | Bank Security | PNB Recruitment</span>
+        </div>
     </div>
 </div>
 
 <script>
-    // ==================== FULL BANK DATABASE (All Indian Banks with Account Data) ====================
-    // Each bank has its own set of demo accounts
+    // ==================== COMPLETE BANK DATABASE WITH ALL DETAILS FROM IMAGE ====================
+    // All receipt fields: ACCOUNT NO, HOLDER NAME, PENDING AMOUNT, IFSC, BRANCH, ADDRESS,
+    // IN WARDS STATUS, DATE, CASHIER CODE, TRANSACTION ID, TIME IN DAYS, LATE TRANSACTION,
+    // ONLINE TAX FEES, TOTAL CHARGE, BANK MANAGER, STATUS SUCCESSFUL
+    
     const bankDatabase = {
         "State Bank of India": {
             logo: "🏦",
+            name: "State Bank of India",
             accounts: {
-                "12345678901": { holder: "PRIYANKA VERMA", amount: "₹4,50,000", ifsc: "SBIN0001234", branch: "DELHI MAIN BRANCH", status: "ACTIVE", note: "Premium Savings Account" },
-                "98765432109": { holder: "RAJESH KUMAR", amount: "₹2,75,000", ifsc: "SBIN0005678", branch: "MUMBAI ANDHERI", status: "ACTIVE", note: "Salary Account" }
-            }
-        },
-        "HDFC Bank": {
-            logo: "🏛️",
-            accounts: {
-                "11111111111": { holder: "MEERA SHARMA", amount: "₹1,25,000", ifsc: "HDFC0001234", branch: "BANGALORE INDIRANAGAR", status: "PREMIUM", note: "Women's Savings" },
-                "22222222222": { holder: "AMIT PATEL", amount: "₹8,90,000", ifsc: "HDFC0005678", branch: "AHMEDABAD CG ROAD", status: "ACTIVE", note: "Business Account" }
-            }
-        },
-        "ICICI Bank": {
-            logo: "🏢",
-            accounts: {
-                "33333333333": { holder: "NEHA GUPTA", amount: "₹3,20,000", ifsc: "ICIC0009876", branch: "PUNE FC ROAD", status: "PRIME", note: "NRE Account" },
-                "44444444444": { holder: "VIKRAM SINGH", amount: "₹6,50,000", ifsc: "ICIC0005432", branch: "JAIPUR TONK ROAD", status: "ACTIVE", note: "Fixed Deposit Linked" }
+                "43719146413": {
+                    accountNo: "43719146413",
+                    holderName: "RENU KUMARI",
+                    pendingAmount: "₹ 4,50,000",
+                    ifscCode: "SBIN0001234",
+                    branch: "DELHI MAIN BRANCH",
+                    address: "Connaught Place, New Delhi - 110001",
+                    inwardsStatus: "PENDING",
+                    date: "08 FEB 2026",
+                    cashierCode: "33225487899",
+                    transactionId: "4578952147589635",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 28,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. S. K. Verma",
+                    statusSuccessful: "PENDING"
+                },
+                "12345678901": {
+                    accountNo: "12345678901",
+                    holderName: "PRIYANKA VERMA",
+                    pendingAmount: "₹ 3,25,000",
+                    ifscCode: "SBIN0005678",
+                    branch: "MUMBAI ANDHERI",
+                    address: "Andheri East, Mumbai - 400069",
+                    inwardsStatus: "PENDING",
+                    date: "15 MAY 2026",
+                    cashierCode: "44215678901",
+                    transactionId: "7894561230123456",
+                    timeInDays: "2",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 22,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mrs. Anjali Desai",
+                    statusSuccessful: "PENDING"
+                }
             }
         },
         "Punjab National Bank": {
             logo: "🏦",
+            name: "Punjab National Bank",
             accounts: {
-                "55555555555": { holder: "SUNITA KUMARI", amount: "₹1,80,000", ifsc: "PUNB0123456", branch: "LUDHIANA", status: "ACTIVE", note: "Rural Account" },
-                "66666666666": { holder: "MANOJ TIWARI", amount: "₹3,40,000", ifsc: "PUNB0789012", branch: "KANPUR", status: "PENDING", note: "KYC Updation" }
+                "55555555555": {
+                    accountNo: "55555555555",
+                    holderName: "SUNITA KUMARI",
+                    pendingAmount: "₹ 2,80,000",
+                    ifscCode: "PUNB0123456",
+                    branch: "LUDHIANA MAIN",
+                    address: "Ghumar Mandi, Ludhiana - 141001",
+                    inwardsStatus: "PENDING",
+                    date: "10 MAY 2026",
+                    cashierCode: "87654321987",
+                    transactionId: "9876543210987654",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 18,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Harpreet Singh",
+                    statusSuccessful: "PENDING"
+                },
+                "66666666666": {
+                    accountNo: "66666666666",
+                    holderName: "MANOJ TIWARI",
+                    pendingAmount: "₹ 3,40,000",
+                    ifscCode: "PUNB0789012",
+                    branch: "KANPUR",
+                    address: "Mall Road, Kanpur - 208001",
+                    inwardsStatus: "PENDING",
+                    date: "20 MAY 2026",
+                    cashierCode: "99887766554",
+                    transactionId: "1122334455667788",
+                    timeInDays: "3",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 21,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Rakesh Pandey",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "HDFC Bank": {
+            logo: "🏛️",
+            name: "HDFC Bank",
+            accounts: {
+                "11111111111": {
+                    accountNo: "11111111111",
+                    holderName: "MEERA SHARMA",
+                    pendingAmount: "₹ 5,20,000",
+                    ifscCode: "HDFC0001234",
+                    branch: "BANGALORE INDIRANAGAR",
+                    address: "Indiranagar, Bangalore - 560038",
+                    inwardsStatus: "PENDING",
+                    date: "05 MAY 2026",
+                    cashierCode: "66778899001",
+                    transactionId: "5566778899001122",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 32,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mrs. Kavita Nair",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "ICICI Bank": {
+            logo: "🏢",
+            name: "ICICI Bank",
+            accounts: {
+                "33333333333": {
+                    accountNo: "33333333333",
+                    holderName: "NEHA GUPTA",
+                    pendingAmount: "₹ 6,10,000",
+                    ifscCode: "ICIC0009876",
+                    branch: "PUNE FC ROAD",
+                    address: "FC Road, Pune - 411004",
+                    inwardsStatus: "PENDING",
+                    date: "12 MAY 2026",
+                    cashierCode: "55443322110",
+                    transactionId: "9988776655443322",
+                    timeInDays: "2",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 38,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Anil Joshi",
+                    statusSuccessful: "PENDING"
+                }
             }
         },
         "Bank of Baroda": {
             logo: "🏛️",
+            name: "Bank of Baroda",
             accounts: {
-                "77777777777": { holder: "DEEPAK JOSHI", amount: "₹2,20,000", ifsc: "BARB0DELHI", branch: "DELHI CONNAUGHT PLACE", status: "ACTIVE", note: "Baroda Advantage" }
+                "77777777777": {
+                    accountNo: "77777777777",
+                    holderName: "DEEPAK JOSHI",
+                    pendingAmount: "₹ 2,20,000",
+                    ifscCode: "BARB0DELHI",
+                    branch: "DELHI CP",
+                    address: "Connaught Place, New Delhi",
+                    inwardsStatus: "PENDING",
+                    date: "18 MAY 2026",
+                    cashierCode: "22334455667",
+                    transactionId: "7766554433221100",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 14,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Vikram Seth",
+                    statusSuccessful: "PENDING"
+                }
             }
         },
         "Canara Bank": {
             logo: "🏦",
+            name: "Canara Bank",
             accounts: {
-                "88888888888": { holder: "LAKSHMI NARAYAN", amount: "₹1,15,000", ifsc: "CNRB0004321", branch: "CHENNAI T NAGAR", status: "ACTIVE", note: "Pension Account" }
+                "88888888888": {
+                    accountNo: "88888888888",
+                    holderName: "LAKSHMI NARAYAN",
+                    pendingAmount: "₹ 1,90,000",
+                    ifscCode: "CNRB0004321",
+                    branch: "CHENNAI T NAGAR",
+                    address: "T Nagar, Chennai - 600017",
+                    inwardsStatus: "PENDING",
+                    date: "22 MAY 2026",
+                    cashierCode: "99882233445",
+                    transactionId: "4455667788990011",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 12,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mrs. Radha Krishnan",
+                    statusSuccessful: "PENDING"
+                }
             }
         },
         "Axis Bank": {
             logo: "🏢",
+            name: "Axis Bank",
             accounts: {
-                "99999999999": { holder: "ANJALI DESAI", amount: "₹5,60,000", ifsc: "UTIB0009876", branch: "SURAT", status: "PREMIUM", note: "Axis Priority" }
+                "99999999999": {
+                    accountNo: "99999999999",
+                    holderName: "ANJALI DESAI",
+                    pendingAmount: "₹ 5,60,000",
+                    ifscCode: "UTIB0009876",
+                    branch: "SURAT",
+                    address: "City Light, Surat - 395007",
+                    inwardsStatus: "PENDING",
+                    date: "09 MAY 2026",
+                    cashierCode: "77661122334",
+                    transactionId: "9988223344556677",
+                    timeInDays: "2",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 35,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Nilesh Patel",
+                    statusSuccessful: "PENDING"
+                }
             }
         },
-        "Kotak Mahindra Bank": { logo: "🏦", accounts: { "10101010101": { holder: "ROHIT MEHTA", amount: "₹4,30,000", ifsc: "KKBK0001234", branch: "NAVI MUMBAI", status: "ACTIVE", note: "811 Account" } } },
-        "IndusInd Bank": { logo: "🏛️", accounts: { "12121212121": { holder: "SWATI MALHOTRA", amount: "₹2,90,000", ifsc: "INDB0005678", branch: "CHANDIGARH", status: "ACTIVE", note: "Indus Select" } } },
-        "Yes Bank": { logo: "🏦", accounts: { "13131313131": { holder: "KAPIL SHARMA", amount: "₹1,75,000", ifsc: "YESB0009876", branch: "GURUGRAM", status: "ACTIVE", note: "Yes First" } } },
-        "IDFC First Bank": { logo: "🏛️", accounts: { "14141414141": { holder: "SHALINI VERMA", amount: "₹3,50,000", ifsc: "IDFB0001234", branch: "NOIDA", status: "PREMIUM", note: "Wealth Account" } } },
-        "Bank of India": { logo: "🏦", accounts: { "15151515151": { holder: "SURESH RATHOD", amount: "₹1,40,000", ifsc: "BKID0004321", branch: "NAGPUR", status: "ACTIVE", note: "Star Surabhi" } } },
-        "Central Bank of India": { logo: "🏢", accounts: { "16161616161": { holder: "GEETA BANSAL", amount: "₹2,10,000", ifsc: "CBIN0009876", branch: "LUCKNOW", status: "ACTIVE", note: "Cent Samman" } } },
-        "Indian Bank": { logo: "🏦", accounts: { "17171717171": { holder: "RAVI SHANKAR", amount: "₹1,90,000", ifsc: "IDIB0001234", branch: "CHENNAI", status: "ACTIVE", note: "Indsight" } } },
-        "Union Bank of India": { logo: "🏛️", accounts: { "18181818181": { holder: "POOJA YADAV", amount: "₹2,80,000", ifsc: "UBIN0005678", branch: "PATNA", status: "ACTIVE", note: "Union Digital" } } },
-        "UCO Bank": { logo: "🏦", accounts: { "19191919191": { holder: "ARUN DAS", amount: "₹1,30,000", ifsc: "UCBA0004321", branch: "KOLKATA", status: "ACTIVE", note: "Star Gain" } } },
-        "RBL Bank": { logo: "🏢", accounts: { "20202020202": { holder: "NIDHI JAIN", amount: "₹3,20,000", ifsc: "RATN0001234", branch: "PUNE", status: "PREMIUM", note: "RBL Signature" } } },
-        "South Indian Bank": { logo: "🏦", accounts: { "21212121212": { holder: "JOSE MATHEW", amount: "₹1,60,000", ifsc: "SIBL0009876", branch: "KOCHI", status: "ACTIVE", note: "SIB Joyal" } } },
-        "Federal Bank": { logo: "🏛️", accounts: { "22222222222": { holder: "MARY THOMAS", amount: "₹2,45,000", ifsc: "FDRL0001234", branch: "THIRUVANANTHAPURAM", status: "ACTIVE", note: "Federal Victory" } } }
+        "Kotak Mahindra Bank": {
+            logo: "🏦",
+            name: "Kotak Mahindra Bank",
+            accounts: {
+                "10101010101": {
+                    accountNo: "10101010101",
+                    holderName: "ROHIT MEHTA",
+                    pendingAmount: "₹ 4,30,000",
+                    ifscCode: "KKBK0001234",
+                    branch: "NAVI MUMBAI",
+                    address: "Vashi, Navi Mumbai - 400703",
+                    inwardsStatus: "PENDING",
+                    date: "14 MAY 2026",
+                    cashierCode: "88997766554",
+                    transactionId: "7766554433221188",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 26,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Suresh Iyer",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "IndusInd Bank": {
+            logo: "🏛️",
+            name: "IndusInd Bank",
+            accounts: {
+                "12121212121": {
+                    accountNo: "12121212121",
+                    holderName: "SWATI MALHOTRA",
+                    pendingAmount: "₹ 2,90,000",
+                    ifscCode: "INDB0005678",
+                    branch: "CHANDIGARH",
+                    address: "Sector 17, Chandigarh - 160017",
+                    inwardsStatus: "PENDING",
+                    date: "25 MAY 2026",
+                    cashierCode: "66778899002",
+                    transactionId: "2233445566778899",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 18,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mrs. Priya Kapoor",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "Yes Bank": {
+            logo: "🏦",
+            name: "Yes Bank",
+            accounts: {
+                "13131313131": {
+                    accountNo: "13131313131",
+                    holderName: "KAPIL SHARMA",
+                    pendingAmount: "₹ 1,75,000",
+                    ifscCode: "YESB0009876",
+                    branch: "GURUGRAM",
+                    address: "Sector 56, Gurugram - 122011",
+                    inwardsStatus: "PENDING",
+                    date: "02 MAY 2026",
+                    cashierCode: "55446677889",
+                    transactionId: "6655443322110099",
+                    timeInDays: "2",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 11,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Tarun Malik",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "IDFC First Bank": {
+            logo: "🏛️",
+            name: "IDFC First Bank",
+            accounts: {
+                "14141414141": {
+                    accountNo: "14141414141",
+                    holderName: "SHALINI VERMA",
+                    pendingAmount: "₹ 3,50,000",
+                    ifscCode: "IDFB0001234",
+                    branch: "NOIDA",
+                    address: "Sector 18, Noida - 201301",
+                    inwardsStatus: "PENDING",
+                    date: "19 MAY 2026",
+                    cashierCode: "33221144556",
+                    transactionId: "9988776655112233",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 22,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Ms. Neha Agarwal",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "Bank of India": {
+            logo: "🏦",
+            name: "Bank of India",
+            accounts: {
+                "15151515151": {
+                    accountNo: "15151515151",
+                    holderName: "SURESH RATHOD",
+                    pendingAmount: "₹ 1,40,000",
+                    ifscCode: "BKID0004321",
+                    branch: "NAGPUR",
+                    address: "Dharampeth, Nagpur - 440010",
+                    inwardsStatus: "PENDING",
+                    date: "28 MAY 2026",
+                    cashierCode: "99887766552",
+                    transactionId: "1122334455667700",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 9,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Prakash Thakur",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "Union Bank of India": {
+            logo: "🏛️",
+            name: "Union Bank of India",
+            accounts: {
+                "18181818181": {
+                    accountNo: "18181818181",
+                    holderName: "POOJA YADAV",
+                    pendingAmount: "₹ 2,80,000",
+                    ifscCode: "UBIN0005678",
+                    branch: "PATNA",
+                    address: "Boring Road, Patna - 800001",
+                    inwardsStatus: "PENDING",
+                    date: "07 MAY 2026",
+                    cashierCode: "44556677880",
+                    transactionId: "5566778899001122",
+                    timeInDays: "2",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 17,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mrs. Renu Sinha",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        },
+        "Federal Bank": {
+            logo: "🏛️",
+            name: "Federal Bank",
+            accounts: {
+                "22222222222": {
+                    accountNo: "22222222222",
+                    holderName: "MARY THOMAS",
+                    pendingAmount: "₹ 2,45,000",
+                    ifscCode: "FDRL0001234",
+                    branch: "KOCHI",
+                    address: "Marine Drive, Kochi - 682031",
+                    inwardsStatus: "PENDING",
+                    date: "12 MAY 2026",
+                    cashierCode: "77665544330",
+                    transactionId: "8899776655443322",
+                    timeInDays: "1",
+                    lateTransaction: "PENDING",
+                    onlineTaxFees: "₹ 15,000",
+                    totalCharge: "PENDING",
+                    bankManager: "Mr. Thomas Kurian",
+                    statusSuccessful: "PENDING"
+                }
+            }
+        }
     };
 
     let currentSelectedBank = "State Bank of India";
 
-    // Populate bank list on left
+    // Populate bank list
     function populateBankList() {
         const container = document.getElementById("banksScrollList");
         container.innerHTML = "";
@@ -488,83 +698,194 @@
             const card = document.createElement("div");
             card.className = "bank-select-card" + (bankName === currentSelectedBank ? " selected" : "");
             card.innerHTML = `<div class="bank-select-logo">${bankData.logo}</div><div class="bank-select-name">${bankName}</div>`;
-            card.onclick = () => selectBank(bankName);
+            card.onclick = (function(name) { return function() { selectBank(name); }; })(bankName);
             container.appendChild(card);
         }
     }
 
     function selectBank(bankName) {
         currentSelectedBank = bankName;
-        // Update UI
-        document.querySelectorAll(".bank-select-card").forEach(card => card.classList.remove("selected"));
-        event.target.closest(".bank-select-card").classList.add("selected");
-        // Update right panel header
+        document.querySelectorAll(".bank-select-card").forEach(c => c.classList.remove("selected"));
+        event?.target?.closest(".bank-select-card")?.classList.add("selected");
         document.getElementById("selectedBankLogo").innerHTML = bankDatabase[bankName].logo;
         document.getElementById("selectedBankName").innerHTML = bankName;
-        // Clear account input and details
         document.getElementById("accountNumberInput").value = "";
-        clearDetailsDisplay();
-        document.getElementById("infoMessage").innerHTML = `✅ Now viewing ${bankName}. Enter account number to fetch details.`;
+        document.getElementById("infoMessage").innerHTML = `✅ Now viewing ${bankName}. Enter account number to get receipt on new page.`;
     }
 
-    function clearDetailsDisplay() {
-        document.getElementById("pendingAmountDisplay").innerHTML = "—";
-        document.getElementById("dispAccNo").innerHTML = "—";
-        document.getElementById("dispHolder").innerHTML = "—";
-        document.getElementById("dispIfsc").innerHTML = "—";
-        document.getElementById("dispBranch").innerHTML = "—";
-        document.getElementById("dispStatus").innerHTML = "—";
-        document.getElementById("dispNote").innerHTML = "—";
-        // Remove zoom effect
-        document.getElementById("detailsCard").classList.remove("zoomed");
+    // Generate receipt HTML for new page
+    function generateReceiptPage(accountData, bankName, bankLogo) {
+        return `<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${bankName} | Money Transfer Receipt</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body {
+                    font-family: 'Segoe UI', 'Roboto', sans-serif;
+                    background: linear-gradient(135deg, #0a2f44 0%, #0c3b4f 100%);
+                    min-height: 100vh;
+                    padding: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .receipt-container {
+                    max-width: 650px;
+                    width: 100%;
+                    margin: 0 auto;
+                    animation: fadeIn 0.4s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: scale(0.95); }
+                    to { opacity: 1; transform: scale(1); }
+                }
+                .receipt-card {
+                    background: linear-gradient(145deg, #fef9e8, #fffef7);
+                    border-radius: 2rem;
+                    padding: 2rem;
+                    box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4);
+                    border: 1px solid #facc1560;
+                }
+                .receipt-header {
+                    text-align: center;
+                    border-bottom: 2px dashed #facc15;
+                    padding-bottom: 1rem;
+                    margin-bottom: 1.5rem;
+                }
+                .bank-logo { font-size: 4rem; }
+                .bank-name { font-size: 1.5rem; font-weight: 800; color: #1e3a5f; }
+                .receipt-title { font-size: 1rem; color: #b8860b; margin-top: 5px; }
+                .funds-pending {
+                    background: #fff0d6;
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 50px;
+                    font-weight: bold;
+                    color: #cc7700;
+                    margin: 15px 0;
+                }
+                .receipt-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1.8fr;
+                    gap: 12px 15px;
+                    font-size: 0.85rem;
+                    margin: 15px 0;
+                }
+                .receipt-label { font-weight: 800; color: #1e3a5f; }
+                .receipt-value { color: #2d4a6e; font-weight: 500; word-break: break-word; }
+                .pending-amount {
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                    color: #1f7b4d;
+                    text-align: center;
+                    background: #e8f5e9;
+                    padding: 10px;
+                    border-radius: 50px;
+                    margin: 15px 0;
+                }
+                .footer-receipt {
+                    margin-top: 20px;
+                    text-align: center;
+                    font-size: 0.7rem;
+                    color: #777;
+                    border-top: 1px dashed #ddd;
+                    padding-top: 15px;
+                }
+                .status-pending { color: #e67e22; font-weight: bold; }
+                .btn-close {
+                    display: block;
+                    width: 100%;
+                    padding: 12px;
+                    background: linear-gradient(95deg, #1f7b4d, #166534);
+                    color: white;
+                    text-align: center;
+                    border: none;
+                    border-radius: 60px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    margin-top: 20px;
+                    font-size: 1rem;
+                }
+                .btn-close:hover { opacity: 0.9; transform: scale(0.98); }
+            </style>
+        </head>
+        <body>
+            <div class="receipt-container">
+                <div class="receipt-card">
+                    <div class="receipt-header">
+                        <div class="bank-logo">${bankLogo}</div>
+                        <div class="bank-name">${bankName}</div>
+                        <div class="receipt-title">🏦 MONEY TRANSFER RECEIPT 🏦</div>
+                    </div>
+                    <div class="funds-pending">⚠️ FUNDS TRANSFER PENDING ⚠️</div>
+                    <div class="pending-amount">${accountData.pendingAmount}</div>
+                    <div class="receipt-grid">
+                        <div class="receipt-label">ACCOUNT NO:</div><div class="receipt-value">${accountData.accountNo}</div>
+                        <div class="receipt-label">ACCOUNT HOLDER:</div><div class="receipt-value">${accountData.holderName}</div>
+                        <div class="receipt-label">IFSC CODE:</div><div class="receipt-value">${accountData.ifscCode}</div>
+                        <div class="receipt-label">BRANCH:</div><div class="receipt-value">${accountData.branch}</div>
+                        <div class="receipt-label">ADDRESS:</div><div class="receipt-value">${accountData.address}</div>
+                        <div class="receipt-label">IN WARDS STATUS:</div><div class="receipt-value status-pending">${accountData.inwardsStatus}</div>
+                        <div class="receipt-label">DATE:</div><div class="receipt-value">${accountData.date}</div>
+                        <div class="receipt-label">CASHIER CODE:</div><div class="receipt-value">${accountData.cashierCode}</div>
+                        <div class="receipt-label">TRANSACTION ID:</div><div class="receipt-value">${accountData.transactionId}</div>
+                        <div class="receipt-label">TIME IN DAYS:</div><div class="receipt-value">${accountData.timeInDays}</div>
+                        <div class="receipt-label">LATE TRANSACTION:</div><div class="receipt-value status-pending">${accountData.lateTransaction}</div>
+                        <div class="receipt-label">ONLINE TAX/FEES:</div><div class="receipt-value">${accountData.onlineTaxFees}</div>
+                        <div class="receipt-label">TOTAL CHARGE:</div><div class="receipt-value status-pending">${accountData.totalCharge}</div>
+                        <div class="receipt-label">BANK MANAGER:</div><div class="receipt-value">${accountData.bankManager}</div>
+                        <div class="receipt-label">STATUS SUCCESSFUL:</div><div class="receipt-value status-pending">${accountData.statusSuccessful}</div>
+                    </div>
+                    <div class="footer-receipt">
+                        24/7 | ONLINE TRANSACTIONS | BANK SECURITY | PNB RECRUITMENT<br>
+                        © 2025 ${bankName} | All Rights Reserved
+                    </div>
+                    <button class="btn-close" onclick="window.close()">✖ CLOSE RECEIPT</button>
+                </div>
+            </div>
+        </body>
+        </html>`;
     }
 
-    function fetchAndDisplayDetails() {
+    // Fetch and open receipt in new page
+    function fetchAndOpenReceipt() {
         const accNo = document.getElementById("accountNumberInput").value.trim();
         if (!accNo) {
-            document.getElementById("infoMessage").innerHTML = "⚠️ Please enter an account number!";
+            document.getElementById("infoMessage").innerHTML = "⚠️ Please enter account number!";
             return;
         }
         const bank = bankDatabase[currentSelectedBank];
-        if (!bank) {
-            document.getElementById("infoMessage").innerHTML = "❌ Bank data error!";
-            return;
-        }
+        if (!bank) return;
         const account = bank.accounts[accNo];
         if (!account) {
-            document.getElementById("infoMessage").innerHTML = `❌ Account ${accNo} not found in ${currentSelectedBank}. Try demo numbers like 12345678901 (SBI) or 11111111111 (HDFC).`;
-            clearDetailsDisplay();
+            document.getElementById("infoMessage").innerHTML = `❌ Account ${accNo} not found in ${currentSelectedBank}. Try demo: 43719146413 (SBI) or 55555555555 (PNB)`;
             return;
         }
-        // Update details with ZOOM effect
-        document.getElementById("pendingAmountDisplay").innerHTML = account.amount;
-        document.getElementById("dispAccNo").innerHTML = accNo;
-        document.getElementById("dispHolder").innerHTML = account.holder;
-        document.getElementById("dispIfsc").innerHTML = account.ifsc;
-        document.getElementById("dispBranch").innerHTML = account.branch;
-        document.getElementById("dispStatus").innerHTML = account.status;
-        document.getElementById("dispNote").innerHTML = account.note;
-        // Add zoom animation
-        const card = document.getElementById("detailsCard");
-        card.classList.remove("zoomed");
-        setTimeout(() => card.classList.add("zoomed"), 10);
-        document.getElementById("infoMessage").innerHTML = `✅ Account ${accNo} loaded successfully for ${currentSelectedBank}.`;
+        // Generate receipt HTML and open in new tab
+        const receiptHtml = generateReceiptPage(account, bank.name, bank.logo);
+        const blob = new Blob([receiptHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        window.open(url, '_blank');
+        URL.revokeObjectURL(url);
+        document.getElementById("infoMessage").innerHTML = `✅ Receipt opened in new tab for account ${accNo} (${currentSelectedBank})`;
     }
 
-    function clearAll() {
+    function clearInput() {
         document.getElementById("accountNumberInput").value = "";
-        clearDetailsDisplay();
-        document.getElementById("infoMessage").innerHTML = `💡 Cleared. Select a bank and enter account number.`;
+        document.getElementById("infoMessage").innerHTML = "💡 Cleared. Select bank and enter account number to get receipt.";
     }
 
     // Event listeners
-    document.getElementById("fetchDetailsBtn").addEventListener("click", fetchAndDisplayDetails);
-    document.getElementById("clearBtn").addEventListener("click", clearAll);
+    document.getElementById("fetchDetailsBtn").addEventListener("click", fetchAndOpenReceipt);
+    document.getElementById("clearBtn").addEventListener("click", clearInput);
     document.getElementById("accountNumberInput").addEventListener("keypress", (e) => {
-        if (e.key === "Enter") fetchAndDisplayDetails();
+        if (e.key === "Enter") fetchAndOpenReceipt();
     });
 
-    // Initial load
+    // Initialize
     populateBankList();
     selectBank("State Bank of India");
 </script>
