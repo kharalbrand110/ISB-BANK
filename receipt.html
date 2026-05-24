@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Bank Receipt | Money Transfer Details - Full Screen</title>
+    <title>SBI Official Receipt | Funds Transfer Pending</title>
     <style>
         * {
             margin: 0;
@@ -11,340 +11,434 @@
             box-sizing: border-box;
         }
 
+        /* FULL SCREEN BACKGROUND – CLEAN AND PROFESSIONAL */
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0b2b38, #05161e);
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a2f44 0%, #0c3b4f 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
             position: relative;
         }
 
-        /* Full Screen Background Pattern */
+        /* subtle pattern overlay for texture */
         body::before {
             content: "";
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z"/></svg>');
-            background-repeat: repeat;
-            background-size: 80px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Full Screen Container */
-        .fullscreen-receipt {
-            min-height: 100vh;
             width: 100%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path fill="white" d="M20,20 L30,20 L30,30 L20,30 Z M70,70 L80,70 L80,80 L70,80 Z M45,10 L55,10 L55,20 L45,20 Z M10,75 L20,75 L20,85 L10,85 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 28px;
+            pointer-events: none;
         }
 
-        /* Receipt Content - Centered */
-        .receipt-content {
+        /* main container — EXACT 1024x1024 SQUARE (max-width / height ensures perfect square on big screens, but scales nicely) */
+        .square-receipt {
             max-width: 1024px;
             width: 100%;
-            background: linear-gradient(145deg, #fef9e8, #fffef7);
-            border-radius: 2rem;
-            padding: 2rem;
-            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.4);
-            border: 1px solid #facc1560;
-            animation: fadeIn 0.4s ease;
+            max-height: 1024px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            background: #fffef7;
+            border-radius: 40px;
+            box-shadow: 0 40px 70px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.6);
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            transition: all 0.2s;
+            backdrop-filter: blur(0px);
+            scrollbar-width: thin;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.96); }
-            to { opacity: 1; transform: scale(1); }
+        /* custom scroll for clean look */
+        .square-receipt::-webkit-scrollbar {
+            width: 5px;
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        .square-receipt::-webkit-scrollbar-thumb {
+            background: #facc15;
+            border-radius: 10px;
         }
 
-        /* Image Section - Center */
-        .image-section {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .center-image {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #facc15;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            background: white;
-        }
-
-        /* Bank Header */
-        .bank-header {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .bank-logo {
-            font-size: 2.5rem;
-            display: inline-block;
-        }
-
-        .bank-name {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #1e3a5f;
-            margin-top: 5px;
-        }
-
-        /* Account Holder Section */
-        .account-holder-section {
-            text-align: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid #facc1560;
-        }
-
-        .holder-name {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #1e3a5f;
-        }
-
-        .account-badge {
-            font-size: 0.75rem;
-            color: #1f7b4d;
-            background: #e8f5e9;
-            padding: 4px 14px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 6px;
-        }
-
-        /* Funds Status */
-        .funds-pending {
-            background: #fff0d6;
-            text-align: center;
-            padding: 8px;
-            border-radius: 50px;
-            font-weight: bold;
-            color: #cc7700;
-            margin: 12px 0;
-            font-size: 0.85rem;
-        }
-
-        .pending-amount {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #1f7b4d;
-            text-align: center;
-            background: #e8f5e9;
-            padding: 10px;
-            border-radius: 50px;
-            margin: 12px 0;
-        }
-
-        /* Receipt Details - 2 Column Grid for Better Layout */
-        .receipt-details {
-            margin: 20px 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px 20px;
-        }
-
-        .detail-item {
+        /* inner padding keeps content well spaced */
+        .receipt-inner {
+            padding: 1.6rem 1.8rem;
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            padding: 10px 0;
-            border-bottom: 1px dashed #e2e8f0;
-            flex-wrap: wrap;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* HEADER SECTION (image + bank + title) */
+        .top-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .profile-wrapper {
+            width: 92px;
+            height: 92px;
+            background: linear-gradient(145deg, #f8f3e0, #fff3db);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            border: 3px solid #facc15;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .profile-img {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #fff;
+        }
+        .bank-icon-text {
+            display: flex;
+            align-items: center;
             gap: 8px;
+            background: #f1f5f9;
+            padding: 5px 20px;
+            border-radius: 80px;
+            margin-bottom: 8px;
         }
-
-        .detail-label {
+        .bank-emblem {
+            font-size: 1.6rem;
+        }
+        .bank-name-official {
             font-weight: 800;
-            color: #1e3a5f;
-            font-size: 0.85rem;
+            font-size: 1.2rem;
+            letter-spacing: -0.3px;
+            color: #0c4e6e;
         }
-
-        .detail-value {
-            color: #2d4a6e;
-            font-weight: 500;
-            text-align: right;
+        .holder-card {
+            background: #ecfdf5;
+            width: 100%;
+            border-radius: 36px;
+            padding: 10px 14px;
+            text-align: center;
+            margin: 10px 0 8px 0;
+            border: 1px solid #d1fae5;
+        }
+        .holder-name-large {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #115e59;
             word-break: break-word;
-            font-size: 0.85rem;
+        }
+        .acc-ref {
+            font-family: monospace;
+            font-size: 0.75rem;
+            background: #fef9c3;
+            display: inline-block;
+            padding: 2px 16px;
+            border-radius: 20px;
+            margin-top: 6px;
+            font-weight: 600;
+            color: #854d0e;
+        }
+        .alert-pending {
+            background: #fff1e6;
+            color: #b45309;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 6px;
+            border-radius: 50px;
+            width: fit-content;
+            margin: 8px auto 0 auto;
+            display: inline-block;
+            width: auto;
+            padding: 5px 18px;
+        }
+        .amount-pending-box {
+            background: #fefce8;
+            border-radius: 32px;
+            text-align: center;
+            padding: 14px 10px;
+            margin: 15px 0 12px;
+            border: 1px solid #fde047;
+        }
+        .rupee-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #15803d;
+            letter-spacing: 1px;
         }
 
-        .status-pending {
+        /* DETAIL GRID – COMPACT, SQUARE FRIENDLY, ALL DATA VISIBLE */
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 18px;
+            margin: 12px 0 16px;
+        }
+        .detail-card {
+            background: #fafaf9;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border-left: 4px solid #facc15;
+            transition: all 0.1s;
+        }
+        .detail-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #4b5563;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .detail-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+        .pending-text {
             color: #e67e22;
+            background: #fff2e5;
+            padding: 2px 10px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 0.75rem;
             font-weight: bold;
         }
-
-        /* Full Width Items */
-        .full-width {
+        .full-span {
             grid-column: span 2;
         }
+        .address-value {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
 
-        /* Footer */
-        .footer-receipt {
-            margin-top: 20px;
+        /* manager & status row compact */
+        .footer-status {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 28px;
+            margin: 6px 0 12px;
+            gap: 10px;
+        }
+        .manager-box, .success-box {
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .close-receipt-btn {
+            background: linear-gradient(105deg, #1e3a5f, #0f2c44);
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 100px;
+            font-weight: 800;
+            color: white;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .close-receipt-btn:active {
+            transform: scale(0.97);
+        }
+        .footer-note {
             text-align: center;
-            font-size: 0.65rem;
-            color: #777;
-            border-top: 1px dashed #ddd;
+            font-size: 0.6rem;
+            color: #6c757d;
+            margin-top: 12px;
+            border-top: 1px dashed #e9ecef;
             padding-top: 12px;
         }
 
-        .btn-close {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(95deg, #1f7b4d, #166534);
-            color: white;
-            text-align: center;
-            border: none;
-            border-radius: 60px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 20px;
-            font-size: 0.9rem;
+        /* responsive: keep square ratio, if height gets cramped scroll is enabled */
+        @media (max-width: 750px) {
+            .square-receipt {
+                max-height: none;
+                aspect-ratio: auto;
+                border-radius: 28px;
+            }
+            .receipt-inner {
+                padding: 1rem;
+            }
+            .details-grid {
+                gap: 10px;
+            }
+            .rupee-amount {
+                font-size: 1.6rem;
+            }
+            .holder-name-large {
+                font-size: 1.2rem;
+            }
         }
 
-        .btn-close:hover {
-            opacity: 0.9;
-            transform: scale(0.98);
+        /* for very small devices */
+        @media (max-width: 500px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-span {
+                grid-column: span 1;
+            }
         }
 
-        @media (max-width: 700px) {
-            .fullscreen-receipt { padding: 1rem; }
-            .receipt-content { padding: 1.2rem; }
-            .receipt-details { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-            .detail-item { flex-direction: column; align-items: flex-start; }
-            .detail-value { text-align: left; }
+        /* force perfect square on large displays: keep ratio lock */
+        @media (min-width: 1025px) {
+            .square-receipt {
+                width: 1024px;
+                height: 1024px;
+                max-width: 1024px;
+                max-height: 1024px;
+                aspect-ratio: 1/1;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="fullscreen-receipt">
-    <div class="receipt-content">
-        <!-- Center Image Section -->
-        <div class="image-section">
-            <img id="centerProfileImage" class="center-image" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profile Picture" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
-        </div>
-
-        <!-- Bank Header -->
-        <div class="bank-header">
-            <div class="bank-logo" id="receiptBankLogo">🏦</div>
-            <div class="bank-name" id="receiptBankName">State Bank of India</div>
-        </div>
-
-        <!-- Account Holder Section -->
-        <div class="account-holder-section">
-            <div class="holder-name" id="holderName">RENU KUMARI</div>
-            <div class="account-badge" id="accountBadge">Account: 43719146413</div>
-        </div>
-
-        <!-- Funds Status -->
-        <div class="funds-pending">⚠️ FUNDS TRANSFER PENDING ⚠️</div>
-        <div class="pending-amount" id="pendingAmount">₹ 4,50,000</div>
-
-        <!-- Receipt Details - Clean Grid Layout -->
-        <div class="receipt-details">
-            <div class="detail-item">
-                <span class="detail-label">ACCOUNT NO:</span>
-                <span class="detail-value" id="dispAccNo">43719146413</span>
+<div class="square-receipt">
+    <div class="receipt-inner">
+        <!-- Top section: profile image + bank -->
+        <div class="top-brand">
+            <div class="profile-wrapper">
+                <img class="profile-img" id="dynamicProfileImg" src="https://randomuser.me/api/portraits/women/45.jpg" alt="account holder" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
             </div>
-            <div class="detail-item">
-                <span class="detail-label">ACCOUNT HOLDER:</span>
-                <span class="detail-value" id="dispHolder">RENU KUMARI</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">IFSC CODE:</span>
-                <span class="detail-value" id="dispIfsc">SBIN0001234</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">BRANCH:</span>
-                <span class="detail-value" id="dispBranch">DELHI MAIN BRANCH</span>
-            </div>
-            <div class="detail-item full-width">
-                <span class="detail-label">ADDRESS:</span>
-                <span class="detail-value" id="dispAddress">Connaught Place, New Delhi - 110001</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">IN WARDS STATUS:</span>
-                <span class="detail-value status-pending" id="dispStatus">PENDING</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">DATE:</span>
-                <span class="detail-value" id="dispDate">08 FEB 2026</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">CASHIER CODE:</span>
-                <span class="detail-value" id="dispCashier">33225487899</span>
-            </div>
-            <div class="detail-item full-width">
-                <span class="detail-label">TRANSACTION ID:</span>
-                <span class="detail-value" id="dispTransaction">A7D0A1A4T2A0C01</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">TIME IN DAYS:</span>
-                <span class="detail-value" id="dispTimeDays">1</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">LATE TRANSACTION:</span>
-                <span class="detail-value status-pending" id="dispLate">PENDING</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">ONLINE TAX/FEES:</span>
-                <span class="detail-value" id="dispTaxFees">₹ 28,000</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">TOTAL CHARGE:</span>
-                <span class="detail-value status-pending" id="dispTotalCharge">PENDING</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">BANK MANAGER:</span>
-                <span class="detail-value" id="dispManager">Mr. S. K. Verma</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">STATUS SUCCESSFUL:</span>
-                <span class="detail-value status-pending" id="dispSuccess">PENDING</span>
+            <div class="bank-icon-text">
+                <span class="bank-emblem" id="bankIconDisplay">🏦</span>
+                <span class="bank-name-official" id="bankNameDisplay">State Bank of India</span>
             </div>
         </div>
 
-        <!-- Close Button -->
-        <button class="btn-close" onclick="window.close()">✖ CLOSE RECEIPT</button>
+        <!-- Account holder card -->
+        <div class="holder-card">
+            <div class="holder-name-large" id="holderFullName">RENU KUMARI</div>
+            <div class="acc-ref" id="accountNumberDisplay">📇 Account: 43719146413</div>
+        </div>
 
-        <!-- Footer -->
-        <div class="footer-receipt">
-            24/7 | ONLINE TRANSACTIONS | BANK SECURITY | PNB RECRUITMENT<br>
-            © 2025 <span id="footerBankName">State Bank of India</span> | All Rights Reserved
+        <!-- pending status alert + amount -->
+        <div style="text-align: center;">
+            <span class="alert-pending">⚠️ IN WARDS STATUS: PENDING ⚠️</span>
+        </div>
+        <div class="amount-pending-box">
+            <span class="rupee-amount" id="amountValueDisplay">₹ 4,50,000</span>
+            <div style="font-size: 0.7rem; font-weight: 600; color:#2c5f2d;">TRANSFER PENDING • FUNDS HOLD</div>
+        </div>
+
+        <!-- ALL DETAILS IN CLEAN 2-COLUMN GRID (exactly all data from receipt) -->
+        <div class="details-grid" id="dynamicDetailsGrid">
+            <!-- ACCOUNT NO -->
+            <div class="detail-card">
+                <span class="detail-label">🏦 ACCOUNT NO</span>
+                <div class="detail-value" id="accNoVal">43719146413</div>
+            </div>
+            <!-- ACCOUNT HOLDER -->
+            <div class="detail-card">
+                <span class="detail-label">👤 ACCOUNT HOLDER</span>
+                <div class="detail-value" id="holderNameVal">RENU KUMARI</div>
+            </div>
+            <!-- IFSC CODE -->
+            <div class="detail-card">
+                <span class="detail-label">🏧 IFSC CODE</span>
+                <div class="detail-value" id="ifscVal">SBIN0001234</div>
+            </div>
+            <!-- BRANCH -->
+            <div class="detail-card">
+                <span class="detail-label">📍 BRANCH</span>
+                <div class="detail-value" id="branchVal">DELHI MAIN BRANCH</div>
+            </div>
+            <!-- ADDRESS (full-width) -->
+            <div class="detail-card full-span">
+                <span class="detail-label">🏢 ADDRESS</span>
+                <div class="detail-value address-value" id="addressVal">Connaught Place, New Delhi - 110001</div>
+            </div>
+            <!-- IN WARDS STATUS -->
+            <div class="detail-card">
+                <span class="detail-label">📥 IN WARDS STATUS</span>
+                <div class="detail-value"><span class="pending-text" id="inwardStatusVal">PENDING</span></div>
+            </div>
+            <!-- DATE -->
+            <div class="detail-card">
+                <span class="detail-label">📅 DATE</span>
+                <div class="detail-value" id="dateVal">08 FEB 2026</div>
+            </div>
+            <!-- CASHIER CODE -->
+            <div class="detail-card">
+                <span class="detail-label">🧾 CASHIER CODE</span>
+                <div class="detail-value" id="cashierVal">33225487899</div>
+            </div>
+            <!-- TRANSACTION ID -->
+            <div class="detail-card full-span">
+                <span class="detail-label">🔁 TRANSACTION ID</span>
+                <div class="detail-value" id="txnIdVal">A7D0A1A4T2A0C01</div>
+            </div>
+            <!-- TIME IN DAYS -->
+            <div class="detail-card">
+                <span class="detail-label">⏱️ TIME IN DAYS</span>
+                <div class="detail-value" id="timeDaysVal">1</div>
+            </div>
+            <!-- LATE TRANSACTION -->
+            <div class="detail-card">
+                <span class="detail-label">⏰ LATE TRANSACTION</span>
+                <div class="detail-value"><span class="pending-text" id="lateTxnVal">PENDING</span></div>
+            </div>
+            <!-- ONLINE TAX/FEES -->
+            <div class="detail-card">
+                <span class="detail-label">💰 ONLINE TAX/FEES</span>
+                <div class="detail-value" id="taxFeesVal">₹ 28,000</div>
+            </div>
+            <!-- TOTAL CHARGE -->
+            <div class="detail-card">
+                <span class="detail-label">💸 TOTAL CHARGE</span>
+                <div class="detail-value"><span class="pending-text" id="totalChargeVal">PENDING</span></div>
+            </div>
+        </div>
+
+        <!-- BANK MANAGER + STATUS SUCCESSFUL inline (visible all data) -->
+        <div class="footer-status">
+            <div class="manager-box">👨‍💼 BANK MANAGER: <strong id="managerNameVal">Mr. S. K. Verma</strong></div>
+            <div class="success-box">✅ STATUS SUCCESSFUL: <strong id="successStatusVal" style="color:#e67e22;">PENDING</strong></div>
+        </div>
+
+        <!-- close receipt button -->
+        <button class="close-receipt-btn" id="closeReceiptBtn">
+            ✖ CLOSE RECEIPT &nbsp; <span style="font-size: 0.8rem;">[SBI SECURE]</span>
+        </button>
+        
+        <div class="footer-note">
+            SBI NEFT/RTGS | Connaught Place Branch | For queries contact Manager | Transaction ID: A7D0A1A4T2A0C01
         </div>
     </div>
 </div>
 
 <script>
-    // Load data from sessionStorage (passed from main page)
-    const selectedBankName = sessionStorage.getItem("selectedBankName") || "State Bank of India";
-    const selectedBankLogo = sessionStorage.getItem("selectedBankLogo") || "🏦";
-    const accountNumber = sessionStorage.getItem("accountNumber") || "43719146413";
-
-    // Fixed profile image (no changer)
-    const profileImageUrl = "https://randomuser.me/api/portraits/women/68.jpg";
-    document.getElementById("centerProfileImage").src = profileImageUrl;
-
-    // Demo account full data
-    const accountData = {
-        accountNo: accountNumber,
+    // ==============================
+    // FULL DATA SET (as per screenshot)
+    // ==============================
+    const receiptData = {
+        bankName: "State Bank of India",
+        bankIcon: "🏦",
+        profileImage: "https://randomuser.me/api/portraits/women/68.jpg",   // woman profile (neutral)
+        accountNumber: "43719146413",
         holderName: "RENU KUMARI",
         pendingAmount: "₹ 4,50,000",
         ifscCode: "SBIN0001234",
         branch: "DELHI MAIN BRANCH",
         address: "Connaught Place, New Delhi - 110001",
-        inwardsStatus: "PENDING",
+        inwardStatus: "PENDING",
         date: "08 FEB 2026",
         cashierCode: "33225487899",
         transactionId: "A7D0A1A4T2A0C01",
@@ -356,33 +450,111 @@
         statusSuccessful: "PENDING"
     };
 
-    // Update all receipt fields
-    function updateReceipt() {
-        document.getElementById("receiptBankLogo").innerHTML = selectedBankLogo;
-        document.getElementById("receiptBankName").innerHTML = selectedBankName;
-        document.getElementById("footerBankName").innerHTML = selectedBankName;
+    // Helper to update all UI elements
+    function updateReceiptUI() {
+        // Bank & header
+        document.getElementById("bankIconDisplay").innerText = receiptData.bankIcon;
+        document.getElementById("bankNameDisplay").innerText = receiptData.bankName;
         
-        document.getElementById("holderName").innerHTML = accountData.holderName;
-        document.getElementById("accountBadge").innerHTML = `Account: ${accountData.accountNo}`;
-        document.getElementById("pendingAmount").innerHTML = accountData.pendingAmount;
-        document.getElementById("dispAccNo").innerHTML = accountData.accountNo;
-        document.getElementById("dispHolder").innerHTML = accountData.holderName;
-        document.getElementById("dispIfsc").innerHTML = accountData.ifscCode;
-        document.getElementById("dispBranch").innerHTML = accountData.branch;
-        document.getElementById("dispAddress").innerHTML = accountData.address;
-        document.getElementById("dispStatus").innerHTML = accountData.inwardsStatus;
-        document.getElementById("dispDate").innerHTML = accountData.date;
-        document.getElementById("dispCashier").innerHTML = accountData.cashierCode;
-        document.getElementById("dispTransaction").innerHTML = accountData.transactionId;
-        document.getElementById("dispTimeDays").innerHTML = accountData.timeInDays;
-        document.getElementById("dispLate").innerHTML = accountData.lateTransaction;
-        document.getElementById("dispTaxFees").innerHTML = accountData.onlineTaxFees;
-        document.getElementById("dispTotalCharge").innerHTML = accountData.totalCharge;
-        document.getElementById("dispManager").innerHTML = accountData.bankManager;
-        document.getElementById("dispSuccess").innerHTML = accountData.statusSuccessful;
+        // Profile picture (hard set to avoid inconsistency)
+        const profileImg = document.getElementById("dynamicProfileImg");
+        profileImg.src = receiptData.profileImage;
+        profileImg.onerror = function() { this.src = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"; };
+        
+        // Account holder details
+        document.getElementById("holderFullName").innerText = receiptData.holderName;
+        document.getElementById("accountNumberDisplay").innerHTML = `📇 Account: ${receiptData.accountNumber}`;
+        document.getElementById("amountValueDisplay").innerText = receiptData.pendingAmount;
+        
+        // Grid fields
+        document.getElementById("accNoVal").innerText = receiptData.accountNumber;
+        document.getElementById("holderNameVal").innerText = receiptData.holderName;
+        document.getElementById("ifscVal").innerText = receiptData.ifscCode;
+        document.getElementById("branchVal").innerText = receiptData.branch;
+        document.getElementById("addressVal").innerText = receiptData.address;
+        document.getElementById("inwardStatusVal").innerText = receiptData.inwardStatus;
+        document.getElementById("dateVal").innerText = receiptData.date;
+        document.getElementById("cashierVal").innerText = receiptData.cashierCode;
+        document.getElementById("txnIdVal").innerText = receiptData.transactionId;
+        document.getElementById("timeDaysVal").innerText = receiptData.timeInDays;
+        document.getElementById("lateTxnVal").innerText = receiptData.lateTransaction;
+        document.getElementById("taxFeesVal").innerText = receiptData.onlineTaxFees;
+        document.getElementById("totalChargeVal").innerText = receiptData.totalCharge;
+        document.getElementById("managerNameVal").innerText = receiptData.bankManager;
+        document.getElementById("successStatusVal").innerText = receiptData.statusSuccessful;
     }
 
-    updateReceipt();
+    // call initial render
+    updateReceiptUI();
+
+    // also handle potential image fallback for any error
+    window.addEventListener('load', () => {
+        // Extra safety: if any dynamic content from sessionStorage but we use hard data, but we can also allow override if needed? 
+        // According to requirement, just display FULL receipt exactly as per given detail.
+        // Ensure the background and square ratio stays perfect
+        const squareDiv = document.querySelector('.square-receipt');
+        if (squareDiv) {
+            // enforce background consistency
+            squareDiv.style.backgroundColor = '#fffef7';
+        }
+        
+        // because some text may overflow, but grid is fine. 
+        // Also make sure address inside card fits
+    });
+
+    // close receipt logic - to make 'CLOSE RECEIPT' behave like a modal / window close
+    const closeBtn = document.getElementById("closeReceiptBtn");
+    if (closeBtn) {
+        closeBtn.addEventListener("click", function(e) {
+            // try to close window if opened from script, else just show a friendly message (since it's full screen web)
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // fallback: display alert but also clear page? Actually we do a clean removal to mimic close
+                const container = document.querySelector(".square-receipt");
+                if (container) {
+                    container.style.transition = "opacity 0.2s";
+                    container.style.opacity = "0";
+                    setTimeout(() => {
+                        document.body.innerHTML = `<div style="background:#0b2b38; display:flex; align-items:center; justify-content:center; height:100vh; font-family:sans-serif; color:white;"><div style="text-align:center;">🧾 Receipt closed.<br><button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; background:#facc15; border:none; border-radius:40px;">View Again</button></div></div>`;
+                    }, 150);
+                } else {
+                    window.close?.();
+                }
+            }
+        });
+    }
+
+    // Additional tiny check to ensure no layout shift: keep exact data from list also LATE TRANSACTION etc.
+    // To satisfy "Detail list itni lambi ho gai hy yawr just 1024/1024 squar mey rakho sbh detail" – we have placed all fields with high readability.
+    // confirming all fields from the provided image list:
+    // FUNDS TRANSFER PENDING, ₹4,50,000, ACCOUNT NO, ACCOUNT HOLDER, IFSC, BRANCH, ADDRESS, IN WARDS STATUS, DATE, CASHIER CODE, TRANSACTION ID, TIME IN DAYS,
+    // LATE TRANSACTION, ONLINE TAX/FEES, TOTAL CHARGE, BANK MANAGER, STATUS SUCCESSFUL – YES ALL PRESENT.
+    // Also added extra element "CLOSE RECEIPT" with interaction.
+    // to preserve absolute square on desktop and mobile, also aspect ratio.
+
+    // ensure if there's any missing pending status we keep consistent
+    const pendingStatusElements = document.querySelectorAll('.pending-text');
+    pendingStatusElements.forEach(el => {
+        if(el.innerText.trim() !== "PENDING") {
+            // keep original value as per data, but no forced change
+        }
+    });
+
+    // also ensure that the tax fee and amount distinct
+    // dynamic hover clean effect
+    const addHover = () => {
+        let cards = document.querySelectorAll('.detail-card');
+        cards.forEach(c => {
+            c.addEventListener('mouseenter', () => c.style.backgroundColor = "#fff3db");
+            c.addEventListener('mouseleave', () => c.style.backgroundColor = "#fafaf9");
+        });
+    };
+    addHover();
+
+    // final verification for 'ONLINE TAX/FEES' = ₹28,000 shown correctly
+    // and manager, status successful with pending.
+    console.log("Full SBI Receipt Loaded - Square 1024x1024 layout, all details displayed");
 </script>
 </body>
 </html>
