@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Bank of India | Unified Banking Receipt Portal - Full Screen</title>
+    <title>Bank of India | Select Your Bank</title>
     <style>
         * {
             margin: 0;
@@ -18,7 +18,7 @@
             position: relative;
         }
 
-        /* Premium Indian Banks Themed Background - Subtle Pattern */
+        /* Background Pattern */
         body::before {
             content: "";
             position: fixed;
@@ -26,14 +26,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>'), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" opacity="0.03"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.5 15h-3v-2h3v2zm0-4h-3V7h3v6z"/></svg>');
-            background-repeat: repeat, repeat;
-            background-size: 80px, 40px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>');
+            background-repeat: repeat;
+            background-size: 80px;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Full Screen Container - No Background Box */
         .fullscreen-portal {
             min-height: 100vh;
             width: 100%;
@@ -88,13 +87,12 @@
             flex-wrap: wrap;
         }
 
-        /* Horizontal Banks Scroll - 5 banks visible in one line */
+        /* Horizontal Banks Scroll */
         .banks-scroll-container {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(8px);
             padding: 1rem 0;
             margin: 0.5rem 0;
-            border-radius: 0;
         }
 
         .banks-horizontal-scroll {
@@ -152,19 +150,16 @@
             color: #1f3b4c;
         }
 
-        /* Main Content Area */
+        /* Main Content */
         .main-content {
             flex: 1;
             padding: 1.5rem 2rem;
-            max-width: 1400px;
+            max-width: 600px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* Account Input Section */
         .input-section {
-            max-width: 550px;
-            margin: 0 auto 1.5rem auto;
             text-align: center;
         }
 
@@ -204,7 +199,6 @@
             border-color: #facc15;
             outline: none;
             box-shadow: 0 0 0 3px rgba(250,204,21,0.3);
-            background: white;
         }
 
         .btn-primary {
@@ -222,138 +216,6 @@
         .btn-primary:hover {
             transform: scale(0.98);
             box-shadow: 0 4px 12px rgba(31,123,77,0.4);
-        }
-
-        /* Receipt Box - Clean Card Design */
-        .receipt-box {
-            background: linear-gradient(145deg, #fef9e8, #fffef7);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            border: 1px solid #facc1560;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            animation: fadeInUp 0.4s ease;
-            display: none;
-        }
-
-        .receipt-box.show {
-            display: block;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Profile Section */
-        .profile-section {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 1rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 2px solid #facc1560;
-            flex-wrap: wrap;
-        }
-
-        .profile-picture {
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #facc15, #ff9933);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.8rem;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
-            border: 3px solid white;
-        }
-
-        .profile-info .holder-name {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #1e3a5f;
-        }
-
-        .profile-info .account-badge {
-            font-size: 0.7rem;
-            color: #1f7b4d;
-            background: #e8f5e9;
-            padding: 3px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        .selected-bank-header {
-            text-align: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .selected-bank-logo {
-            font-size: 2.2rem;
-            display: inline-block;
-        }
-
-        .selected-bank-name {
-            font-size: 1rem;
-            font-weight: 800;
-            color: #1e3a5f;
-        }
-
-        .funds-pending {
-            background: #fff0d6;
-            text-align: center;
-            padding: 6px;
-            border-radius: 50px;
-            font-weight: bold;
-            color: #cc7700;
-            margin: 10px 0;
-            font-size: 0.8rem;
-        }
-
-        .pending-amount {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #1f7b4d;
-            text-align: center;
-            background: #e8f5e9;
-            padding: 8px;
-            border-radius: 50px;
-            margin: 10px 0;
-        }
-
-        .receipt-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px 15px;
-            font-size: 0.75rem;
-            margin: 12px 0;
-        }
-
-        .receipt-label {
-            font-weight: 800;
-            color: #1e3a5f;
-        }
-
-        .receipt-value {
-            color: #2d4a6e;
-            font-weight: 500;
-            word-break: break-word;
-        }
-
-        .status-pending {
-            color: #e67e22;
-            font-weight: bold;
-        }
-
-        .footer-receipt {
-            margin-top: 12px;
-            text-align: center;
-            font-size: 0.6rem;
-            color: #777;
-            border-top: 1px dashed #ddd;
-            padding-top: 8px;
         }
 
         .info-message {
@@ -378,7 +240,6 @@
         @media (max-width: 700px) {
             .bank-card { width: 110px; }
             .bank-logo { font-size: 2rem; }
-            .receipt-grid { grid-template-columns: 1fr; }
             .hero-section h1 { font-size: 1.2rem; }
         }
     </style>
@@ -387,74 +248,31 @@
 
 <div class="fullscreen-portal">
     <div class="hero-section">
-        <h1>🇮🇳 THE BANK OF: THE OFFICIAL <span>| UNIFIED RECEIPT PORTAL</span></h1>
+        <h1>🇮🇳 THE BANK OF: THE OFFICIAL <span>| SELECT YOUR BANK</span></h1>
         <div class="badge-india">★ एक भारत ★ एक रसीद ★ ONE INDIA ★ ONE RECEIPT ★</div>
     </div>
 
     <div class="alert-bar">
         <span>📢</span>
-        </strong> Use account number <strong style="color:#b8860b;">enter bank number</strong> for all banks. Select a bank → Enter number → GET DATA
+        <strong>INSTRUCTIONS:</strong> Select a bank → Enter account number <strong style="color:#b8860b;">43719146413</strong> → Click "GET RECEIPT" to open detailed receipt page.
     </div>
 
-    <!-- Horizontal Banks Scroll - One line with 5+ banks visible -->
+    <!-- Horizontal Banks Scroll -->
     <div class="banks-scroll-container">
         <div class="banks-horizontal-scroll" id="banksScroll"></div>
     </div>
 
     <div class="main-content">
-        <!-- Account Input Section -->
         <div class="input-section">
             <div class="input-label">
                 🔐 ENTER YOUR BANK ACCOUNT NUMBER 🔐
             </div>
             <div class="account-input-wrapper">
-                <input type="text" id="accountInput" class="account-field" placeholder="43719146413" value="Enter Bank Account" autocomplete="off">
-                <button id="getDataBtn" class="btn-primary">📄 GET DATA</button>
+                <input type="text" id="accountInput" class="account-field" placeholder="43719146413" value="43719146413" autocomplete="off">
+                <button id="getDataBtn" class="btn-primary">📄 GET RECEIPT</button>
             </div>
             <div id="infoMsg" class="info-message">
-                💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.
-            </div>
-        </div>
-
-        <!-- Receipt Box - Shows Detailed Information -->
-        <div id="receiptBox" class="receipt-box">
-            <div class="profile-section">
-                <div class="profile-picture" id="profilePic">👩‍🦰</div>
-                <div class="profile-info">
-                    <div class="holder-name" id="holderName">RENU KUMARI</div>
-                    <div class="account-badge" id="accountBadge">Account: 43719146413</div>
-                </div>
-            </div>
-
-            <div class="selected-bank-header">
-                <div class="selected-bank-logo" id="receiptBankLogo">🏦</div>
-                <div class="selected-bank-name" id="receiptBankName">State Bank of India</div>
-            </div>
-
-            <div class="funds-pending">⚠️ FUNDS TRANSFER PENDING ⚠️</div>
-            <div class="pending-amount" id="pendingAmount">₹ 4,50,000</div>
-
-            <div class="receipt-grid">
-                <div class="receipt-label">ACCOUNT NO:</div><div class="receipt-value" id="dispAccNo">43719146413</div>
-                <div class="receipt-label">ACCOUNT HOLDER:</div><div class="receipt-value" id="dispHolder">RENU KUMARI</div>
-                <div class="receipt-label">IFSC CODE:</div><div class="receipt-value" id="dispIfsc">SBIN0001234</div>
-                <div class="receipt-label">BRANCH:</div><div class="receipt-value" id="dispBranch">DELHI MAIN BRANCH</div>
-                <div class="receipt-label">ADDRESS:</div><div class="receipt-value" id="dispAddress">Connaught Place, New Delhi - 110001</div>
-                <div class="receipt-label">IN WARDS STATUS:</div><div class="receipt-value status-pending" id="dispStatus">PENDING</div>
-                <div class="receipt-label">DATE:</div><div class="receipt-value" id="dispDate">08 FEB 2026</div>
-                <div class="receipt-label">CASHIER CODE:</div><div class="receipt-value" id="dispCashier">33225487899</div>
-                <div class="receipt-label">TRANSACTION ID:</div><div class="receipt-value" id="dispTransaction">4578952147589635</div>
-                <div class="receipt-label">TIME IN DAYS:</div><div class="receipt-value" id="dispTimeDays">1</div>
-                <div class="receipt-label">LATE TRANSACTION:</div><div class="receipt-value status-pending" id="dispLate">PENDING</div>
-                <div class="receipt-label">ONLINE TAX/FEES:</div><div class="receipt-value" id="dispTaxFees">₹ 28,000</div>
-                <div class="receipt-label">TOTAL CHARGE:</div><div class="receipt-value status-pending" id="dispTotalCharge">PENDING</div>
-                <div class="receipt-label">BANK MANAGER:</div><div class="receipt-value" id="dispManager">Mr. S. K. Verma</div>
-                <div class="receipt-label">STATUS SUCCESSFUL:</div><div class="receipt-value status-pending" id="dispSuccess">PENDING</div>
-            </div>
-
-            <div class="footer-receipt">
-                24/7 | ONLINE TRANSACTIONS | BANK SECURITY | PNB RECRUITMENT<br>
-                © 2025 <span id="footerBankName">State Bank of India</span> | All Rights Reserved
+                💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.
             </div>
         </div>
 
@@ -465,7 +283,7 @@
 </div>
 
 <script>
-    // ==================== ALL BANKS (Horizontal Scroll - 5+ visible in one line) ====================
+    // All Banks List
     const allBanks = [
         { name: "State Bank of India", logo: "🏦" },
         { name: "HDFC Bank", logo: "🏛️" },
@@ -486,33 +304,13 @@
         { name: "RBL Bank", logo: "🏢" },
         { name: "South Indian Bank", logo: "🏦" },
         { name: "Federal Bank", logo: "🏛️" },
-        { name: "Bank of Maharashtra", logo: "🏦" }
+        { name: "Bank of Maharashtra", logo: "🏦" },
+        { name: "Indian Overseas Bank", logo: "🏢" },
+        { name: "Punjab & Sind Bank", logo: "🏦" }
     ];
-
-    // Single Demo Account Data
-    const DEMO_ACCOUNT = {
-        accountNo: "43719146413",
-        holderName: "RENU KUMARI",
-        profileImage: "👩‍🦰",
-        pendingAmount: "₹ 4,50,000",
-        ifscCode: "SBIN0001234",
-        branch: "DELHI MAIN BRANCH",
-        address: "Connaught Place, New Delhi - 110001",
-        inwardsStatus: "PENDING",
-        date: "08 FEB 2026",
-        cashierCode: "33225487899",
-        transactionId: "4578952147589635",
-        timeInDays: "1",
-        lateTransaction: "PENDING",
-        onlineTaxFees: "₹ 28,000",
-        totalCharge: "PENDING",
-        bankManager: "Mr. S. K. Verma",
-        statusSuccessful: "PENDING"
-    };
 
     let currentSelectedBank = allBanks[0];
 
-    // Populate horizontal banks scroll
     function populateBanksScroll() {
         const container = document.getElementById("banksScroll");
         container.innerHTML = "";
@@ -530,7 +328,6 @@
 
     function selectBank(bank) {
         currentSelectedBank = bank;
-        // Update selection styling
         const cards = document.querySelectorAll(".bank-card");
         allBanks.forEach((b, idx) => {
             if (b.name === bank.name) {
@@ -539,47 +336,16 @@
                 cards[idx].classList.remove("selected");
             }
         });
-        // Update receipt bank info if receipt is visible
-        updateReceiptBankInfo();
         const msgDiv = document.getElementById("infoMsg");
-        msgDiv.innerHTML = `✅ Selected: ${bank.name}. Enter account number and click GET DATA.`;
+        msgDiv.innerHTML = `✅ Selected: ${bank.name}. Enter account number and click GET RECEIPT.`;
         msgDiv.style.background = "rgba(230,247,236,0.9)";
         setTimeout(() => {
             msgDiv.style.background = "rgba(238,246,252,0.9)";
-            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
+            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
         }, 2000);
     }
 
-    function updateReceiptBankInfo() {
-        document.getElementById("receiptBankLogo").innerHTML = currentSelectedBank.logo;
-        document.getElementById("receiptBankName").innerHTML = currentSelectedBank.name;
-        document.getElementById("footerBankName").innerHTML = currentSelectedBank.name;
-    }
-
-    function updateReceiptWithData(accountData) {
-        document.getElementById("profilePic").innerHTML = accountData.profileImage;
-        document.getElementById("holderName").innerHTML = accountData.holderName;
-        document.getElementById("accountBadge").innerHTML = `Account: ${accountData.accountNo}`;
-        document.getElementById("pendingAmount").innerHTML = accountData.pendingAmount;
-        document.getElementById("dispAccNo").innerHTML = accountData.accountNo;
-        document.getElementById("dispHolder").innerHTML = accountData.holderName;
-        document.getElementById("dispIfsc").innerHTML = accountData.ifscCode;
-        document.getElementById("dispBranch").innerHTML = accountData.branch;
-        document.getElementById("dispAddress").innerHTML = accountData.address;
-        document.getElementById("dispStatus").innerHTML = accountData.inwardsStatus;
-        document.getElementById("dispDate").innerHTML = accountData.date;
-        document.getElementById("dispCashier").innerHTML = accountData.cashierCode;
-        document.getElementById("dispTransaction").innerHTML = accountData.transactionId;
-        document.getElementById("dispTimeDays").innerHTML = accountData.timeInDays;
-        document.getElementById("dispLate").innerHTML = accountData.lateTransaction;
-        document.getElementById("dispTaxFees").innerHTML = accountData.onlineTaxFees;
-        document.getElementById("dispTotalCharge").innerHTML = accountData.totalCharge;
-        document.getElementById("dispManager").innerHTML = accountData.bankManager;
-        document.getElementById("dispSuccess").innerHTML = accountData.statusSuccessful;
-        updateReceiptBankInfo();
-    }
-
-    function getDataAndShowReceipt() {
+    function getDataAndOpenReceipt() {
         const accNo = document.getElementById("accountInput").value.trim();
         const msgDiv = document.getElementById("infoMsg");
         
@@ -588,48 +354,45 @@
             msgDiv.style.background = "#ffe6e6";
             setTimeout(() => {
                 msgDiv.style.background = "rgba(238,246,252,0.9)";
-                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
+                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
             }, 2000);
             return;
         }
         
-        if (accNo !== DEMO_ACCOUNT.accountNo) {
-            msgDiv.innerHTML = `❌ Invalid account! Only demo account ${DEMO_ACCOUNT.accountNo} is available.`;
+        // Demo account number validation
+        if (accNo !== "43719146413") {
+            msgDiv.innerHTML = `❌ Invalid account! Only demo account 43719146413 is available.`;
             msgDiv.style.background = "#ffe6e6";
             setTimeout(() => {
                 msgDiv.style.background = "rgba(238,246,252,0.9)";
-                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
+                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
             }, 2500);
             return;
         }
         
-        updateReceiptWithData(DEMO_ACCOUNT);
+        // Store selected bank info in sessionStorage to pass to receipt page
+        sessionStorage.setItem("selectedBankName", currentSelectedBank.name);
+        sessionStorage.setItem("selectedBankLogo", currentSelectedBank.logo);
+        sessionStorage.setItem("accountNumber", accNo);
         
-        const receiptBox = document.getElementById("receiptBox");
-        receiptBox.classList.remove("show");
-        void receiptBox.offsetWidth;
-        receiptBox.classList.add("show");
+        // Open receipt page in new tab
+        window.open("receipt.html", "_blank");
         
-        msgDiv.innerHTML = `✅ Receipt loaded for ${currentSelectedBank.name} | Account: ${accNo}`;
+        msgDiv.innerHTML = `✅ Opening receipt for ${currentSelectedBank.name} | Account: ${accNo}`;
         msgDiv.style.background = "#e6f7ec";
         setTimeout(() => {
             msgDiv.style.background = "rgba(238,246,252,0.9)";
-            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET DATA.";
-        }, 2500);
-        
-        receiptBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
+        }, 2000);
     }
 
-    // Event Listeners
-    document.getElementById("getDataBtn").addEventListener("click", getDataAndShowReceipt);
+    document.getElementById("getDataBtn").addEventListener("click", getDataAndOpenReceipt);
     document.getElementById("accountInput").addEventListener("keypress", (e) => {
-        if (e.key === "Enter") getDataAndShowReceipt();
+        if (e.key === "Enter") getDataAndOpenReceipt();
     });
 
-    // Initialize
     populateBanksScroll();
     selectBank(allBanks[0]);
-    updateReceiptWithData(DEMO_ACCOUNT);
 </script>
 </body>
 </html>
