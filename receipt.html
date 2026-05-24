@@ -33,7 +33,7 @@
             z-index: 0;
         }
 
-        /* Full Screen Container - No Box, Edge to Edge */
+        /* Full Screen Container */
         .fullscreen-receipt {
             min-height: 100vh;
             width: 100%;
@@ -41,14 +41,15 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 2rem;
         }
 
-        /* Receipt Content - Centered with Max Width */
+        /* Receipt Content - Centered */
         .receipt-content {
-            max-width: 750px;
+            max-width: 1024px;
             width: 100%;
-            margin: 0 auto;
             background: linear-gradient(145deg, #fef9e8, #fffef7);
             border-radius: 2rem;
             padding: 2rem;
@@ -62,7 +63,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Image Section - Center Only */
+        /* Image Section - Center */
         .image-section {
             text-align: center;
             margin-bottom: 1.5rem;
@@ -143,12 +144,15 @@
             margin: 12px 0;
         }
 
-        /* Receipt Details - Inline Layout */
+        /* Receipt Details - 2 Column Grid for Better Layout */
         .receipt-details {
-            margin: 15px 0;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 20px;
         }
 
-        .detail-row {
+        .detail-item {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
@@ -161,7 +165,6 @@
         .detail-label {
             font-weight: 800;
             color: #1e3a5f;
-            min-width: 140px;
             font-size: 0.85rem;
         }
 
@@ -169,7 +172,6 @@
             color: #2d4a6e;
             font-weight: 500;
             text-align: right;
-            flex: 1;
             word-break: break-word;
             font-size: 0.85rem;
         }
@@ -179,9 +181,14 @@
             font-weight: bold;
         }
 
+        /* Full Width Items */
+        .full-width {
+            grid-column: span 2;
+        }
+
         /* Footer */
         .footer-receipt {
-            margin-top: 18px;
+            margin-top: 20px;
             text-align: center;
             font-size: 0.65rem;
             color: #777;
@@ -209,101 +216,12 @@
             transform: scale(0.98);
         }
 
-        /* Image URL Changer */
-        .image-url-changer {
-            margin-top: 20px;
-            padding: 12px;
-            background: #f0f4f8;
-            border-radius: 16px;
-        }
-
-        .image-url-changer label {
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #1e3a5f;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .url-input-group {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .url-input-group input {
-            flex: 1;
-            padding: 8px 12px;
-            border-radius: 40px;
-            border: 1px solid #ccc;
-            font-size: 0.75rem;
-        }
-
-        .update-image-btn {
-            padding: 6px 16px;
-            background: #facc15;
-            border: none;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .update-image-btn:hover {
-            background: #e6b800;
-        }
-
-        /* Name Changer */
-        .name-changer {
-            margin-top: 12px;
-            padding: 12px;
-            background: #f0f4f8;
-            border-radius: 16px;
-        }
-
-        .name-changer label {
-            font-size: 0.7rem;
-            font-weight: bold;
-            color: #1e3a5f;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .name-input-group {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .name-input-group input {
-            flex: 1;
-            padding: 8px 12px;
-            border-radius: 40px;
-            border: 1px solid #ccc;
-            font-size: 0.75rem;
-        }
-
-        .update-name-btn {
-            padding: 6px 16px;
-            background: #facc15;
-            border: none;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .hint-text {
-            font-size: 0.6rem;
-            color: #888;
-            margin-top: 5px;
-        }
-
-        @media (max-width: 550px) {
+        @media (max-width: 700px) {
             .fullscreen-receipt { padding: 1rem; }
             .receipt-content { padding: 1.2rem; }
-            .detail-row { flex-direction: column; align-items: flex-start; }
+            .receipt-details { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            .detail-item { flex-direction: column; align-items: flex-start; }
             .detail-value { text-align: left; }
         }
     </style>
@@ -333,88 +251,68 @@
         <div class="funds-pending">⚠️ FUNDS TRANSFER PENDING ⚠️</div>
         <div class="pending-amount" id="pendingAmount">₹ 4,50,000</div>
 
-        <!-- Receipt Details -->
+        <!-- Receipt Details - Clean Grid Layout -->
         <div class="receipt-details">
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">ACCOUNT NO:</span>
                 <span class="detail-value" id="dispAccNo">43719146413</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">ACCOUNT HOLDER:</span>
                 <span class="detail-value" id="dispHolder">RENU KUMARI</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">IFSC CODE:</span>
                 <span class="detail-value" id="dispIfsc">SBIN0001234</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">BRANCH:</span>
                 <span class="detail-value" id="dispBranch">DELHI MAIN BRANCH</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item full-width">
                 <span class="detail-label">ADDRESS:</span>
                 <span class="detail-value" id="dispAddress">Connaught Place, New Delhi - 110001</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">IN WARDS STATUS:</span>
                 <span class="detail-value status-pending" id="dispStatus">PENDING</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">DATE:</span>
                 <span class="detail-value" id="dispDate">08 FEB 2026</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">CASHIER CODE:</span>
                 <span class="detail-value" id="dispCashier">33225487899</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item full-width">
                 <span class="detail-label">TRANSACTION ID:</span>
                 <span class="detail-value" id="dispTransaction">A7D0A1A4T2A0C01</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">TIME IN DAYS:</span>
                 <span class="detail-value" id="dispTimeDays">1</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">LATE TRANSACTION:</span>
                 <span class="detail-value status-pending" id="dispLate">PENDING</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">ONLINE TAX/FEES:</span>
                 <span class="detail-value" id="dispTaxFees">₹ 28,000</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">TOTAL CHARGE:</span>
                 <span class="detail-value status-pending" id="dispTotalCharge">PENDING</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">BANK MANAGER:</span>
                 <span class="detail-value" id="dispManager">Mr. S. K. Verma</span>
             </div>
-            <div class="detail-row">
+            <div class="detail-item">
                 <span class="detail-label">STATUS SUCCESSFUL:</span>
                 <span class="detail-value status-pending" id="dispSuccess">PENDING</span>
             </div>
-        </div>
-
-        <!-- Image URL Changer -->
-        <div class="image-url-changer">
-            <label>🔧 CHANGE PROFILE IMAGE URL:</label>
-            <div class="url-input-group">
-                <input type="text" id="imageUrlInput" placeholder="Enter image URL (jpg/png)" value="https://randomuser.me/api/portraits/women/68.jpg">
-                <button id="updateImageBtn" class="update-image-btn">UPDATE IMAGE</button>
-            </div>
-            <div class="hint-text">💡 Paste any image URL above and click UPDATE IMAGE</div>
-        </div>
-
-        <!-- Account Name Changer -->
-        <div class="name-changer">
-            <label>✏️ CHANGE ACCOUNT HOLDER NAME:</label>
-            <div class="name-input-group">
-                <input type="text" id="accountNameInput" placeholder="Enter account holder name" value="RENU KUMARI">
-                <button id="updateNameBtn" class="update-name-btn">UPDATE NAME</button>
-            </div>
-            <div class="hint-text">💡 Hint: Account name appears above — you can edit it</div>
         </div>
 
         <!-- Close Button -->
@@ -433,6 +331,10 @@
     const selectedBankName = sessionStorage.getItem("selectedBankName") || "State Bank of India";
     const selectedBankLogo = sessionStorage.getItem("selectedBankLogo") || "🏦";
     const accountNumber = sessionStorage.getItem("accountNumber") || "43719146413";
+
+    // Fixed profile image (no changer)
+    const profileImageUrl = "https://randomuser.me/api/portraits/women/68.jpg";
+    document.getElementById("centerProfileImage").src = profileImageUrl;
 
     // Demo account full data
     const accountData = {
@@ -480,49 +382,6 @@
         document.getElementById("dispSuccess").innerHTML = accountData.statusSuccessful;
     }
 
-    // Update profile image from URL
-    function updateProfileImage() {
-        const newUrl = document.getElementById("imageUrlInput").value.trim();
-        if (newUrl) {
-            const imgElement = document.getElementById("centerProfileImage");
-            imgElement.src = newUrl;
-            localStorage.setItem("profileImageUrl", newUrl);
-            const btn = document.getElementById("updateImageBtn");
-            const originalText = btn.innerText;
-            btn.innerText = "✓ UPDATED!";
-            setTimeout(() => { btn.innerText = originalText; }, 1500);
-        }
-    }
-
-    // Update account holder name
-    function updateAccountName() {
-        const newName = document.getElementById("accountNameInput").value.trim();
-        if (newName) {
-            accountData.holderName = newName;
-            document.getElementById("holderName").innerHTML = newName;
-            document.getElementById("dispHolder").innerHTML = newName;
-            const btn = document.getElementById("updateNameBtn");
-            const originalText = btn.innerText;
-            btn.innerText = "✓ UPDATED!";
-            setTimeout(() => { btn.innerText = originalText; }, 1500);
-        }
-    }
-
-    // Load saved image URL
-    function loadSavedImageUrl() {
-        const savedUrl = localStorage.getItem("profileImageUrl");
-        if (savedUrl) {
-            document.getElementById("imageUrlInput").value = savedUrl;
-            document.getElementById("centerProfileImage").src = savedUrl;
-        }
-    }
-
-    // Event listeners
-    document.getElementById("updateImageBtn").addEventListener("click", updateProfileImage);
-    document.getElementById("updateNameBtn").addEventListener("click", updateAccountName);
-
-    // Initialize
-    loadSavedImageUrl();
     updateReceipt();
 </script>
 </body>
