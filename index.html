@@ -139,103 +139,27 @@
         }
 
         /* ============================================================
-                   FIA OFFICIAL INFO SECTION (Search ki jagah)
-                   ============================================================ */
-        .fia-info-section {
+           ===== FIA BANNER IMAGE (Uper - Search ki jagah) =====
+           ============================================================ */
+        .fia-banner-image {
             max-width: 900px;
             margin: -30px auto 20px;
-            background: white;
-            padding: 35px 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            padding: 0 20px;
             position: relative;
             z-index: 2;
-            border-top: 5px solid #d4a017;
-            text-align: center;
         }
-        .fia-info-section .official-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .fia-info-section .official-logo .shield-icon {
-            font-size: 60px;
-            color: #d4a017;
-            background: #06122e;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .fia-banner-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
             border: 3px solid #d4a017;
-        }
-        .fia-info-section .official-logo .logo-text {
-            text-align: left;
-        }
-        .fia-info-section .official-logo .logo-text h2 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #06122e;
-        }
-        .fia-info-section .official-logo .logo-text h2 span {
-            color: #d4a017;
-        }
-        .fia-info-section .official-logo .logo-text p {
-            color: #6c7a8a;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-        .fia-info-section .motto {
-            font-size: 18px;
-            color: #0a1a3a;
-            font-weight: 600;
-            margin: 10px 0 5px;
-            font-style: italic;
-        }
-        .fia-info-section .motto i {
-            color: #d4a017;
-        }
-        .fia-info-section .tagline {
-            color: #6c7a8a;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        .fia-info-section .divider-line {
-            width: 80px;
-            height: 3px;
-            background: #d4a017;
-            margin: 12px auto;
-            border-radius: 5px;
-        }
-        .fia-info-section .quick-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-        .fia-info-section .quick-stats .stat {
-            text-align: center;
-        }
-        .fia-info-section .quick-stats .stat .number {
-            font-size: 28px;
-            font-weight: 800;
-            color: #d4a017;
-        }
-        .fia-info-section .quick-stats .stat .label {
-            font-size: 13px;
-            color: #6c7a8a;
-            font-weight: 600;
+            display: block;
         }
 
         /* ============================================================
-                   SEARCH SECTION (Photo ke neche)
-                   ============================================================ */
+           ===== SEARCH SECTION =====
+           ============================================================ */
         .search-section {
             max-width: 900px;
             margin: 0 auto 30px;
@@ -630,8 +554,25 @@
         }
 
         /* ============================================================
-                   FOOTER - OFFICERS SECTION
-                   ============================================================ */
+           ===== BANNER IMAGE 2 (Neche - Officers se pehle) =====
+           ============================================================ */
+        .banner-image-bottom {
+            max-width: 1200px;
+            margin: 30px auto 20px;
+            padding: 0 20px;
+        }
+        .banner-image-bottom img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 3px solid #d4a017;
+            display: block;
+        }
+
+        /* ============================================================
+           ===== FOOTER - OFFICERS SECTION
+           ============================================================ */
         .footer-officers {
             background: #06122e;
             padding: 50px 20px 30px;
@@ -870,17 +811,9 @@
             .hero h1 {
                 font-size: 26px;
             }
-            .fia-info-section {
-                padding: 25px 20px;
+            .fia-banner-image {
                 margin: -25px 10px 15px;
-            }
-            .fia-info-section .official-logo .shield-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 40px;
-            }
-            .fia-info-section .official-logo .logo-text h2 {
-                font-size: 22px;
+                padding: 0 10px;
             }
             .search-section {
                 padding: 20px;
@@ -929,8 +862,8 @@
             .footer-contact .container {
                 grid-template-columns: 1fr;
             }
-            .fia-info-section .quick-stats {
-                gap: 20px;
+            .banner-image-bottom {
+                padding: 0 10px;
             }
         }
 
@@ -939,12 +872,6 @@
                 font-size: 22px;
             }
             .hero p {
-                font-size: 15px;
-            }
-            .fia-info-section .official-logo .logo-text h2 {
-                font-size: 18px;
-            }
-            .fia-info-section .motto {
                 font-size: 15px;
             }
             .search-section h2 {
@@ -981,9 +908,6 @@
             }
             .officer-card .name {
                 font-size: 16px;
-            }
-            .fia-info-section .quick-stats .stat .number {
-                font-size: 22px;
             }
         }
     </style>
@@ -1025,50 +949,14 @@
     </section>
 
     <!-- ============================================================
-    ===== FIA OFFICIAL INFO SECTION (Search ki jagah)
+    ===== FIA BANNER IMAGE (Uper - Search ki jagah) =====
     ============================================================ -->
-    <section class="fia-info-section">
-
-        <div class="official-logo">
-            <div class="shield-icon">🛡️</div>
-            <div class="logo-text">
-                <h2>FIA <span>Pakistan</span></h2>
-                <p>FEDERAL INVESTIGATION AGENCY</p>
-            </div>
-        </div>
-
-        <div class="divider-line"></div>
-
-        <div class="motto">
-            <i>“</i> Justice through Investigation <i>”</i>
-        </div>
-        <div class="tagline">🇵🇰 Serving the nation with integrity and professionalism</div>
-
-        <div class="divider-line"></div>
-
-        <div class="quick-stats">
-            <div class="stat">
-                <div class="number">24/7</div>
-                <div class="label">Helpline</div>
-            </div>
-            <div class="stat">
-                <div class="number">100%</div>
-                <div class="label">Commitment</div>
-            </div>
-            <div class="stat">
-                <div class="number">🔒</div>
-                <div class="label">Secure System</div>
-            </div>
-            <div class="stat">
-                <div class="number">📋</div>
-                <div class="label">Digital Tracking</div>
-            </div>
-        </div>
-
-    </section>
+    <div class="fia-banner-image">
+        <img src="https://i.ibb.co/Fbz2ttJ5/IMG-20260626-WA0159.jpg" alt="FIA Pakistan Banner" />
+    </div>
 
     <!-- ============================================================
-    ===== SEARCH SECTION (Photo ke neche)
+    ===== SEARCH SECTION =====
     ============================================================ -->
     <section class="search-section">
 
@@ -1163,6 +1051,13 @@
         </div>
 
     </section>
+
+    <!-- ============================================================
+    ===== BANNER IMAGE 2 (Neche - Officers se pehle) =====
+    ============================================================ -->
+    <div class="banner-image-bottom">
+        <img src="https://i.ibb.co/Fbz2ttJ5/IMG-20260626-WA0159.jpg" alt="FIA Pakistan Banner Bottom" />
+    </div>
 
     <!-- ============================================================
     ===== FOOTER - OFFICERS SECTION
