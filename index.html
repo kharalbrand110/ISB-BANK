@@ -1,398 +1,987 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Bank of India | Select Your Bank</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FIA - Federal Investigation Agency</title>
     <style>
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a2f44 0%, #0c3b4f 100%);
+            background: #e8ecf1;
+        }
+
+        /* ===== TOP BAR ===== */
+        .top-bar {
+            background: linear-gradient(135deg, #06122e 0%, #0a1a3a 100%);
+            color: white;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #d4a017;
+        }
+        .top-bar .logo {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .top-bar .logo span {
+            color: #d4a017;
+        }
+        .top-bar .logo small {
+            font-size: 12px;
+            font-weight: 400;
+            color: #aab8d0;
+            margin-left: 10px;
+        }
+        .top-bar .gov-text {
+            font-size: 13px;
+            opacity: 0.9;
+            text-align: right;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            background: #0d2a4d;
+            padding: 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #d4a017;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 22px;
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        nav ul li a:hover {
+            background: #d4a017;
+            color: #06122e;
+        }
+        nav ul li a.active {
+            background: #d4a017;
+            color: #06122e;
+        }
+
+        /* ===== HERO BANNER ===== */
+        .hero {
+            background: linear-gradient(135deg, #06122e 0%, #1a3a6a 50%, #0d2a4d 100%);
+            color: white;
+            padding: 60px 20px 50px;
+            text-align: center;
             position: relative;
+            overflow: hidden;
         }
-
-        /* Background Pattern */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50,5 L95,27.5 L95,72.5 L50,95 L5,72.5 L5,27.5 Z M50,15 L85,32.5 L85,67.5 L50,85 L15,67.5 L15,32.5 Z M50,25 L75,37.5 L75,62.5 L50,75 L25,62.5 L25,37.5 Z M50,35 L65,42.5 L65,57.5 L50,65 L35,57.5 L35,42.5 Z M50,45 L55,48.5 L55,51.5 L50,55 L45,51.5 L45,48.5 Z"/></svg>');
-            background-repeat: repeat;
-            background-size: 80px;
-            pointer-events: none;
-            z-index: 0;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212,160,23,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
         }
-
-        .fullscreen-portal {
-            min-height: 100vh;
-            width: 100%;
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
             position: relative;
             z-index: 1;
-            display: flex;
-            flex-direction: column;
+            letter-spacing: 2px;
         }
-
-        /* Header */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(10,47,68,0.95) 0%, rgba(12,74,110,0.95) 100%);
-            backdrop-filter: blur(2px);
-            padding: 1.2rem 2rem;
-            text-align: center;
-            color: white;
-            border-bottom: 3px solid #facc15;
+        .hero h1 span {
+            color: #d4a017;
         }
-
-        .hero-section h1 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 15px auto 0;
+            position: relative;
+            z-index: 1;
         }
-
-        .badge-india {
-            background: linear-gradient(135deg, #ff9933, #ff7700);
+        .hero .badge {
             display: inline-block;
-            padding: 4px 18px;
-            border-radius: 60px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            color: #1e3a5f;
-            margin-top: 6px;
-        }
-
-        .alert-bar {
-            background: linear-gradient(95deg, #fff8e7, #fff3d6);
-            border-left: 5px solid #facc15;
-            padding: 8px 20px;
-            margin: 0.8rem 2rem;
-            border-radius: 16px;
-            font-size: 0.75rem;
-            color: #7a6300;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        /* Horizontal Banks Scroll */
-        .banks-scroll-container {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            padding: 1rem 0;
-            margin: 0.5rem 0;
-        }
-
-        .banks-horizontal-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 1rem;
-            padding: 0.5rem 2rem;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-        }
-
-        .banks-horizontal-scroll::-webkit-scrollbar {
-            height: 5px;
-        }
-        .banks-horizontal-scroll::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.2);
-            border-radius: 10px;
-        }
-        .banks-horizontal-scroll::-webkit-scrollbar-thumb {
-            background: #facc15;
-            border-radius: 10px;
-        }
-
-        .bank-card {
-            flex: 0 0 auto;
-            width: 140px;
-            background: white;
-            border-radius: 1.2rem;
-            padding: 0.8rem 0.3rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: 2px solid transparent;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .bank-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .bank-card.selected {
-            border-color: #facc15;
-            background: linear-gradient(135deg, #fff8e7, #ffffff);
-        }
-
-        .bank-logo {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-
-        .bank-name {
-            font-size: 0.7rem;
+            background: #d4a017;
+            color: #06122e;
+            padding: 5px 25px;
+            border-radius: 30px;
             font-weight: 700;
-            color: #1f3b4c;
+            font-size: 14px;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Main Content */
-        .main-content {
-            flex: 1;
-            padding: 1.5rem 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            width: 100%;
+        /* ===== SEARCH SECTION ===== */
+        .search-section {
+            max-width: 900px;
+            margin: -35px auto 30px;
+            background: white;
+            padding: 35px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
+            border-top: 5px solid #d4a017;
         }
-
-        .input-section {
+        .search-section h2 {
+            color: #06122e;
+            margin-bottom: 20px;
+            font-size: 24px;
             text-align: center;
+            font-weight: 700;
         }
-
-        .input-label {
-            font-weight: 800;
-            font-size: 1rem;
-            color: white;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        .search-section h2 i {
+            color: #d4a017;
         }
-
-        .account-input-wrapper {
+        .search-box {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
-
-        .account-field {
+        .search-box input {
             flex: 1;
-            min-width: 250px;
-            padding: 12px 18px;
-            font-size: 0.95rem;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 60px;
-            font-family: monospace;
-            text-align: center;
-            background: rgba(255,255,255,0.95);
-            transition: all 0.25s;
+            min-width: 280px;
+            padding: 16px 22px;
+            border: 2px solid #dce1e8;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: 0.3s;
+            background: #f8f9fc;
         }
-
-        .account-field:focus {
-            border-color: #facc15;
+        .search-box input:focus {
+            border-color: #d4a017;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(250,204,21,0.3);
+            box-shadow: 0 0 0 4px rgba(212,160,23,0.15);
+            background: white;
         }
-
-        .btn-primary {
-            background: linear-gradient(95deg, #1f7b4d, #166534);
-            padding: 12px 28px;
-            border-radius: 60px;
-            color: white;
-            font-weight: bold;
+        .search-box button {
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #d4a017, #b8860b);
+            color: #06122e;
             border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
-            font-size: 0.9rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .search-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212,160,23,0.4);
+        }
+        .search-box button:active {
+            transform: scale(0.97);
         }
 
-        .btn-primary:hover {
-            transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(31,123,77,0.4);
-        }
-
-        .info-message {
-            margin-top: 12px;
-            background: rgba(238,246,252,0.9);
-            padding: 8px;
-            border-radius: 50px;
+        /* ===== LOADING ANIMATION (FIA Security Style) ===== */
+        .loading-container {
+            display: none;
+            margin-top: 30px;
+            padding: 40px 20px;
             text-align: center;
-            font-size: 0.7rem;
-            color: #1e5f7a;
+            background: #f8f9fc;
+            border-radius: 12px;
+            border: 2px dashed #d4a017;
+        }
+        .loading-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
 
-        .footer-note {
-            background: rgba(0,0,0,0.3);
-            padding: 0.6rem;
+        .fia-loader {
+            display: inline-block;
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        .fia-loader .shield {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #d4a017;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        .fia-loader .shield::before {
+            content: '⚡';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #d4a017;
+        }
+        .fia-loader .ring {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border: 4px solid transparent;
+            border-top: 4px solid #0a1a3a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        .fia-loader .ring2 {
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border: 4px solid transparent;
+            border-bottom: 4px solid #d4a017;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite reverse;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #06122e;
+        }
+        .loading-text span {
+            color: #d4a017;
+        }
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+        .security-badge {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 20px;
+            background: #0a1a3a;
+            color: #d4a017;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* ===== RESULT CARD ===== */
+        .result-card {
+            display: none;
+            margin-top: 30px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-left: 6px solid #d4a017;
+            animation: slideUp 0.6s ease;
+        }
+        .result-card.active {
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+        .result-header .status-badge {
+            background: #d4a017;
+            padding: 6px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #06122e;
+        }
+        .result-header .date {
+            font-size: 13px;
+            color: #6c7a8a;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 30px;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .result-item .label {
+            font-weight: 600;
+            color: #06122e;
+            font-size: 14px;
+        }
+        .result-item .value {
+            color: #1a1a2e;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: right;
+        }
+        .result-item .value.active {
+            color: #28a745;
+            font-weight: 700;
+        }
+        .result-item .value.inactive {
+            color: #dc3545;
+            font-weight: 700;
+        }
+        .result-item .value.status {
+            background: #d4a017;
+            padding: 2px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #06122e;
+        }
+
+        .result-full {
+            grid-column: 1 / -1;
+        }
+
+        /* ===== PHOTO SECTION ===== */
+        .photo-section {
+            grid-column: 1 / -1;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fc;
+            border-radius: 12px;
             text-align: center;
-            font-size: 0.6rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 1rem;
+            border: 2px solid #e8ecf1;
+        }
+        .photo-section .photo-label {
+            font-weight: 700;
+            color: #06122e;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .photo-section .photo-label i {
+            color: #d4a017;
+        }
+        .photo-section img {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 10px;
+            border: 3px solid #d4a017;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .photo-section img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(212,160,23,0.3);
+        }
+        .photo-section .photo-note {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #6c7a8a;
         }
 
-        @media (max-width: 700px) {
-            .bank-card { width: 110px; }
-            .bank-logo { font-size: 2rem; }
-            .hero-section h1 { font-size: 1.2rem; }
+        .ref-number-box {
+            background: linear-gradient(135deg, #06122e, #0d2a4d);
+            color: #d4a017;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            border: 1px solid #d4a017;
+        }
+        .ref-number-box small {
+            font-size: 13px;
+            color: #aab8d0;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        /* ===== NO RESULT ===== */
+        #noResult {
+            display: none;
+            text-align: center;
+            margin-top: 25px;
+            padding: 30px;
+            background: #fff5f5;
+            border-radius: 12px;
+            border: 2px solid #dc3545;
+        }
+        #noResult .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        #noResult h3 {
+            color: #dc3545;
+            font-weight: 700;
+        }
+        #noResult p {
+            color: #6c7a8a;
+            margin-top: 5px;
+        }
+
+        /* ===== QUICK LINKS ===== */
+        .quick-links {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .quick-links .card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+        .quick-links .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+            border-bottom-color: #d4a017;
+        }
+        .quick-links .card .icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+        .quick-links .card h4 {
+            color: #06122e;
+            font-size: 16px;
+        }
+        .quick-links .card p {
+            font-size: 13px;
+            color: #6c7a8a;
+            margin-top: 5px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #06122e;
+            color: #aab8d0;
+            padding: 35px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 3px solid #d4a017;
+        }
+        footer .footer-links {
+            margin: 15px 0;
+        }
+        footer .footer-links a {
+            color: #d4a017;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+        footer p {
+            font-size: 13px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            .result-item {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .result-item .value {
+                text-align: left;
+            }
+            .top-bar {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                padding: 12px 15px;
+            }
+            .top-bar .gov-text {
+                text-align: center;
+            }
+            nav {
+                padding: 0 10px;
+            }
+            nav ul li a {
+                padding: 10px 14px;
+                font-size: 12px;
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .search-section {
+                padding: 25px 20px;
+                margin: -25px 10px 20px;
+            }
+            .search-box input {
+                min-width: 100%;
+            }
+            .search-box button {
+                width: 100%;
+            }
+            .photo-section img {
+                max-height: 200px;
+            }
+            .result-header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+            .hero p {
+                font-size: 15px;
+            }
+            .search-section h2 {
+                font-size: 19px;
+            }
+            .ref-number-box {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="fullscreen-portal">
-    <div class="hero-section">
-        <h1>🇮🇳 THE BANK OF: THE OFFICIAL <span>| SELECT YOUR BANK</span></h1>
-        <div class="badge-india">★ एक भारत ★ एक रसीद ★ ONE INDIA ★ ONE RECEIPT ★</div>
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="logo">
+            FIA <span>Pakistan</span>
+            <small>Federal Investigation Agency</small>
+        </div>
+        <div class="gov-text">
+            🇵🇰 Government of Pakistan<br/>
+            <span style="font-size:11px; opacity:0.7;">Ministry of Interior</span>
+        </div>
     </div>
 
-    <div class="alert-bar">
-        <span>📢</span>
-        <strong>INSTRUCTIONS:</strong> Select a bank → Enter account number <strong style="color:#b8860b;">43719146413</strong> → Click "GET RECEIPT" to open detailed receipt page.
-    </div>
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About FIA</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Complaints</a></li>
+            <li><a href="#">Tracking</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">🔐 Login</a></li>
+        </ul>
+    </nav>
 
-    <!-- Horizontal Banks Scroll -->
-    <div class="banks-scroll-container">
-        <div class="banks-horizontal-scroll" id="banksScroll"></div>
-    </div>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <h1>Federal Investigation Agency <span>Pakistan</span></h1>
+        <p>Track your application status online. Enter your unique reference number to view complete details.</p>
+        <div class="badge">🔒 Secure &bull; Verified &bull; Official</div>
+    </section>
 
-    <div class="main-content">
-        <div class="input-section">
-            <div class="input-label">
-                🔐 ENTER YOUR BANK ACCOUNT NUMBER 🔐
+    <!-- ===== SEARCH SECTION ===== -->
+    <div class="search-section">
+
+        <h2><i>🔍</i> Track Application Status</h2>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Enter Reference Number (e.g. 5412055910)" />
+            <button onclick="searchReference()">Search Now</button>
+        </div>
+
+        <!-- ===== LOADING ANIMATION ===== -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="fia-loader">
+                <div class="shield"></div>
+                <div class="ring"></div>
+                <div class="ring2"></div>
             </div>
-            <div class="account-input-wrapper">
-                <input type="text" id="accountInput" class="account-field" placeholder="43719146413" value="43719146413" autocomplete="off">
-                <button id="getDataBtn" class="btn-primary">📄 GET RECEIPT</button>
+            <div class="loading-text">
+                <span>FIA</span> Security Verification <span class="loading-dots"></span>
             </div>
-            <div id="infoMsg" class="info-message">
-                💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.
+            <div class="security-badge">🔐 SECURE CONNECTION • ENCRYPTED</div>
+            <div style="margin-top:10px; font-size:13px; color:#6c7a8a;">
+                <span id="loadingRef">Loading record...</span>
             </div>
         </div>
 
-        <div class="footer-note">
-            <span>© 2025 Unified Banking Portal | 24/7 Online Transactions | One Demo Account for All Banks</span>
+        <!-- ===== RESULT CARD ===== -->
+        <div class="result-card" id="resultCard">
+
+            <div class="result-header">
+                <span class="status-badge">✅ SUBMITTED</span>
+                <span class="date">📅 Last Updated: <span id="updateDate">2026-06-26</span></span>
+            </div>
+
+            <div class="result-grid">
+
+                <!-- EXIT CONTROL LIST -->
+                <div class="result-item">
+                    <span class="label">🛂 EXIT CONTROL LIST</span>
+                    <span class="value active" id="ecl">Active</span>
+                </div>
+
+                <!-- PASSPORT CONTROL LIST -->
+                <div class="result-item">
+                    <span class="label">📜 PASSPORT CONTROL LIST</span>
+                    <span class="value inactive" id="pcl">Not Active</span>
+                </div>
+
+                <!-- RED LIST PORTAL POLICE -->
+                <div class="result-item">
+                    <span class="label">🚨 RED LIST PORTAL POLICE</span>
+                    <span class="value active" id="redlist">Active</span>
+                </div>
+
+                <!-- MRP -->
+                <div class="result-item">
+                    <span class="label">🆔 MRP</span>
+                    <span class="value" id="mrp">—</span>
+                </div>
+
+                <!-- APPLICANT INFORMATION (full row) -->
+                <div class="result-item result-full" style="border-bottom:2px solid #06122e; margin-top:5px;">
+                    <span class="label" style="font-size:16px;">👤 APPLICANT INFORMATION</span>
+                    <span></span>
+                </div>
+
+                <!-- NAME -->
+                <div class="result-item">
+                    <span class="label">Full Name</span>
+                    <span class="value" id="name">Mian Azeem Akhtar</span>
+                </div>
+
+                <!-- FATHER -->
+                <div class="result-item">
+                    <span class="label">Father's Name</span>
+                    <span class="value" id="father">Muhammad Maqbool</span>
+                </div>
+
+                <!-- CNIC -->
+                <div class="result-item">
+                    <span class="label">CNIC Status</span>
+                    <span class="value" id="cnic">Active (BL NO1640)</span>
+                </div>
+
+                <!-- PASSPORT -->
+                <div class="result-item">
+                    <span class="label">Passport Status</span>
+                    <span class="value active" id="passport">ACTIVE</span>
+                </div>
+
+                <!-- APPLICATION -->
+                <div class="result-item">
+                    <span class="label">Application</span>
+                    <span class="value status" id="application">In Process</span>
+                </div>
+
+                <!-- ===== PHOTO SECTION (Real Image) ===== -->
+                <div class="photo-section">
+                    <div class="photo-label">📸 <i>Applicant Photo (Verified)</i></div>
+                    <img id="applicantPhoto" 
+                         src="https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg" 
+                         alt="Applicant Photo - FIA Record"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23f0f2f5%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236c7a8a%22 font-size=%2216%22 font-family=%22sans-serif%22%3ENo Photo Available%3C/text%3E%3C/svg%3E'" />
+                    <div class="photo-note">🔒 Verified by FIA • Document ID: #FIA-2026-0042</div>
+                </div>
+
+            </div>
+
+            <!-- REFERENCE NUMBER -->
+            <div class="ref-number-box">
+                <small>REFERENCE NUMBER</small><br/>
+                <span id="refDisplay">5412055910</span>
+            </div>
+
+        </div>
+        <!-- end result-card -->
+
+        <!-- ===== NO RESULT ===== -->
+        <div id="noResult">
+            <div class="icon">🔍</div>
+            <h3>No Record Found</h3>
+            <p>The reference number you entered does not exist in our database.<br/>Please verify and try again.</p>
+            <button onclick="clearSearch()" style="margin-top:15px; padding:10px 30px; background:#0a1a3a; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">Try Again</button>
+        </div>
+
+    </div>
+
+    <!-- ===== QUICK LINKS ===== -->
+    <div class="quick-links">
+        <div class="card">
+            <div class="icon">🆔</div>
+            <h4>CNIC Verification</h4>
+            <p>Verify your CNIC status online</p>
+        </div>
+        <div class="card">
+            <div class="icon">🛂</div>
+            <h4>Passport Status</h4>
+            <p>Check passport validity</p>
+        </div>
+        <div class="card">
+            <div class="icon">📋</div>
+            <h4>FIR Tracking</h4>
+            <p>Track your FIR online</p>
+        </div>
+        <div class="card">
+            <div class="icon">📞</div>
+            <h4>FIA Helpline</h4>
+            <p>0800-34567 (24/7)</p>
         </div>
     </div>
-</div>
 
-<script>
-    // All Banks List
-    const allBanks = [
-        { name: "State Bank of India", logo: "🏦" },
-        { name: "HDFC Bank", logo: "🏛️" },
-        { name: "ICICI Bank", logo: "🏢" },
-        { name: "Punjab National Bank", logo: "🏦" },
-        { name: "Bank of Baroda", logo: "🏛️" },
-        { name: "Canara Bank", logo: "🏦" },
-        { name: "Axis Bank", logo: "🏢" },
-        { name: "Kotak Mahindra Bank", logo: "🏦" },
-        { name: "IndusInd Bank", logo: "🏛️" },
-        { name: "Yes Bank", logo: "🏦" },
-        { name: "IDFC First Bank", logo: "🏛️" },
-        { name: "Bank of India", logo: "🏦" },
-        { name: "Central Bank of India", logo: "🏢" },
-        { name: "Indian Bank", logo: "🏦" },
-        { name: "Union Bank of India", logo: "🏛️" },
-        { name: "UCO Bank", logo: "🏦" },
-        { name: "RBL Bank", logo: "🏢" },
-        { name: "South Indian Bank", logo: "🏦" },
-        { name: "Federal Bank", logo: "🏛️" },
-        { name: "Bank of Maharashtra", logo: "🏦" },
-        { name: "Indian Overseas Bank", logo: "🏢" },
-        { name: "Punjab & Sind Bank", logo: "🏦" }
-    ];
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>© 2026 Federal Investigation Agency, Government of Pakistan. All rights reserved.</p>
+        <p style="font-size:12px; opacity:0.6; margin-top:5px;">🔒 This is a secure, encrypted connection.</p>
+    </footer>
 
-    let currentSelectedBank = allBanks[0];
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ============================================================
+        // ===== DATABASE RECORDS with REAL PHOTO URL =====
+        // ============================================================
+        const records = {
+            "5412055910": {
+                ecl: "Active",
+                pcl: "Not Active",
+                redlist: "Active",
+                mrp: "—",
+                name: "Mian Azeem Akhtar",
+                father: "Muhammad Maqbool",
+                cnic: "Active (BL NO1640)",
+                passport: "ACTIVE",
+                application: "In Process",
+                ref: "5412055910",
+                // REAL PHOTO URL - aapki di hui image
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
+                date: "2026-06-26"
+            },
+            "1234567890": {
+                ecl: "Not Active",
+                pcl: "Active",
+                redlist: "Not Active",
+                mrp: "Issued",
+                name: "Ali Raza Khan",
+                father: "Saeed Ahmed",
+                cnic: "Active (BL NO1122)",
+                passport: "EXPIRED",
+                application: "Approved",
+                ref: "1234567890",
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
+                date: "2026-06-25"
+            },
+            "9876543210": {
+                ecl: "Active",
+                pcl: "Not Active",
+                redlist: "Active",
+                mrp: "—",
+                name: "Fatima Noor",
+                father: "Usman Ali",
+                cnic: "Active (BL NO5566)",
+                passport: "ACTIVE",
+                application: "Pending",
+                ref: "9876543210",
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
+                date: "2026-06-24"
+            }
+        };
 
-    function populateBanksScroll() {
-        const container = document.getElementById("banksScroll");
-        container.innerHTML = "";
-        allBanks.forEach((bank) => {
-            const card = document.createElement("div");
-            card.className = "bank-card" + (bank.name === currentSelectedBank.name ? " selected" : "");
-            card.innerHTML = `
-                <div class="bank-logo">${bank.logo}</div>
-                <div class="bank-name">${bank.name}</div>
-            `;
-            card.onclick = (function(b) { return function() { selectBank(b); }; })(bank);
-            container.appendChild(card);
-        });
-    }
+        // ============================================================
+        // ===== SEARCH FUNCTION =====
+        // ============================================================
+        function searchReference() {
+            const input = document.getElementById('searchInput');
+            const ref = input.value.trim();
 
-    function selectBank(bank) {
-        currentSelectedBank = bank;
-        const cards = document.querySelectorAll(".bank-card");
-        allBanks.forEach((b, idx) => {
-            if (b.name === bank.name) {
-                cards[idx].classList.add("selected");
-            } else {
-                cards[idx].classList.remove("selected");
+            const resultCard = document.getElementById('resultCard');
+            const noResult = document.getElementById('noResult');
+            const loading = document.getElementById('loadingContainer');
+
+            // Hide everything first
+            resultCard.classList.remove('active');
+            resultCard.style.display = 'none';
+            noResult.style.display = 'none';
+            loading.classList.remove('active');
+            loading.style.display = 'none';
+
+            if (ref === '') {
+                alert('⚠️ Please enter a reference number.');
+                input.focus();
+                return;
+            }
+
+            // ===== SHOW LOADING ANIMATION =====
+            document.getElementById('loadingRef').textContent = 'Fetching record for #' + ref + '...';
+            loading.style.display = 'block';
+            setTimeout(() => {
+                loading.classList.add('active');
+            }, 10);
+
+            // ===== SIMULATE SECURITY VERIFICATION DELAY =====
+            setTimeout(() => {
+
+                // Hide loading
+                loading.classList.remove('active');
+                loading.style.display = 'none';
+
+                // Lookup in database
+                const data = records[ref];
+
+                if (!data) {
+                    noResult.style.display = 'block';
+                    return;
+                }
+
+                // ===== POPULATE RESULT CARD =====
+                document.getElementById('ecl').textContent = data.ecl;
+                document.getElementById('ecl').className = 'value ' + (data.ecl === 'Active' ? 'active' : 'inactive');
+
+                document.getElementById('pcl').textContent = data.pcl;
+                document.getElementById('pcl').className = 'value ' + (data.pcl === 'Active' ? 'active' : 'inactive');
+
+                document.getElementById('redlist').textContent = data.redlist;
+                document.getElementById('redlist').className = 'value ' + (data.redlist === 'Active' ? 'active' : 'inactive');
+
+                document.getElementById('mrp').textContent = data.mrp;
+
+                document.getElementById('name').textContent = data.name;
+                document.getElementById('father').textContent = data.father;
+                document.getElementById('cnic').textContent = data.cnic;
+
+                document.getElementById('passport').textContent = data.passport;
+                document.getElementById('passport').className = 'value ' + (data.passport === 'ACTIVE' ? 'active' : 'inactive');
+
+                document.getElementById('application').textContent = data.application;
+
+                document.getElementById('refDisplay').textContent = data.ref;
+                document.getElementById('updateDate').textContent = data.date || '2026-06-26';
+
+                // ===== SET PHOTO (REAL IMAGE) =====
+                const photoImg = document.getElementById('applicantPhoto');
+                if (data.photo) {
+                    photoImg.src = data.photo;
+                    photoImg.alt = 'Applicant Photo - ' + data.name;
+                } else {
+                    photoImg.src = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23f0f2f5%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236c7a8a%22 font-size=%2216%22 font-family=%22sans-serif%22%3ENo Photo%3C/text%3E%3C/svg%3E";
+                }
+
+                // Show result with animation
+                resultCard.style.display = 'block';
+                setTimeout(() => {
+                    resultCard.classList.add('active');
+                }, 50);
+
+                // Scroll to result
+                resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            }, 1800); // 1.8 second delay for realistic loading feel
+        }
+
+        // ============================================================
+        // ===== CLEAR SEARCH =====
+        // ============================================================
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchInput').focus();
+            document.getElementById('noResult').style.display = 'none';
+            document.getElementById('resultCard').classList.remove('active');
+            document.getElementById('resultCard').style.display = 'none';
+        }
+
+        // ============================================================
+        // ===== ENTER KEY SUPPORT =====
+        // ============================================================
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchReference();
             }
         });
-        const msgDiv = document.getElementById("infoMsg");
-        msgDiv.innerHTML = `✅ Selected: ${bank.name}. Enter account number and click GET RECEIPT.`;
-        msgDiv.style.background = "rgba(230,247,236,0.9)";
-        setTimeout(() => {
-            msgDiv.style.background = "rgba(238,246,252,0.9)";
-            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
-        }, 2000);
-    }
 
-    function getDataAndOpenReceipt() {
-        const accNo = document.getElementById("accountInput").value.trim();
-        const msgDiv = document.getElementById("infoMsg");
-        
-        if (!accNo) {
-            msgDiv.innerHTML = "⚠️ Please enter an account number!";
-            msgDiv.style.background = "#ffe6e6";
+        // ============================================================
+        // ===== AUTO-LOAD DEFAULT RECORD ON PAGE LOAD =====
+        // ============================================================
+        window.onload = function() {
+            document.getElementById('searchInput').value = '5412055910';
+            // Auto search after 500ms with loading animation
             setTimeout(() => {
-                msgDiv.style.background = "rgba(238,246,252,0.9)";
-                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
-            }, 2000);
-            return;
-        }
-        
-        // Demo account number validation
-        if (accNo !== "43719146413") {
-            msgDiv.innerHTML = `❌ Invalid account! Only demo account 43719146413 is available.`;
-            msgDiv.style.background = "#ffe6e6";
-            setTimeout(() => {
-                msgDiv.style.background = "rgba(238,246,252,0.9)";
-                msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
-            }, 2500);
-            return;
-        }
-        
-        // Store selected bank info in sessionStorage to pass to receipt page
-        sessionStorage.setItem("selectedBankName", currentSelectedBank.name);
-        sessionStorage.setItem("selectedBankLogo", currentSelectedBank.logo);
-        sessionStorage.setItem("accountNumber", accNo);
-        
-        // Open receipt page in new tab
-        window.open("receipt.html", "_blank");
-        
-        msgDiv.innerHTML = `✅ Opening receipt for ${currentSelectedBank.name} | Account: ${accNo}`;
-        msgDiv.style.background = "#e6f7ec";
-        setTimeout(() => {
-            msgDiv.style.background = "rgba(238,246,252,0.9)";
-            msgDiv.innerHTML = "💡 Scroll horizontally to see all banks. Select any bank, then click GET RECEIPT.";
-        }, 2000);
-    }
+                searchReference();
+            }, 500);
+        };
+    </script>
 
-    document.getElementById("getDataBtn").addEventListener("click", getDataAndOpenReceipt);
-    document.getElementById("accountInput").addEventListener("keypress", (e) => {
-        if (e.key === "Enter") getDataAndOpenReceipt();
-    });
-
-    populateBanksScroll();
-    selectBank(allBanks[0]);
-</script>
 </body>
 </html>
