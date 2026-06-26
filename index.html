@@ -342,7 +342,6 @@
             margin-top: 5px;
         }
 
-        /* FIA Style Header */
         .fia-header {
             background: linear-gradient(135deg, #06122e, #0d2a4d);
             color: white;
@@ -372,7 +371,6 @@
             font-size: 14px;
         }
 
-        /* Info Table Style */
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -422,7 +420,6 @@
             font-size: 14px;
         }
 
-        /* ===== PHOTO IN TABLE ===== */
         .photo-row td {
             padding: 20px;
             text-align: center;
@@ -533,66 +530,222 @@
             color: #06122e;
         }
 
-        /* ===== QUICK LINKS ===== */
-        .quick-links {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
+        /* ============================================================
+                   FOOTER - OFFICERS SECTION (Added)
+                   ============================================================ */
+        .footer-officers {
+            background: #06122e;
+            padding: 50px 20px 30px;
+            border-top: 4px solid #d4a017;
         }
-        .quick-links .card {
-            background: white;
-            padding: 30px 20px;
+        .footer-officers .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-officers .section-title {
             text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
+            color: #d4a017;
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .footer-officers .section-subtitle {
+            text-align: center;
+            color: #aab8d0;
+            font-size: 16px;
+            margin-bottom: 35px;
+            opacity: 0.8;
+        }
+        .officers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .officer-card {
+            background: #0d2a4d;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
             transition: 0.3s;
             border-bottom: 4px solid transparent;
         }
-        .quick-links .card:hover {
+        .officer-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
             border-bottom-color: #d4a017;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
-        .quick-links .card .icon {
-            font-size: 38px;
-            margin-bottom: 12px;
+        .officer-card .photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            border: 4px solid #d4a017;
+            background: #0a1a3a;
+            box-shadow: 0 0 30px rgba(212, 160, 23, 0.15);
         }
-        .quick-links .card h4 {
+        .officer-card .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .officer-card .name {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .officer-card .name-en {
+            color: #d4a017;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .officer-card .desc {
+            color: #aab8d0;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: center;
+        }
+        .officer-card .desc i {
+            color: #d4a017;
+            margin-right: 5px;
+        }
+        .officer-card .badge-officer {
+            display: inline-block;
+            background: #d4a017;
             color: #06122e;
-            font-size: 16px;
-        }
-        .quick-links .card p {
-            font-size: 13px;
-            color: #6c7a8a;
-            margin-top: 5px;
+            padding: 3px 18px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-top: 10px;
+            letter-spacing: 1px;
         }
 
-        /* ===== FOOTER ===== */
-        footer {
-            background: #06122e;
-            color: #aab8d0;
-            padding: 35px 20px;
-            text-align: center;
-            margin-top: 40px;
-            border-top: 3px solid #d4a017;
+        /* ===== WHAT WE INVESTIGATE & LINKS (Footer) ===== */
+        .footer-links-section {
+            background: #0a1a3a;
+            padding: 40px 20px;
+            border-top: 1px solid #1a3a6a;
         }
-        footer .footer-links {
-            margin: 15px 0;
+        .footer-links-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
         }
-        footer .footer-links a {
+        .footer-links-section h4 {
             color: #d4a017;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .footer-links-section ul {
+            list-style: none;
+        }
+        .footer-links-section ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links-section ul li a {
+            color: #aab8d0;
             text-decoration: none;
-            margin: 0 15px;
             font-size: 14px;
+            transition: 0.3s;
         }
-        footer .footer-links a:hover {
-            text-decoration: underline;
+        .footer-links-section ul li a:hover {
+            color: #d4a017;
+            padding-left: 5px;
         }
-        footer p {
+        .footer-links-section .newsletter-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .footer-links-section .newsletter-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            min-width: 150px;
+        }
+        .footer-links-section .newsletter-input button {
+            padding: 10px 20px;
+            background: #d4a017;
+            color: #06122e;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .footer-links-section .newsletter-input button:hover {
+            background: #b8860b;
+        }
+
+        /* ===== CONTACT & MAP ===== */
+        .footer-contact {
+            background: #06122e;
+            padding: 30px 20px;
+            border-top: 1px solid #1a3a6a;
+        }
+        .footer-contact .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .footer-contact .contact-info h4 {
+            color: #d4a017;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .footer-contact .contact-info p {
+            color: #aab8d0;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .footer-contact .contact-info p i {
+            color: #d4a017;
+            margin-right: 8px;
+            width: 20px;
+        }
+        .footer-contact .map-btn {
+            display: inline-block;
+            background: #d4a017;
+            color: #06122e;
+            padding: 8px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .footer-contact .map-btn:hover {
+            background: #b8860b;
+        }
+
+        .footer-bottom {
+            background: #050d1f;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #0d2a4d;
+        }
+        .footer-bottom p {
+            color: #6c7a8a;
             font-size: 13px;
+        }
+        .footer-bottom p span {
+            color: #d4a017;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -650,6 +803,19 @@
             .result-card {
                 padding: 20px;
             }
+            .officers-grid {
+                grid-template-columns: 1fr;
+            }
+            .officer-card .photo {
+                width: 120px;
+                height: 120px;
+            }
+            .footer-links-section .container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-contact .container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -682,6 +848,19 @@
                 font-size: 14px;
                 width: 100%;
                 justify-content: center;
+            }
+            .footer-links-section .container {
+                grid-template-columns: 1fr;
+            }
+            .footer-officers .section-title {
+                font-size: 22px;
+            }
+            .officer-card .photo {
+                width: 100px;
+                height: 100px;
+            }
+            .officer-card .name {
+                font-size: 17px;
             }
         }
     </style>
@@ -751,16 +930,14 @@
         <!-- ===== RESULT CARD ===== -->
         <div class="result-card" id="resultCard">
 
-            <!-- ===== APPLICANT INFO - ORIGINAL STYLE ===== -->
+            <!-- ===== APPLICANT INFO ===== -->
             <div class="applicant-section" id="dataToDownload">
 
-                <!-- FIA Style Header -->
                 <div class="fia-header">
                     <span class="title"><i>👤</i> APPLICANT INFORMATION</span>
                     <span class="ref-badge">REF: <span id="refDisplayHeader">5412055910</span></span>
                 </div>
 
-                <!-- Info Table -->
                 <table class="info-table">
                     <tr>
                         <td class="label-cell">Full Name</td>
@@ -782,7 +959,6 @@
                         <td class="label-cell">Application</td>
                         <td class="value-cell"><span class="status" id="application">In Process</span></td>
                     </tr>
-                    <!-- PHOTO ROW -->
                     <tr class="photo-row">
                         <td colspan="2">
                             <div class="photo-label"><i>📸</i> Applicant Photo (Verified)</div>
@@ -800,7 +976,6 @@
                 </table>
 
             </div>
-            <!-- end applicant-section -->
 
             <!-- ===== DOWNLOAD BUTTON ===== -->
             <div class="download-section">
@@ -822,42 +997,139 @@
 
     </div>
 
-    <!-- ===== QUICK LINKS ===== -->
-    <div class="quick-links">
-        <div class="card">
-            <div class="icon">🆔</div>
-            <h4>CNIC Verification</h4>
-            <p>Verify your CNIC status online</p>
+    <!-- ============================================================
+    ===== FOOTER - OFFICERS SECTION (Added Here)
+    ============================================================ -->
+
+    <!-- ===== OFFICERS SECTION ===== -->
+    <section class="footer-officers">
+        <div class="container">
+            <h2 class="section-title">🇵🇰 OUR LEADERSHIP</h2>
+            <p class="section-subtitle">Dedicated officers serving the nation with integrity and professionalism</p>
+
+            <div class="officers-grid">
+
+                <!-- Officer 1: Dr. Usman Anwar -->
+                <div class="officer-card">
+                    <div class="photo">
+                        <img src="https://i.ibb.co/SXbFk2yv/Screenshot-20260626-105301.jpg" alt="Dr. Usman Anwar" />
+                    </div>
+                    <div class="name">Dr. Usman Anwar</div>
+                    <div class="name-en">Director General FIA</div>
+                    <div class="desc">
+                        <i>⭐</i> ایک باصلاحیت اور فرض شناس پولیس افسر، جو قانون کی حکمرانی، عوامی خدمت اور ادارہ جاتی اصلاحات کے لیے جانے جاتے ہیں۔
+                    </div>
+                    <span class="badge-officer">🔹 LEADERSHIP</span>
+                </div>
+
+                <!-- Officer 2: Capt. (Retd.) Muhammad Ali Zia -->
+                <div class="officer-card">
+                    <div class="photo">
+                        <img src="https://i.ibb.co/PvHzbwt1/Screenshot-20260626-105635.jpg" alt="Capt. Muhammad Ali Zia" />
+                    </div>
+                    <div class="name">Capt. (Retd.) Muhammad Ali Zia</div>
+                    <div class="name-en">Additional Director General</div>
+                    <div class="desc">
+                        <i>⭐</i> تجربہ کار تفتیشی افسر، جو سائبر کرائم کے خلاف مؤثر کارروائیوں اور پیشہ ورانہ قیادت کے لیے معروف ہیں۔
+                    </div>
+                    <span class="badge-officer">🔹 INVESTIGATION</span>
+                </div>
+
+                <!-- Officer 3: Waqaruddin Syed -->
+                <div class="officer-card">
+                    <div class="photo">
+                        <img src="https://i.ibb.co/Z6VBgwS8/Screenshot-20260626-105734.jpg" alt="Waqaruddin Syed" />
+                    </div>
+                    <div class="name">Waqaruddin Syed</div>
+                    <div class="name-en">Director Cyber Crime</div>
+                    <div class="desc">
+                        <i>⭐</i> سائبر سکیورٹی کے شعبے کے ماہر افسر، جو جدید ڈیجیٹل جرائم کی روک تھام اور قومی سطح پر سائبر تحفظ کے لیے خدمات انجام دے رہے ہیں۔
+                    </div>
+                    <span class="badge-officer">🔹 CYBER SECURITY</span>
+                </div>
+
+            </div>
         </div>
-        <div class="card">
-            <div class="icon">🛂</div>
-            <h4>Passport Status</h4>
-            <p>Check passport validity</p>
+    </section>
+
+    <!-- ===== WHAT WE INVESTIGATE & LINKS ===== -->
+    <section class="footer-links-section">
+        <div class="container">
+
+            <!-- What We Investigate -->
+            <div>
+                <h4>🔍 WHAT WE INVESTIGATE</h4>
+                <ul>
+                    <li><a href="#">Anti-Corruption</a></li>
+                    <li><a href="#">Anti Human Trafficking and Smuggling</a></li>
+                    <li><a href="#">Counter Terrorism</a></li>
+                    <li><a href="#">Anti Money Laundering</a></li>
+                    <li><a href="#">Immigration</a></li>
+                    <li><a href="#">Interpol</a></li>
+                    <li><a href="#">Intellectual Property Rights</a></li>
+                    <li><a href="#">Integrated Border Management System</a></li>
+                </ul>
+            </div>
+
+            <!-- Important Links -->
+            <div>
+                <h4>🔗 IMPORTANT LINKS</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Wings</a></li>
+                    <li><a href="#">Press Release</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">FIA Staff Welfare</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- More Links + Newsletter -->
+            <div>
+                <h4>📬 SUBSCRIBE TO OUR NEWSLETTER</h4>
+                <ul>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Privacy Policy (Mobile Application)</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Special Investment Facilitation Council (SIFC)</a></li>
+                </ul>
+                <div class="newsletter-input">
+                    <input type="email" placeholder="Enter your email here" />
+                    <button>Subscribe</button>
+                </div>
+            </div>
+
         </div>
-        <div class="card">
-            <div class="icon">📋</div>
-            <h4>FIR Tracking</h4>
-            <p>Track your FIR online</p>
+    </section>
+
+    <!-- ===== CONTACT & MAP ===== -->
+    <section class="footer-contact">
+        <div class="container">
+
+            <div class="contact-info">
+                <h4>📞 CONTACT US</h4>
+                <p><i>✉️</i> Email: complaints@fia.gov.pk</p>
+                <p><i>📞</i> Helpline: 051-111-345-788 &amp; 1991</p>
+                <p><i>📍</i> Address: FIA Headquarters, Muhammad Tufail Noori Rd., G-3/4, Islamabad, PK</p>
+            </div>
+
+            <div class="contact-info">
+                <h4>🗺️ LOCATION</h4>
+                <p><strong style="color:#d4a017;">Open in Maps</strong></p>
+                <p style="color:white; font-weight:600;">Hyder Shihwa</p>
+                <p>Federal Investigation Agency, Headquarters</p>
+                <a href="#" class="map-btn">📍 Open in Google Maps</a>
+            </div>
+
         </div>
-        <div class="card">
-            <div class="icon">📞</div>
-            <h4>FIA Helpline</h4>
-            <p>0800-34567 (24/7)</p>
-        </div>
+    </section>
+
+    <!-- ===== FOOTER BOTTOM ===== -->
+    <div class="footer-bottom">
+        <p>⚠️ <span>DISCLAIMER</span> — All Rights Reserved © 2026 Federal Investigation Agency, Pakistan</p>
     </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="footer-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms</a>
-            <a href="#">Contact</a>
-        </div>
-        <p>© 2026 Federal Investigation Agency, Government of Pakistan. All rights reserved.</p>
-        <p style="font-size:12px; opacity:0.6; margin-top:5px;">🔒 This is a secure, encrypted connection.</p>
-    </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
@@ -969,7 +1241,6 @@
             const element = document.getElementById('dataToDownload');
             const downloadBtn = document.querySelector('.download-btn');
 
-            // Show loading on button
             const originalText = downloadBtn.innerHTML;
             downloadBtn.innerHTML = '⏳ Generating PNG...';
             downloadBtn.disabled = true;
@@ -981,7 +1252,6 @@
                 allowTaint: true,
                 logging: false,
                 onclone: function(clonedDoc) {
-                    // Fix images in clone
                     const imgs = clonedDoc.querySelectorAll('img');
                     imgs.forEach(img => {
                         img.crossOrigin = 'anonymous';
@@ -993,7 +1263,6 @@
                 link.href = canvas.toDataURL('image/png');
                 link.click();
 
-                // Restore button
                 downloadBtn.innerHTML = originalText;
                 downloadBtn.disabled = false;
             }).catch(err => {
@@ -1023,10 +1292,6 @@
                 searchReference();
             }
         });
-
-        // ============================================================
-        // ===== NO AUTO-SEARCH ON LOAD =====
-        // ============================================================
     </script>
 
 </body>
