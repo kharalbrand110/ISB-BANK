@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>FIA - Federal Investigation Agency</title>
+    <!-- html2canvas for PNG download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+    </script>
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -57,7 +60,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #d4a017;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         nav ul {
             list-style: none;
@@ -75,10 +78,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        nav ul li a:hover {
-            background: #d4a017;
-            color: #06122e;
-        }
+        nav ul li a:hover,
         nav ul li a.active {
             background: #d4a017;
             color: #06122e;
@@ -100,7 +100,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(212,160,23,0.05) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.05) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
         }
         @keyframes rotate {
@@ -145,7 +145,7 @@
             background: white;
             padding: 35px 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             position: relative;
             z-index: 2;
             border-top: 5px solid #d4a017;
@@ -179,7 +179,7 @@
         .search-box input:focus {
             border-color: #d4a017;
             outline: none;
-            box-shadow: 0 0 0 4px rgba(212,160,23,0.15);
+            box-shadow: 0 0 0 4px rgba(212, 160, 23, 0.15);
             background: white;
         }
         .search-box button {
@@ -197,7 +197,7 @@
         }
         .search-box button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212,160,23,0.4);
+            box-shadow: 0 8px 20px rgba(212, 160, 23, 0.4);
         }
         .search-box button:active {
             transform: scale(0.97);
@@ -264,8 +264,11 @@
             animation: spin 0.8s linear infinite reverse;
         }
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.7; }
+            0%,
+            100% { transform: scale(1);
+                opacity: 1; }
+            50% { transform: scale(1.05);
+                opacity: 0.7; }
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -310,8 +313,8 @@
             margin-top: 30px;
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            padding: 35px 35px 25px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
             border-left: 6px solid #d4a017;
             animation: slideUp 0.6s ease;
         }
@@ -334,135 +337,163 @@
             to { opacity: 1; }
         }
 
-        /* ===== APPLICANT INFO SECTION (Neche) ===== */
+        /* ===== APPLICANT INFO - ORIGINAL STYLE ===== */
         .applicant-section {
-            margin-top: 10px;
-        }
-        .applicant-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #06122e;
-            border-bottom: 3px solid #d4a017;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .applicant-title i {
-            color: #d4a017;
+            margin-top: 5px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px 30px;
-        }
-        .info-item {
+        /* FIA Style Header */
+        .fia-header {
+            background: linear-gradient(135deg, #06122e, #0d2a4d);
+            color: white;
+            padding: 14px 20px;
+            border-radius: 8px 8px 0 0;
             display: flex;
             justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid #f0f2f5;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 3px solid #d4a017;
         }
-        .info-item .label {
-            font-weight: 600;
+        .fia-header .title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .fia-header .title i {
+            color: #d4a017;
+            margin-right: 8px;
+        }
+        .fia-header .ref-badge {
+            background: #d4a017;
             color: #06122e;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-weight: 700;
             font-size: 14px;
         }
-        .info-item .value {
+
+        /* Info Table Style */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fafbfc;
+            border-radius: 0 0 8px 8px;
+            overflow: hidden;
+            border: 1px solid #e8ecf1;
+            border-top: none;
+        }
+        .info-table tr {
+            border-bottom: 1px solid #e8ecf1;
+        }
+        .info-table tr:last-child {
+            border-bottom: none;
+        }
+        .info-table td {
+            padding: 14px 20px;
+            font-size: 15px;
+        }
+        .info-table .label-cell {
+            font-weight: 700;
+            color: #06122e;
+            background: #f4f6f9;
+            width: 40%;
+            letter-spacing: 0.3px;
+        }
+        .info-table .value-cell {
             color: #1a1a2e;
             font-weight: 500;
-            font-size: 14px;
-            text-align: right;
+            width: 60%;
         }
-        .info-item .value.active {
+        .info-table .value-cell.active {
             color: #28a745;
             font-weight: 700;
         }
-        .info-item .value.inactive {
+        .info-table .value-cell.inactive {
             color: #dc3545;
             font-weight: 700;
         }
-        .info-item .value.status {
+        .info-table .value-cell.status {
+            display: inline-block;
             background: #d4a017;
-            padding: 2px 16px;
+            padding: 3px 18px;
             border-radius: 20px;
-            font-size: 13px;
             font-weight: 700;
             color: #06122e;
+            font-size: 14px;
         }
 
-        /* ===== PHOTO BOX - FULL SIZE ===== */
-        .photo-box {
-            margin-top: 25px;
+        /* ===== PHOTO IN TABLE ===== */
+        .photo-row td {
             padding: 20px;
-            background: #f8f9fc;
-            border-radius: 12px;
-            border: 2px solid #e8ecf1;
             text-align: center;
+            background: #f8f9fc;
         }
-        .photo-box .photo-label {
-            font-weight: 700;
-            color: #06122e;
-            margin-bottom: 15px;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .photo-box .photo-label i {
-            color: #d4a017;
-        }
-        .photo-box .photo-wrapper {
-            width: 100%;
-            max-height: 450px;
-            overflow: hidden;
+        .photo-row .photo-wrapper {
+            max-width: 500px;
+            margin: 0 auto;
             border-radius: 10px;
             border: 3px solid #d4a017;
+            overflow: hidden;
             background: #0a1a3a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-        .photo-box .photo-wrapper img {
+        .photo-row .photo-wrapper img {
             width: 100%;
             height: auto;
-            max-height: 450px;
+            max-height: 350px;
             object-fit: contain;
             display: block;
-            transition: 0.3s;
         }
-        .photo-box .photo-wrapper img:hover {
-            transform: scale(1.02);
+        .photo-row .photo-label {
+            font-weight: 700;
+            color: #06122e;
+            margin-bottom: 10px;
+            font-size: 15px;
         }
-        .photo-box .photo-note {
-            margin-top: 10px;
+        .photo-row .photo-label i {
+            color: #d4a017;
+        }
+        .photo-row .photo-note {
+            margin-top: 8px;
             font-size: 13px;
             color: #6c7a8a;
         }
-        .photo-box .photo-note i {
+        .photo-row .photo-note i {
             color: #28a745;
         }
 
-        /* ===== REFERENCE NUMBER BOX ===== */
-        .ref-number-box {
-            background: linear-gradient(135deg, #06122e, #0d2a4d);
-            color: #d4a017;
-            padding: 14px 20px;
-            border-radius: 10px;
-            font-size: 20px;
-            font-weight: 700;
+        /* ===== DOWNLOAD BUTTON ===== */
+        .download-section {
+            margin-top: 25px;
             text-align: center;
-            margin-top: 20px;
-            letter-spacing: 2px;
-            border: 1px solid #d4a017;
+            padding-top: 20px;
+            border-top: 2px solid #e8ecf1;
         }
-        .ref-number-box small {
-            font-size: 13px;
-            color: #aab8d0;
-            font-weight: 400;
-            letter-spacing: 0;
+        .download-btn {
+            padding: 14px 45px;
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+        .download-btn:active {
+            transform: scale(0.97);
+        }
+        .download-btn i {
+            font-size: 20px;
         }
 
         /* ===== NO RESULT ===== */
@@ -516,13 +547,13 @@
             padding: 30px 20px;
             text-align: center;
             border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
             transition: 0.3s;
             border-bottom: 4px solid transparent;
         }
         .quick-links .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
             border-bottom-color: #d4a017;
         }
         .quick-links .card .icon {
@@ -566,16 +597,6 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-item {
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-            .info-item .value {
-                text-align: left;
-            }
             .top-bar {
                 flex-direction: column;
                 text-align: center;
@@ -605,14 +626,29 @@
             .search-box button {
                 width: 100%;
             }
-            .photo-box .photo-wrapper {
-                max-height: 300px;
+            .info-table td {
+                padding: 10px 14px;
+                font-size: 14px;
             }
-            .photo-box .photo-wrapper img {
-                max-height: 300px;
+            .info-table .label-cell {
+                width: 45%;
             }
-            .applicant-title {
-                font-size: 17px;
+            .info-table .value-cell {
+                width: 55%;
+            }
+            .fia-header {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .photo-row .photo-wrapper {
+                max-width: 100%;
+            }
+            .photo-row .photo-wrapper img {
+                max-height: 200px;
+            }
+            .result-card {
+                padding: 20px;
             }
         }
 
@@ -626,15 +662,26 @@
             .search-section h2 {
                 font-size: 19px;
             }
-            .ref-number-box {
-                font-size: 16px;
-                padding: 10px 15px;
+            .info-table td {
+                padding: 8px 12px;
+                font-size: 13px;
             }
-            .photo-box .photo-wrapper {
-                max-height: 220px;
+            .info-table .label-cell {
+                width: 50%;
+                font-size: 12px;
             }
-            .photo-box .photo-wrapper img {
-                max-height: 220px;
+            .info-table .value-cell {
+                width: 50%;
+                font-size: 12px;
+            }
+            .photo-row .photo-wrapper img {
+                max-height: 150px;
+            }
+            .download-btn {
+                padding: 12px 25px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -704,69 +751,62 @@
         <!-- ===== RESULT CARD ===== -->
         <div class="result-card" id="resultCard">
 
-            <!-- ===== APPLICANT INFORMATION (Neche) ===== -->
-            <div class="applicant-section">
+            <!-- ===== APPLICANT INFO - ORIGINAL STYLE ===== -->
+            <div class="applicant-section" id="dataToDownload">
 
-                <div class="applicant-title">
-                    <i>👤</i> APPLICANT INFORMATION
+                <!-- FIA Style Header -->
+                <div class="fia-header">
+                    <span class="title"><i>👤</i> APPLICANT INFORMATION</span>
+                    <span class="ref-badge">REF: <span id="refDisplayHeader">5412055910</span></span>
                 </div>
 
-                <div class="info-grid">
-
-                    <!-- NAME -->
-                    <div class="info-item">
-                        <span class="label">Full Name</span>
-                        <span class="value" id="name">Mian Azeem Akhtar</span>
-                    </div>
-
-                    <!-- FATHER -->
-                    <div class="info-item">
-                        <span class="label">Father's Name</span>
-                        <span class="value" id="father">Muhammad Maqbool</span>
-                    </div>
-
-                    <!-- CNIC -->
-                    <div class="info-item">
-                        <span class="label">CNIC Status</span>
-                        <span class="value" id="cnic">Active (BL NO1640)</span>
-                    </div>
-
-                    <!-- PASSPORT -->
-                    <div class="info-item">
-                        <span class="label">Passport Status</span>
-                        <span class="value active" id="passport">ACTIVE</span>
-                    </div>
-
-                    <!-- APPLICATION -->
-                    <div class="info-item" style="grid-column: 1 / -1;">
-                        <span class="label">Application</span>
-                        <span class="value status" id="application">In Process</span>
-                    </div>
-
-                </div>
-
-                <!-- ===== PHOTO BOX - FULL SIZE ===== -->
-                <div class="photo-box">
-                    <div class="photo-label">
-                        <i>📸</i> Applicant Photo (Verified)
-                    </div>
-                    <div class="photo-wrapper">
-                        <img id="applicantPhoto" 
-                             src="https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg" 
-                             alt="Applicant Photo - FIA Record"
-                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%230a1a3a%22 width=%22600%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23d4a017%22 font-size=%2224%22 font-family=%22sans-serif%22%3E📷 No Photo Available%3C/text%3E%3C/svg%3E'" />
-                    </div>
-                    <div class="photo-note">
-                        <i>✅</i> Verified by FIA • Document ID: #FIA-2026-0042
-                    </div>
-                </div>
+                <!-- Info Table -->
+                <table class="info-table">
+                    <tr>
+                        <td class="label-cell">Full Name</td>
+                        <td class="value-cell" id="name">Mian Azeem Akhtar</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Father's Name</td>
+                        <td class="value-cell" id="father">Muhammad Maqbool</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">CNIC Status</td>
+                        <td class="value-cell" id="cnic">Active (BL NO1640)</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Passport Status</td>
+                        <td class="value-cell active" id="passport">ACTIVE</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Application</td>
+                        <td class="value-cell"><span class="status" id="application">In Process</span></td>
+                    </tr>
+                    <!-- PHOTO ROW -->
+                    <tr class="photo-row">
+                        <td colspan="2">
+                            <div class="photo-label"><i>📸</i> Applicant Photo (Verified)</div>
+                            <div class="photo-wrapper">
+                                <img id="applicantPhoto"
+                                src="https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg"
+                                alt="Applicant Photo - FIA Record"
+                                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%230a1a3a%22 width=%22600%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23d4a017%22 font-size=%2224%22 font-family=%22sans-serif%22%3E📷 No Photo Available%3C/text%3E%3C/svg%3E'" />
+                            </div>
+                            <div class="photo-note">
+                                <i>✅</i> Verified by FIA • Document ID: #FIA-2026-0042
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
             </div>
+            <!-- end applicant-section -->
 
-            <!-- ===== REFERENCE NUMBER ===== -->
-            <div class="ref-number-box">
-                <small>REFERENCE NUMBER</small><br/>
-                <span id="refDisplay">5412055910</span>
+            <!-- ===== DOWNLOAD BUTTON ===== -->
+            <div class="download-section">
+                <button class="download-btn" onclick="downloadPNG()">
+                    <i>⬇️</i> Download Data as PNG
+                </button>
             </div>
 
         </div>
@@ -865,7 +905,6 @@
             const noResult = document.getElementById('noResult');
             const loading = document.getElementById('loadingContainer');
 
-            // Hide everything first
             resultCard.classList.remove('active');
             resultCard.style.display = 'none';
             noResult.style.display = 'none';
@@ -878,21 +917,17 @@
                 return;
             }
 
-            // ===== SHOW LOADING ANIMATION =====
             document.getElementById('loadingRef').textContent = 'Fetching record for #' + ref + '...';
             loading.style.display = 'block';
             setTimeout(() => {
                 loading.classList.add('active');
             }, 10);
 
-            // ===== SIMULATE SECURITY VERIFICATION DELAY =====
             setTimeout(() => {
 
-                // Hide loading
                 loading.classList.remove('active');
                 loading.style.display = 'none';
 
-                // Lookup in database
                 const data = records[ref];
 
                 if (!data) {
@@ -900,34 +935,73 @@
                     return;
                 }
 
-                // ===== POPULATE RESULT =====
                 document.getElementById('name').textContent = data.name;
                 document.getElementById('father').textContent = data.father;
                 document.getElementById('cnic').textContent = data.cnic;
 
-                document.getElementById('passport').textContent = data.passport;
-                document.getElementById('passport').className = 'value ' + (data.passport === 'ACTIVE' ? 'active' : 'inactive');
+                const passportEl = document.getElementById('passport');
+                passportEl.textContent = data.passport;
+                passportEl.className = 'value-cell ' + (data.passport === 'ACTIVE' ? 'active' : 'inactive');
 
                 document.getElementById('application').textContent = data.application;
-                document.getElementById('refDisplay').textContent = data.ref;
+                document.getElementById('refDisplayHeader').textContent = data.ref;
 
-                // ===== SET PHOTO =====
                 const photoImg = document.getElementById('applicantPhoto');
                 if (data.photo) {
                     photoImg.src = data.photo;
                     photoImg.alt = 'Applicant Photo - ' + data.name;
                 }
 
-                // Show result with animation
                 resultCard.style.display = 'block';
                 setTimeout(() => {
                     resultCard.classList.add('active');
                 }, 50);
 
-                // Scroll to result
                 resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             }, 1800);
+        }
+
+        // ============================================================
+        // ===== DOWNLOAD PNG FUNCTION =====
+        // ============================================================
+        function downloadPNG() {
+            const element = document.getElementById('dataToDownload');
+            const downloadBtn = document.querySelector('.download-btn');
+
+            // Show loading on button
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '⏳ Generating PNG...';
+            downloadBtn.disabled = true;
+
+            html2canvas(element, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                useCORS: true,
+                allowTaint: true,
+                logging: false,
+                onclone: function(clonedDoc) {
+                    // Fix images in clone
+                    const imgs = clonedDoc.querySelectorAll('img');
+                    imgs.forEach(img => {
+                        img.crossOrigin = 'anonymous';
+                    });
+                }
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'FIA_Applicant_Data.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+
+                // Restore button
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            }).catch(err => {
+                console.error('PNG generation error:', err);
+                alert('Error generating PNG. Please try again.');
+                downloadBtn.innerHTML = originalText;
+                downloadBtn.disabled = false;
+            });
         }
 
         // ============================================================
@@ -953,7 +1027,6 @@
         // ============================================================
         // ===== NO AUTO-SEARCH ON LOAD =====
         // ============================================================
-        // Page load par kuch nahi hota, user khud search karega
     </script>
 
 </body>
