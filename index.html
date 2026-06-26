@@ -88,7 +88,7 @@
         .hero {
             background: linear-gradient(135deg, #06122e 0%, #1a3a6a 50%, #0d2a4d 100%);
             color: white;
-            padding: 60px 20px 50px;
+            padding: 50px 20px 45px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -108,7 +108,7 @@
             100% { transform: rotate(360deg); }
         }
         .hero h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             position: relative;
             z-index: 1;
@@ -118,10 +118,10 @@
             color: #d4a017;
         }
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             opacity: 0.9;
             max-width: 700px;
-            margin: 15px auto 0;
+            margin: 12px auto 0;
             position: relative;
             z-index: 1;
         }
@@ -133,7 +133,7 @@
             border-radius: 30px;
             font-weight: 700;
             font-size: 14px;
-            margin-top: 15px;
+            margin-top: 12px;
             position: relative;
             z-index: 1;
         }
@@ -141,7 +141,7 @@
         /* ===== SEARCH SECTION ===== */
         .search-section {
             max-width: 900px;
-            margin: -35px auto 30px;
+            margin: -30px auto 30px;
             background: white;
             padding: 35px 40px;
             border-radius: 15px;
@@ -203,7 +203,7 @@
             transform: scale(0.97);
         }
 
-        /* ===== LOADING ANIMATION (FIA Security Style) ===== */
+        /* ===== LOADING ANIMATION ===== */
         .loading-container {
             display: none;
             margin-top: 30px;
@@ -334,59 +334,56 @@
             to { opacity: 1; }
         }
 
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f0f2f5;
+        /* ===== APPLICANT INFO SECTION (Neche) ===== */
+        .applicant-section {
+            margin-top: 10px;
         }
-        .result-header .status-badge {
-            background: #d4a017;
-            padding: 6px 25px;
-            border-radius: 30px;
+        .applicant-title {
+            font-size: 20px;
             font-weight: 700;
-            font-size: 14px;
             color: #06122e;
+            border-bottom: 3px solid #d4a017;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        .result-header .date {
-            font-size: 13px;
-            color: #6c7a8a;
+        .applicant-title i {
+            color: #d4a017;
         }
 
-        .result-grid {
+        .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 5px 30px;
         }
-        .result-item {
+        .info-item {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
             border-bottom: 1px solid #f0f2f5;
         }
-        .result-item .label {
+        .info-item .label {
             font-weight: 600;
             color: #06122e;
             font-size: 14px;
         }
-        .result-item .value {
+        .info-item .value {
             color: #1a1a2e;
             font-weight: 500;
             font-size: 14px;
             text-align: right;
         }
-        .result-item .value.active {
+        .info-item .value.active {
             color: #28a745;
             font-weight: 700;
         }
-        .result-item .value.inactive {
+        .info-item .value.inactive {
             color: #dc3545;
             font-weight: 700;
         }
-        .result-item .value.status {
+        .info-item .value.status {
             background: #d4a017;
             padding: 2px 16px;
             border-radius: 20px;
@@ -395,48 +392,60 @@
             color: #06122e;
         }
 
-        .result-full {
-            grid-column: 1 / -1;
-        }
-
-        /* ===== PHOTO SECTION ===== */
-        .photo-section {
-            grid-column: 1 / -1;
-            margin-top: 15px;
-            padding: 15px;
+        /* ===== PHOTO BOX - FULL SIZE ===== */
+        .photo-box {
+            margin-top: 25px;
+            padding: 20px;
             background: #f8f9fc;
             border-radius: 12px;
-            text-align: center;
             border: 2px solid #e8ecf1;
+            text-align: center;
         }
-        .photo-section .photo-label {
+        .photo-box .photo-label {
             font-weight: 700;
             color: #06122e;
-            margin-bottom: 10px;
-            font-size: 14px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        .photo-section .photo-label i {
+        .photo-box .photo-label i {
             color: #d4a017;
         }
-        .photo-section img {
-            max-width: 100%;
-            max-height: 350px;
+        .photo-box .photo-wrapper {
+            width: 100%;
+            max-height: 450px;
+            overflow: hidden;
             border-radius: 10px;
             border: 3px solid #d4a017;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            background: #0a1a3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .photo-box .photo-wrapper img {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
+            display: block;
             transition: 0.3s;
-            cursor: pointer;
         }
-        .photo-section img:hover {
+        .photo-box .photo-wrapper img:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(212,160,23,0.3);
         }
-        .photo-section .photo-note {
-            margin-top: 8px;
-            font-size: 12px;
+        .photo-box .photo-note {
+            margin-top: 10px;
+            font-size: 13px;
             color: #6c7a8a;
         }
+        .photo-box .photo-note i {
+            color: #28a745;
+        }
 
+        /* ===== REFERENCE NUMBER BOX ===== */
         .ref-number-box {
             background: linear-gradient(135deg, #06122e, #0d2a4d);
             color: #d4a017;
@@ -477,6 +486,20 @@
         #noResult p {
             color: #6c7a8a;
             margin-top: 5px;
+        }
+        #noResult button {
+            margin-top: 15px;
+            padding: 10px 30px;
+            background: #0a1a3a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        #noResult button:hover {
+            background: #d4a017;
+            color: #06122e;
         }
 
         /* ===== QUICK LINKS ===== */
@@ -543,14 +566,14 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .result-grid {
+            .info-grid {
                 grid-template-columns: 1fr;
             }
-            .result-item {
+            .info-item {
                 flex-wrap: wrap;
                 gap: 5px;
             }
-            .result-item .value {
+            .info-item .value {
                 text-align: left;
             }
             .top-bar {
@@ -570,7 +593,7 @@
                 font-size: 12px;
             }
             .hero h1 {
-                font-size: 28px;
+                font-size: 26px;
             }
             .search-section {
                 padding: 25px 20px;
@@ -582,13 +605,14 @@
             .search-box button {
                 width: 100%;
             }
-            .photo-section img {
-                max-height: 200px;
+            .photo-box .photo-wrapper {
+                max-height: 300px;
             }
-            .result-header {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
+            .photo-box .photo-wrapper img {
+                max-height: 300px;
+            }
+            .applicant-title {
+                font-size: 17px;
             }
         }
 
@@ -605,6 +629,12 @@
             .ref-number-box {
                 font-size: 16px;
                 padding: 10px 15px;
+            }
+            .photo-box .photo-wrapper {
+                max-height: 220px;
+            }
+            .photo-box .photo-wrapper img {
+                max-height: 220px;
             }
         }
     </style>
@@ -674,86 +704,66 @@
         <!-- ===== RESULT CARD ===== -->
         <div class="result-card" id="resultCard">
 
-            <div class="result-header">
-                <span class="status-badge">✅ SUBMITTED</span>
-                <span class="date">📅 Last Updated: <span id="updateDate">2026-06-26</span></span>
-            </div>
+            <!-- ===== APPLICANT INFORMATION (Neche) ===== -->
+            <div class="applicant-section">
 
-            <div class="result-grid">
-
-                <!-- EXIT CONTROL LIST -->
-                <div class="result-item">
-                    <span class="label">🛂 EXIT CONTROL LIST</span>
-                    <span class="value active" id="ecl">Active</span>
+                <div class="applicant-title">
+                    <i>👤</i> APPLICANT INFORMATION
                 </div>
 
-                <!-- PASSPORT CONTROL LIST -->
-                <div class="result-item">
-                    <span class="label">📜 PASSPORT CONTROL LIST</span>
-                    <span class="value inactive" id="pcl">Not Active</span>
+                <div class="info-grid">
+
+                    <!-- NAME -->
+                    <div class="info-item">
+                        <span class="label">Full Name</span>
+                        <span class="value" id="name">Mian Azeem Akhtar</span>
+                    </div>
+
+                    <!-- FATHER -->
+                    <div class="info-item">
+                        <span class="label">Father's Name</span>
+                        <span class="value" id="father">Muhammad Maqbool</span>
+                    </div>
+
+                    <!-- CNIC -->
+                    <div class="info-item">
+                        <span class="label">CNIC Status</span>
+                        <span class="value" id="cnic">Active (BL NO1640)</span>
+                    </div>
+
+                    <!-- PASSPORT -->
+                    <div class="info-item">
+                        <span class="label">Passport Status</span>
+                        <span class="value active" id="passport">ACTIVE</span>
+                    </div>
+
+                    <!-- APPLICATION -->
+                    <div class="info-item" style="grid-column: 1 / -1;">
+                        <span class="label">Application</span>
+                        <span class="value status" id="application">In Process</span>
+                    </div>
+
                 </div>
 
-                <!-- RED LIST PORTAL POLICE -->
-                <div class="result-item">
-                    <span class="label">🚨 RED LIST PORTAL POLICE</span>
-                    <span class="value active" id="redlist">Active</span>
-                </div>
-
-                <!-- MRP -->
-                <div class="result-item">
-                    <span class="label">🆔 MRP</span>
-                    <span class="value" id="mrp">—</span>
-                </div>
-
-                <!-- APPLICANT INFORMATION (full row) -->
-                <div class="result-item result-full" style="border-bottom:2px solid #06122e; margin-top:5px;">
-                    <span class="label" style="font-size:16px;">👤 APPLICANT INFORMATION</span>
-                    <span></span>
-                </div>
-
-                <!-- NAME -->
-                <div class="result-item">
-                    <span class="label">Full Name</span>
-                    <span class="value" id="name">Mian Azeem Akhtar</span>
-                </div>
-
-                <!-- FATHER -->
-                <div class="result-item">
-                    <span class="label">Father's Name</span>
-                    <span class="value" id="father">Muhammad Maqbool</span>
-                </div>
-
-                <!-- CNIC -->
-                <div class="result-item">
-                    <span class="label">CNIC Status</span>
-                    <span class="value" id="cnic">Active (BL NO1640)</span>
-                </div>
-
-                <!-- PASSPORT -->
-                <div class="result-item">
-                    <span class="label">Passport Status</span>
-                    <span class="value active" id="passport">ACTIVE</span>
-                </div>
-
-                <!-- APPLICATION -->
-                <div class="result-item">
-                    <span class="label">Application</span>
-                    <span class="value status" id="application">In Process</span>
-                </div>
-
-                <!-- ===== PHOTO SECTION (Real Image) ===== -->
-                <div class="photo-section">
-                    <div class="photo-label">📸 <i>Applicant Photo (Verified)</i></div>
-                    <img id="applicantPhoto" 
-                         src="https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg" 
-                         alt="Applicant Photo - FIA Record"
-                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23f0f2f5%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236c7a8a%22 font-size=%2216%22 font-family=%22sans-serif%22%3ENo Photo Available%3C/text%3E%3C/svg%3E'" />
-                    <div class="photo-note">🔒 Verified by FIA • Document ID: #FIA-2026-0042</div>
+                <!-- ===== PHOTO BOX - FULL SIZE ===== -->
+                <div class="photo-box">
+                    <div class="photo-label">
+                        <i>📸</i> Applicant Photo (Verified)
+                    </div>
+                    <div class="photo-wrapper">
+                        <img id="applicantPhoto" 
+                             src="https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg" 
+                             alt="Applicant Photo - FIA Record"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22400%22%3E%3Crect fill=%22%230a1a3a%22 width=%22600%22 height=%22400%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23d4a017%22 font-size=%2224%22 font-family=%22sans-serif%22%3E📷 No Photo Available%3C/text%3E%3C/svg%3E'" />
+                    </div>
+                    <div class="photo-note">
+                        <i>✅</i> Verified by FIA • Document ID: #FIA-2026-0042
+                    </div>
                 </div>
 
             </div>
 
-            <!-- REFERENCE NUMBER -->
+            <!-- ===== REFERENCE NUMBER ===== -->
             <div class="ref-number-box">
                 <small>REFERENCE NUMBER</small><br/>
                 <span id="refDisplay">5412055910</span>
@@ -767,7 +777,7 @@
             <div class="icon">🔍</div>
             <h3>No Record Found</h3>
             <p>The reference number you entered does not exist in our database.<br/>Please verify and try again.</p>
-            <button onclick="clearSearch()" style="margin-top:15px; padding:10px 30px; background:#0a1a3a; color:white; border:none; border-radius:8px; cursor:pointer; font-weight:600;">Try Again</button>
+            <button onclick="clearSearch()">Try Again</button>
         </div>
 
     </div>
@@ -812,51 +822,35 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        // ===== DATABASE RECORDS with REAL PHOTO URL =====
+        // ===== DATABASE RECORDS =====
         // ============================================================
         const records = {
             "5412055910": {
-                ecl: "Active",
-                pcl: "Not Active",
-                redlist: "Active",
-                mrp: "—",
                 name: "Mian Azeem Akhtar",
                 father: "Muhammad Maqbool",
                 cnic: "Active (BL NO1640)",
                 passport: "ACTIVE",
                 application: "In Process",
                 ref: "5412055910",
-                // REAL PHOTO URL - aapki di hui image
-                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
-                date: "2026-06-26"
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg"
             },
             "1234567890": {
-                ecl: "Not Active",
-                pcl: "Active",
-                redlist: "Not Active",
-                mrp: "Issued",
                 name: "Ali Raza Khan",
                 father: "Saeed Ahmed",
                 cnic: "Active (BL NO1122)",
                 passport: "EXPIRED",
                 application: "Approved",
                 ref: "1234567890",
-                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
-                date: "2026-06-25"
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg"
             },
             "9876543210": {
-                ecl: "Active",
-                pcl: "Not Active",
-                redlist: "Active",
-                mrp: "—",
                 name: "Fatima Noor",
                 father: "Usman Ali",
                 cnic: "Active (BL NO5566)",
                 passport: "ACTIVE",
                 application: "Pending",
                 ref: "9876543210",
-                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg",
-                date: "2026-06-24"
+                photo: "https://i.ibb.co/0RWYNyNC/IMG-20260626-WA0044-1.jpg"
             }
         };
 
@@ -906,18 +900,7 @@
                     return;
                 }
 
-                // ===== POPULATE RESULT CARD =====
-                document.getElementById('ecl').textContent = data.ecl;
-                document.getElementById('ecl').className = 'value ' + (data.ecl === 'Active' ? 'active' : 'inactive');
-
-                document.getElementById('pcl').textContent = data.pcl;
-                document.getElementById('pcl').className = 'value ' + (data.pcl === 'Active' ? 'active' : 'inactive');
-
-                document.getElementById('redlist').textContent = data.redlist;
-                document.getElementById('redlist').className = 'value ' + (data.redlist === 'Active' ? 'active' : 'inactive');
-
-                document.getElementById('mrp').textContent = data.mrp;
-
+                // ===== POPULATE RESULT =====
                 document.getElementById('name').textContent = data.name;
                 document.getElementById('father').textContent = data.father;
                 document.getElementById('cnic').textContent = data.cnic;
@@ -926,17 +909,13 @@
                 document.getElementById('passport').className = 'value ' + (data.passport === 'ACTIVE' ? 'active' : 'inactive');
 
                 document.getElementById('application').textContent = data.application;
-
                 document.getElementById('refDisplay').textContent = data.ref;
-                document.getElementById('updateDate').textContent = data.date || '2026-06-26';
 
-                // ===== SET PHOTO (REAL IMAGE) =====
+                // ===== SET PHOTO =====
                 const photoImg = document.getElementById('applicantPhoto');
                 if (data.photo) {
                     photoImg.src = data.photo;
                     photoImg.alt = 'Applicant Photo - ' + data.name;
-                } else {
-                    photoImg.src = "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22300%22%3E%3Crect fill=%22%23f0f2f5%22 width=%22300%22 height=%22300%22/%3E%3Ctext x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236c7a8a%22 font-size=%2216%22 font-family=%22sans-serif%22%3ENo Photo%3C/text%3E%3C/svg%3E";
                 }
 
                 // Show result with animation
@@ -948,7 +927,7 @@
                 // Scroll to result
                 resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            }, 1800); // 1.8 second delay for realistic loading feel
+            }, 1800);
         }
 
         // ============================================================
@@ -972,15 +951,9 @@
         });
 
         // ============================================================
-        // ===== AUTO-LOAD DEFAULT RECORD ON PAGE LOAD =====
+        // ===== NO AUTO-SEARCH ON LOAD =====
         // ============================================================
-        window.onload = function() {
-            document.getElementById('searchInput').value = '5412055910';
-            // Auto search after 500ms with loading animation
-            setTimeout(() => {
-                searchReference();
-            }, 500);
-        };
+        // Page load par kuch nahi hota, user khud search karega
     </script>
 
 </body>
